@@ -9,3 +9,5 @@ select cNo, cName, gender, ponNumber, address, joinDate, unDelivered, count, cGr
 select lLaundryCode, product, unitPrice from laundry;
 select complete, `no`, ctNo, LaundryCode, color, laundryCount, totalPrice, receiveDate, releaseDate, etc from `order`;
 select sNo, lLaundryCode, totalCount, totalSales from sales;
+
+select gGrade, discountRate from grade;

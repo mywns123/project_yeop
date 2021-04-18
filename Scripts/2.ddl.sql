@@ -62,10 +62,10 @@ CREATE TABLE laundry.Customer (
 	gender      BOOLEAN     NULL     COMMENT '성별', -- 성별
 	ponNumber   VARCHAR(30) NOT NULL COMMENT '연락처', -- 연락처
 	address     VARCHAR(50) NULL     COMMENT '고객주소', -- 고객주소
-	joinDate    DATETIME    default CURRENT_TIMESTAMP  COMMENT '가입일', -- 가입일
-	unDelivered INTEGER     NULL     COMMENT '미출고량', -- 미출고량
-	count       INTEGER     NULL     COMMENT '총거래량', -- 총거래량
-	cGrade      CHAR(2)     NOT NULL COMMENT '등급' -- 등급
+	joinDate    DATETIME    null default CURRENT_TIMESTAMP  COMMENT '가입일', -- 가입일
+	unDelivered INTEGER     null default 0     COMMENT '미출고량', -- 미출고량
+	count       INTEGER     null default 0     COMMENT '총거래량', -- 총거래량
+	cGrade      CHAR(2)     null default new Grade("C") COMMENT '등급' -- 등급
 )
 COMMENT '고객정보';
 
