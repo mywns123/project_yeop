@@ -11,3 +11,4 @@ select complete, `no`, ctNo, LaundryCode, color, laundryCount, totalPrice, recei
 select sNo, lLaundryCode, totalCount, totalSales from sales;
 
 select gGrade, discountRate from grade;
+
