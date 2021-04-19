@@ -47,11 +47,12 @@ public class CustomerDaoImpl implements CustomerDao {
 		String ponNumber = rs.getString("ponNumber");	
 		String address = rs.getString("address");	
 		Date joinDate = rs.getDate("joinDate");
-		int unDelivered = rs.getInt("unDelivered");;
-		int count = rs.getInt("count");;
+		int unDelivered = rs.getInt("unDelivered");
+		int count = rs.getInt("count");
 		Grade cGrade = new Grade(rs.getString("gGrade"));
-
-		return new Customer(cNo, cName, gender, ponNumber, address, joinDate, unDelivered, count, cGrade);
+		String etc = rs.getString("etc");
+		
+		return new Customer(cNo, cName, gender, ponNumber, address, joinDate, unDelivered, count, cGrade,etc);
 	}
 
 	@Override

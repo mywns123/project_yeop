@@ -12,21 +12,22 @@ public class Customer {
 	int unDelivered;
 	int count;
 	Grade cGrade;
+	String etc;
 
 	public Customer(int cNo) {
 		this.cNo = cNo;
 	}
 
-	public Customer(int cNo, String cName, boolean gender, String ponNumber, String address) {
-		this.cNo = cNo;
+	public Customer(String cName, boolean gender, String ponNumber, String address, String etc) {
 		this.cName = cName;
 		this.gender = gender;
 		this.ponNumber = ponNumber;
 		this.address = address;
+		this.etc = etc;
 	}
 
 	public Customer(int cNo, String cName, boolean gender, String ponNumber, String address, Date joinDate,
-			int unDelivered, int count, Grade cGrade) {
+			int unDelivered, int count, Grade cGrade, String etc) {
 		this.cNo = cNo;
 		this.cName = cName;
 		this.gender = gender;
@@ -36,6 +37,17 @@ public class Customer {
 		this.unDelivered = unDelivered;
 		this.count = count;
 		this.cGrade = cGrade;
+		this.etc = etc;
+	}
+
+
+
+	public String getEtc() {
+		return etc;
+	}
+
+	public void setEtc(String etc) {
+		this.etc = etc;
 	}
 
 	public int getcNo() {

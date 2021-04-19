@@ -18,6 +18,14 @@ public class Order {
 		this.no = no;
 	}
 
+	public Order(Customer cNo, Laundry laundryCode, String color, int laundryCount, String ect) {
+		this.cNo = cNo;
+		LaundryCode = laundryCode;
+		this.color = color;
+		this.laundryCount = laundryCount;
+		this.ect = ect;
+	}
+
 	public Order(boolean complete, int no, Customer cNo, Laundry laundryCode, String color, int laundryCount,
 			int totalPrice, Date receiveDate, Date releaseDate, String ect) {
 		this.complete = complete;

@@ -1,26 +1,27 @@
 package project_yeop.panel;
 
-import javax.swing.JPanel;
-import javax.swing.JSplitPane;
 import java.awt.BorderLayout;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
-import java.awt.CardLayout;
 import java.awt.GridLayout;
-import javax.swing.border.EmptyBorder;
+
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
+
+import project_yeop.dto.Laundry;
+import project_yeop.exception.InvalidationException;
 
 @SuppressWarnings("serial")
-public class LaundryPanel extends JPanel {
+public class LaundryPanel extends AbstractPanel<Laundry> {
 	private JTextField tfLaundry;
 	private JTextField tflPro;
 	private JTextField tfUP;
 
 	public LaundryPanel() {
-
 		initialize();
 	}
+	
 	private void initialize() {
 		setLayout(new BorderLayout(0, 0));
 		
@@ -51,16 +52,43 @@ public class LaundryPanel extends JPanel {
 		
 		tfUP = new JTextField();
 		tfUP.setColumns(10);
-		panel.add(tfUP);
+		panel.add(tfUP);	
+	}
+	
+	@Override
+	public void setItem(Laundry item) {
+		tfLaundry.setText(String.valueOf(item.getlLaundryCode()));
+		tflPro.setText(String.valueOf(item.getProduct()));
+		tfUP.setText(String.valueOf(item.getUnitPrice()));
+	}
+	
+	@Override
+	public Laundry getItem() {
+		validCheck();
+		String lLaundryCode = tfLaundry.getText().trim();
+		String product = tflPro.getText().trim();
+		int unitPrice = Integer.parseInt(tfUP.getText().trim());
+
+		return new Laundry(lLaundryCode, product,unitPrice);
+	}
+	
+	@Override
+	public void validCheck() {
+		if (tfLaundry.getText().contentEquals("") || tflPro.getText().equals("")
+				|| tfUP.getText().equals("")) {
+			throw new InvalidationException();
+		}		
+	}
+	
+	@Override
+	public void clearTf() {
+		tfLaundry.setText("");
+		tflPro.setText("");
+		tfUP.setText("");
 		
-		JPanel pBU = new JPanel();
-		add(pBU, BorderLayout.SOUTH);
-		
-		JButton btnAdd = new JButton("추가");
-		pBU.add(btnAdd);
-		
-		JButton btnClear = new JButton("취소");
-		pBU.add(btnClear);
+		if (!tfLaundry.isEditable()) {
+			tfLaundry.setEditable(true);
+		}
 	}
 
 }
