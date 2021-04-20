@@ -2,9 +2,9 @@ select user(), database();
 
 select gGrade, discountRate from grade;
 select lLaundryCode, product, unitPrice from laundry;
+select cNo, cName, gender, ponNumber, address, joinDate from customer;
+select complete, `no`, ctNo, LaundryCode, color, laundryCount, receiveDate, etc from `order`;
 
-select cNo, cName, gender, ponNumber, address, joinDate, unDelivered, count, cGrade from customer;
-select complete, `no`, ctNo, LaundryCode, color, laundryCount, totalPrice, receiveDate, releaseDate, etc from `order`;
 
 select sNo, lLaundryCode, totalCount, totalSales from sales;
 
@@ -24,6 +24,11 @@ insert into laundry values("GGG","가디건",9000);
 insert into laundry values("HHH","신발",3000);
 
 insert into customer(cName, gender, ponNumber, address) values("이영호",true,"01012345678","달서구");
+
+insert into  `order`(ctNo, LaundryCode, color, laundryCount,etc)
+	values(1,"AAA","blue",3,null);
+
+
 
 insert into customer values(1,"이영호",true,"01012345678","달서구","2021-04-18",0,0,null);
 insert into customer values(2,"이영호",true,"01012345678","달서구",null,0,0,null);

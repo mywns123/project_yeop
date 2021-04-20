@@ -1,12 +1,10 @@
 select * from grade;
 select * from laundry;
-
 select * from customer;
 select * from `order`;
 
 select gGrade, discountRate from grade;
 select lLaundryCode, product, unitPrice from laundry;
-
 select cNo, cName, gender, ponNumber, address, joinDate from customer;
 select complete, `no`, ctNo, LaundryCode, color, laundryCount, receiveDate, etc from `order`;
 
