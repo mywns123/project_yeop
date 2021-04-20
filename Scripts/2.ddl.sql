@@ -6,15 +6,13 @@ CREATE SCHEMA laundry;
 
 -- 세탁물 주문표
 CREATE TABLE laundry.Order (
-	complete     BOOLEAN     NULL     COMMENT '완료', -- 완료
+	complete     BOOLEAN     default  false   COMMENT '완료', -- 완료
 	no           INTEGER     NOT NULL COMMENT '순번', -- 순번
 	ctNo         INTEGER     NULL     COMMENT '고객번호', -- 고객번호
 	LaundryCode  char(3)     NOT NULL COMMENT '세탁물코드', -- 세탁물코드
 	color        VARCHAR(50) NULL     COMMENT '색상', -- 색상
 	laundryCount INTEGER(2)  NOT NULL COMMENT '세탁수량', -- 세탁수량
-	totalPrice   INTEGER     NULL COMMENT '세탁가격', -- 세탁가격
 	receiveDate  DATETIME    default CURRENT_TIMESTAMP COMMENT '입고일', -- 입고일
-	releaseDate  DATETIME    NULL COMMENT '출고일', -- 출고일
 	etc          CHAR        NULL     COMMENT '기타사항' -- 기타사항
 )
 COMMENT '세탁물 주문표';
@@ -25,6 +23,9 @@ ALTER TABLE laundry.Order
 		PRIMARY KEY (
 			no -- 순번
 		);
+	
+ALTER TABLE laundry.Order
+	MODIFY COLUMN no INTEGER NOT NULL AUTO_INCREMENT COMMENT '순번';
 
 -- 등급별 할인율
 CREATE TABLE laundry.Grade (
@@ -57,14 +58,12 @@ ALTER TABLE laundry.Laundry
 
 -- 고객정보
 CREATE TABLE laundry.Customer (
-	cNo         INTEGER     NOT NULL COMMENT '고객번호', -- 고객번호
-	cName       VARCHAR(50) NOT NULL COMMENT '고객명', -- 고객명
-	gender      BOOLEAN     NULL     COMMENT '성별', -- 성별
-	ponNumber   VARCHAR(30) NOT NULL COMMENT '연락처', -- 연락처
-	address     VARCHAR(50) NULL     COMMENT '고객주소', -- 고객주소
-	joinDate    DATETIME    NULL     COMMENT '가입일', -- 가입일
-	unDelivered INTEGER     NULL     COMMENT '미출고량', -- 미출고량
-	count       INTEGER     NULL     COMMENT '총거래량' -- 총거래량
+	cNo       INTEGER     NOT NULL COMMENT '고객번호', -- 고객번호
+	cName     VARCHAR(50) NOT NULL COMMENT '고객명', -- 고객명
+	gender    BOOLEAN     NULL     COMMENT '성별', -- 성별
+	ponNumber VARCHAR(30) NOT NULL COMMENT '연락처', -- 연락처
+	address   VARCHAR(50) NULL     COMMENT '고객주소', -- 고객주소
+	joinDate  DATETIME    default CURRENT_TIMESTAMP     COMMENT '가입일' -- 가입일
 )
 COMMENT '고객정보';
 
