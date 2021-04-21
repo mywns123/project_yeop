@@ -1,13 +1,3 @@
-create view odTable
-as
-select complete, `no`, ctNo, LaundryCode, color, laundryCount,
-		laundryCount * unitPrice as 'totalPrice',
-		receiveDate,
-		date_add(receiveDate,interval 7 day) as 'releaseDate',
-		etc
-	from `order` o left join laundry l on LaundryCode = lLaundryCode;
-
-
 create view ctTable
 as
 select cNo, cName, gender, ponNumber, address, joinDate,
@@ -21,9 +11,27 @@ select cNo, cName, gender, ponNumber, address, joinDate,
 	from customer left join `order` on cNo = ctNo
 	group by cNo;
 
+
+
+
+create view odTable
+as
+select o.complete, o.`no`,
+	o.ctNo, c.cName, c.cGrade, g.discountRate,
+	o.color, o.LaundryCode, l.product, l.unitPrice, o.laundryCount,
+	laundryCount * unitPrice*(1 - g.discountRate *0.01) as 'price',
+	o.receiveDate,
+	date_add(receiveDate,interval 7 day) as 'releaseDate',
+	o.etc
+from `order` o left join laundry l on o.LaundryCode = l.lLaundryCode
+left join ctTable c on o.ctNo = c.cNo
+left join grade g on c.cGrade = g.gGrade;
+
+
+
 create view sale
 as
-select lLaundryCode, sum(laundryCount), sum(totalPrice)
+select lLaundryCode, sum(laundryCount) as 'totalCount' , sum(price) as 'totalPrice'  
 from laundry left join odTable on lLaundryCode = LaundryCode
 group by lLaundryCode;
 
