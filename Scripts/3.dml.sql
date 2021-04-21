@@ -1,13 +1,9 @@
 select user(), database();
 
-select gGrade, discountRate from grade;
+select gGrade, discountRate from grade  order by field(gGrade,'S','A','B','C') ;
 select lLaundryCode, product, unitPrice from laundry;
 select cNo, cName, gender, ponNumber, address, joinDate from customer;
 select complete, `no`, ctNo, LaundryCode, color, laundryCount, receiveDate, etc from `order`;
-
-
-select sNo, lLaundryCode, totalCount, totalSales from sales;
-
 
 insert into grade values("S",30);
 insert into grade values("A",20);
@@ -24,20 +20,22 @@ insert into laundry values("GGG","가디건",9000);
 insert into laundry values("HHH","신발",3000);
 
 insert into customer(cName, gender, ponNumber, address) values("이영호",true,"01012345678","달서구");
+insert into customer(cName, gender, ponNumber, address) values("김상호",true,"01012345678","남구");
+insert into customer(cName, gender, ponNumber, address) values("박일권",true,"01012345678","남구");
+insert into customer(cName, gender, ponNumber, address) values("이기영",true,"01012345678","달서구");
+insert into customer(cName, gender, ponNumber, address) values("이정호",true,"01012345678","달서구");
 
 insert into  `order`(ctNo, LaundryCode, color, laundryCount,etc)
 	values(1,"AAA","blue",3,null);
 
+insert into  `order`(ctNo, LaundryCode, color, laundryCount,etc)
+	values(2,"CCC","blue",1,null);
 
+insert into  `order`(ctNo, LaundryCode, color, laundryCount,etc)
+	values(3,"AAA","blue",4,null);
 
-insert into customer values(1,"이영호",true,"01012345678","달서구","2021-04-18",0,0,null);
-insert into customer values(2,"이영호",true,"01012345678","달서구",null,0,0,null);
-insert into customer values(3,"이영호",true,"01012345678","달서구",null,0,0,null);
+insert into  `order`(ctNo, LaundryCode, color, laundryCount,etc)
+	values(4,"EEE","blue",5,null);
 
-
-
-insert into Customer values(2,"김상호","S",01012345678);
-insert into Customer values(3,"박일권","B",01012345678);
-insert into Customer values(4,"이기영","B",01012345678);
-insert into Customer values(5,"이정호","C",01012345678);
-
+insert into  `order`(ctNo, LaundryCode, color, laundryCount,etc)
+	values(1,"GGG","blue",2,null);

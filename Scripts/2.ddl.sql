@@ -63,7 +63,7 @@ CREATE TABLE laundry.Customer (
 	gender    BOOLEAN     NULL     COMMENT '성별', -- 성별
 	ponNumber VARCHAR(30) NOT NULL COMMENT '연락처', -- 연락처
 	address   VARCHAR(50) NULL     COMMENT '고객주소', -- 고객주소
-	joinDate  DATETIME    default CURRENT_TIMESTAMP     COMMENT '가입일' -- 가입일
+	joinDate  DATETIME    default CURRENT_TIMESTAMP     COMMENT '가입일' -- 가입일	
 )
 COMMENT '고객정보';
 
