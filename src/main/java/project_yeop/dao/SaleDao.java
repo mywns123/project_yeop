@@ -9,10 +9,5 @@ public interface SaleDao {
 	List<Sale> selectSaleByAll();
 
 	Sale selectSaleByNo(Sale sale);
-
-	int insertSale(Sale sale);
-
-	int updateSale(Sale sale);
-
-	int deleteSale(Sale sale);
+	
 }

@@ -23,7 +23,7 @@ public class CustomerDaoImpl implements CustomerDao {
 	
 	@Override
 	public List<Customer> selectCustomerByAll() {
-		String sql = "select cNo, cName, gender, ponNumber, address, joinDate, unDelivered, count, cGrade from customer";
+		String sql = "select cNo, cName, gender, ponNumber, address, joinDate, unDelivered, count, cGrade from ctTable";
 		try (Connection con = JdbcConn.getConnection();
 				PreparedStatement pstmt = con.prepareStatement(sql);
 				ResultSet rs = pstmt.executeQuery()) {

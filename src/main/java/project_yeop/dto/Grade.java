@@ -1,8 +1,8 @@
 package project_yeop.dto;
 
 public class Grade {
-	String gGrade;
-	int discountRate;
+	private String gGrade;
+	private int discountRate;
 
 	public Grade(String gGrade) {
 		this.gGrade = gGrade;

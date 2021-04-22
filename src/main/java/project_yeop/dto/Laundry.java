@@ -1,9 +1,9 @@
 package project_yeop.dto;
 
 public class Laundry {
-	String lLaundryCode;
-	String product;
-	int unitPrice;
+	private String lLaundryCode;
+	private String product;
+	private int unitPrice;
 
 	public Laundry(String lLaundryCode) {
 		this.lLaundryCode = lLaundryCode;
