@@ -21,12 +21,14 @@ import project_yeop.service.LaundryService;
 
 @SuppressWarnings("serial")
 public class OrderPanel extends AbstractPanel<Order> {
+	private LaundryService service;
+	
 	private JTextField tfNum;
 	private JTextField tfCount;
 	private JTextField tfColor;
 	private JTextField tfEtc;
 	private JComboBox<Laundry> comCode;
-	private LaundryService service;
+	
 	
 	public OrderPanel() {
 		initialize();
@@ -100,7 +102,7 @@ public class OrderPanel extends AbstractPanel<Order> {
 	
 	@Override
 	public void setItem(Order item) {
-		tfNum.setText(String.valueOf(item.getcNo()));
+		tfNum.setText(String.valueOf(item.getCtNo()));
 		comCode.setSelectedItem(item.getLaundryCode());
 		tfCount.setText(String.valueOf(item.getLaundryCount()));	
 		tfColor.setText(String.valueOf(item.getColor()));

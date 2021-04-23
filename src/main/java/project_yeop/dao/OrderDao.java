@@ -2,13 +2,14 @@ package project_yeop.dao;
 
 import java.util.List;
 
+import project_yeop.dto.OdTable;
 import project_yeop.dto.Order;
 
 public interface OrderDao {
 
-	List<Order> selectOrderByAll();
+	List<OdTable> selectOrderByAll();
 
-	Order selectOrderByNo(Order order);
+	OdTable selectOrderByNo(OdTable odTable);
 
 	int insertOrder(Order order);
 

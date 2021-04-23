@@ -14,7 +14,7 @@ select cNo, cName, gender, ponNumber, address, joinDate from customer;
 select complete, `no`, ctNo, LaundryCode, color, laundryCount, receiveDate, etc from `order`;
 
 select cNo, cName, gender, ponNumber, address, joinDate, unDelivered, count, cGrade from ctTable;
-select complete, `no`, ctNo, cName, cGrade, discountRate, color, LaundryCode, product, unitPrice, laundryCount, price, receiveDate, releaseDate, etc from odTable;
+select cNo, cName, gGrade, discountRate, color, lLaundryCode, product, unitPrice, laundryCount, price, receiveDate, releaseDate, etc from odTable;
 select lLaundryCode, totalCount, totalPrice from sale;
 
 

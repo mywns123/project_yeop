@@ -7,10 +7,11 @@ import java.util.List;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.FixMethodOrder;
+import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
 import project_yeop.dao.CustomerDao;
-import project_yeop.dto.Customer;
+import project_yeop.dto.CtTable;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class CustomerDaoImplTest {
@@ -23,10 +24,10 @@ public class CustomerDaoImplTest {
 	}
 	
 
-//	@Test
+	@Test
 	public void test01SelectCustomerByAll() {
 		System.out.printf("%s()%n", "testSelectCustomerByAll");
-		List <Customer> list = dao.selectCustomerByAll();
+		List <CtTable> list = dao.selectCustomerByAll();
 		Assert.assertNotNull(list);
 	}
 

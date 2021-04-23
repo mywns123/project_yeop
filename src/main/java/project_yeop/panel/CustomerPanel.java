@@ -3,26 +3,22 @@ package project_yeop.panel;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 
-import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 import project_yeop.dto.Customer;
-import project_yeop.dto.Laundry;
-import project_yeop.dto.Order;
 import project_yeop.exception.InvalidationException;
-
-import javax.swing.JRadioButton;
 
 @SuppressWarnings("serial")
 public class CustomerPanel extends AbstractPanel<Customer> {
 	private JTextField tfName;
 	private JTextField tfPhon;
 	private JTextField tfAddress;
-	private JTextField tfEtc;
+	
 	private JRadioButton rdbtnMale;
 	private JRadioButton rdbtnFemale;
 	
@@ -80,18 +76,14 @@ public class CustomerPanel extends AbstractPanel<Customer> {
 		
 		JLabel lblEtc = new JLabel("기타사항");
 		lblEtc.setHorizontalAlignment(SwingConstants.CENTER);
-		panel.add(lblEtc);
+		panel.add(lblEtc);		
 		
-		tfEtc = new JTextField();
-		tfEtc.setColumns(10);
-		panel.add(tfEtc);
 	}
 	@Override
 	public void setItem(Customer item) {		
 		tfName.setText(String.valueOf(item.getcNo()));
 		tfPhon.setText(String.valueOf(item.getPonNumber()));
 		tfAddress.setText(String.valueOf(item.getAddress()));		
-		tfEtc.setText(String.valueOf(item.getEtc()));	
 		if (item.isGender()) {
 			rdbtnFemale.setSelected(true);
 		} else {
@@ -105,16 +97,15 @@ public class CustomerPanel extends AbstractPanel<Customer> {
 		String cName = tfName.getText().trim();
 		boolean gender = rdbtnFemale.isSelected() ? true : false;;	
 		String ponNumber = tfPhon.getText().trim();
-		String address = tfAddress.getText().trim();
-		String etc = tfEtc.getText().trim();	
+		String address = tfAddress.getText().trim();		
 
-		return new Customer(cName,gender, ponNumber,address,etc);
+		return new Customer(cName,gender, ponNumber,address);
 	}
 	
 	@Override
 	public void validCheck() {
 		if (tfName.getText().contentEquals("") || tfPhon.getText().equals("")
-				|| tfAddress.getText().equals("")|| tfAddress.getText().equals("")) {
+				|| tfAddress.getText().equals("")) {
 			throw new InvalidationException();
 		}		
 	}
@@ -124,8 +115,7 @@ public class CustomerPanel extends AbstractPanel<Customer> {
 		tfName.setText("");
 		rdbtnFemale.setSelected(true);
 		tfPhon.setText("");
-		tfAddress.setText("");
-		tfEtc.setText("");			
+		tfAddress.setText("");				
 	}
 
 }

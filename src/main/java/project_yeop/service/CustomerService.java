@@ -4,17 +4,18 @@ import java.util.List;
 
 import project_yeop.dao.CustomerDao;
 import project_yeop.dao.impl.CustomerDaoImpl;
+import project_yeop.dto.CtTable;
 import project_yeop.dto.Customer;
 
 public class CustomerService {
 	private CustomerDao dao = CustomerDaoImpl.getInstance();
 
-	public List<Customer> showCustomers() {
+	public List<CtTable> showCustomers() {
 		return dao.selectCustomerByAll();
 	}
 
-	public Customer showCustomer(Customer customer) {
-		return dao.selectCustomerByNo(customer);
+	public CtTable showCustomer(CtTable ctTable) {
+		return dao.selectCustomerByNo(ctTable);
 	}
 
 	public int addCustomer(Customer customer) {

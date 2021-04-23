@@ -5,13 +5,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import project_yeop.dao.CustomerDao;
 import project_yeop.db.JdbcConn;
+import project_yeop.dto.CtTable;
 import project_yeop.dto.Customer;
-import project_yeop.dto.Grade;
 
 public class CustomerDaoImpl implements CustomerDao {
 
@@ -22,15 +21,15 @@ public class CustomerDaoImpl implements CustomerDao {
 	}
 	
 	@Override
-	public List<Customer> selectCustomerByAll() {
+	public List<CtTable> selectCustomerByAll() {
 		String sql = "select cNo, cName, gender, ponNumber, address, joinDate, unDelivered, count, cGrade from ctTable";
 		try (Connection con = JdbcConn.getConnection();
 				PreparedStatement pstmt = con.prepareStatement(sql);
 				ResultSet rs = pstmt.executeQuery()) {
 			if (rs.next()) {
-				List<Customer> list = new ArrayList<>();
+				List<CtTable> list = new ArrayList<>();
 				do {
-					list.add(getCustomer(rs));
+					list.add(getCtTable(rs));
 				} while (rs.next());
 				return list;
 			}
@@ -40,30 +39,61 @@ public class CustomerDaoImpl implements CustomerDao {
 		return null;
 	}
 
-	private Customer getCustomer(ResultSet rs) throws SQLException {
-		int cNo = rs.getInt("cNo");
-		String cName = rs.getString("cName");		
-		boolean gender = rs.getBoolean("gender");
-		String ponNumber = rs.getString("ponNumber");	
-		String address = rs.getString("address");	
-		Date joinDate = rs.getDate("joinDate");
+	private CtTable getCtTable(ResultSet rs) throws SQLException {
+		Customer customer = null;		
 		int unDelivered = rs.getInt("unDelivered");
 		int count = rs.getInt("count");
-		Grade cGrade = new Grade(rs.getString("gGrade"));
-		String etc = rs.getString("etc");
+		String cGrade =rs.getString("cGrade");		
 		
-		return new Customer(cNo, cName, gender, ponNumber, address, joinDate, unDelivered, count, cGrade,etc);
+		try {
+			customer = new Customer(rs.getInt("cNo"));
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		try {
+			customer.setcName(rs.getString("cName"));
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		try {
+			customer.setGender(rs.getBoolean("gender"));
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		try {
+			customer.setPonNumber(rs.getString("ponNumber"));
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		try {
+			customer.setAddress(rs.getString("address"));
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		try {
+			customer.setJoinDate(rs.getDate("joinDate"));
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return new CtTable(customer, unDelivered, count, cGrade);
 	}
 
 	@Override
-	public Customer selectCustomerByNo(Customer customer) {
-		String sql = "select cNo, cName, gender, ponNumber, address, joinDate, unDelivered, count, cGrade from customer where cNo=?";
+	public CtTable selectCustomerByNo(CtTable ctTable) {
+		String sql = "select cNo, cName, gender, ponNumber, address, joinDate, unDelivered, count, cGrade from ctTable"
+				   + " where cNo = ? ";
 		try (Connection con = JdbcConn.getConnection();
 				PreparedStatement pstmt = con.prepareStatement(sql)) {
-				pstmt.setInt(1, customer.getcNo());
+				pstmt.setInt(1, ctTable.getCustomer().getcNo());
 			try (ResultSet rs = pstmt.executeQuery()) {
 				if (rs.next()) {
-					return getCustomer(rs);
+					return getCtTable(rs);
 				}
 			}
 		} catch (SQLException e) {
@@ -74,17 +104,13 @@ public class CustomerDaoImpl implements CustomerDao {
 
 	@Override
 	public int insertCustomer(Customer customer) {
-		String sql = "insert into customer values(?,?,?,?,?,?,?,?)";
+		String sql = "insert into customer(cName, gender, ponNumber, address) values(?,?,?,?)";
 		try (Connection con = JdbcConn.getConnection();
-				PreparedStatement pstmt = con.prepareStatement(sql)) {
-				pstmt.setInt(1, customer.getcNo());
-				pstmt.setString(2, customer.getcName());
-				pstmt.setBoolean(3, customer.isGender());
-				pstmt.setString(4, customer.getPonNumber());
-				pstmt.setString(5, customer.getAddress());
-				pstmt.setInt(6, customer.getUnDelivered());
-				pstmt.setInt(7, customer.getCount());
-				pstmt.setString(8,customer.getcGrade().getgGrade());
+				PreparedStatement pstmt = con.prepareStatement(sql)) {				
+				pstmt.setString(1, customer.getcName());
+				pstmt.setBoolean(2, customer.isGender());
+				pstmt.setString(3, customer.getPonNumber());
+				pstmt.setString(4, customer.getAddress());				
 				return pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -94,17 +120,13 @@ public class CustomerDaoImpl implements CustomerDao {
 
 	@Override
 	public int updateCustomer(Customer customer) {
-		String sql = "update customer set cName = ?, gender = ?, ponNumber = ?, address = ?, unDelivered = ?, count = ?, cGrade = ?"
-				+ " where cNo =?";
+		String sql = "update customer set cName = ?, gender = ?, ponNumber = ?, address = ?  where cNo = ? ";
 		try (Connection con = JdbcConn.getConnection();
 				PreparedStatement pstmt = con.prepareStatement(sql)) {
 				pstmt.setString(1, customer.getcName());
 				pstmt.setBoolean(2, customer.isGender());
 				pstmt.setString(3, customer.getPonNumber());
-				pstmt.setString(4, customer.getAddress());
-				pstmt.setInt(5, customer.getUnDelivered());
-				pstmt.setInt(6, customer.getCount());
-				pstmt.setString(7,customer.getcGrade().getgGrade());
+				pstmt.setString(4, customer.getAddress());				
 				pstmt.setInt(8, customer.getcNo());
 				return pstmt.executeUpdate();
 		} catch (SQLException e) {

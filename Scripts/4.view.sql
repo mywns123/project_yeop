@@ -1,39 +1,43 @@
-create view ctTable
-as
-select cNo, cName, gender, ponNumber, address, joinDate,
-	count(complete =false) as unDelivered,
-	count(laundryCount) as count,
-	(case   when count(laundryCount) <= 50 then 'C'
-			when 50 < count(laundryCount) <= 100 then 'B'
-			when 100 < count(laundryCount) <= 200 then 'A'
-			else 'S'
-			end) as 'cGrade'
-	from customer left join `order` on cNo = ctNo
-	group by cNo;
+DROP VIEW IF EXISTS ctTable;
+DROP VIEW IF EXISTS odTable;
+DROP VIEW IF EXISTS sale;
+
+CREATE VIEW ctTable
+AS
+SELECT cNo, cName, gender, ponNumber, address, joinDate,
+	count(complete =FALSE) AS unDelivered,
+	count(laundryCount) AS count,
+	(CASE   WHEN count(laundryCount) <= 50 THEN 'C'
+			WHEN 50 < count(laundryCount) <= 100 THEN 'B'
+			WHEN 100 < count(laundryCount) <= 200 THEN 'A'
+			ELSE 'S'
+			END) AS 'cGrade'
+	FROM customer LEFT JOIN `order` ON cNo = ctNo
+	GROUP BY cNo;
 
 
 
 
-create view odTable
-as
-select o.complete, o.`no`,
-	o.ctNo, c.cName, c.cGrade, g.discountRate,
-	o.color, o.LaundryCode, l.product, l.unitPrice, o.laundryCount,
-	laundryCount * unitPrice*(1 - g.discountRate *0.01) as 'price',
+CREATE VIEW odTable
+AS
+SELECT o.complete, o.`no`,
+	c.cNo, c.cName, g.gGrade, g.discountRate,
+	o.color, l.lLaundryCode, l.product, l.unitPrice, o.laundryCount,
+	laundryCount * unitPrice*(1 - g.discountRate *0.01) AS 'price',
 	o.receiveDate,
-	date_add(receiveDate,interval 7 day) as 'releaseDate',
+	date_add(receiveDate,INTERVAL 7 DAY) AS 'releaseDate',
 	o.etc
-from `order` o left join laundry l on o.LaundryCode = l.lLaundryCode
-left join ctTable c on o.ctNo = c.cNo
-left join grade g on c.cGrade = g.gGrade;
+FROM `order` o LEFT JOIN laundry l ON o.LaundryCode = l.lLaundryCode
+LEFT JOIN ctTable c ON o.ctNo = c.cNo
+LEFT JOIN grade g ON c.cGrade = g.gGrade;
 
 
 
-create view sale
-as
-select lLaundryCode, sum(laundryCount) as 'totalCount' , sum(price) as 'totalPrice'  
-from laundry left join odTable on lLaundryCode = LaundryCode
-group by lLaundryCode;
+CREATE VIEW sale
+AS
+SELECT l.lLaundryCode , sum(o.laundryCount) AS 'totalCount' , sum(o.price) AS 'totalPrice'  
+FROM laundry l LEFT JOIN odTable o ON l.lLaundryCode = o.lLaundryCode
+GROUP BY l.lLaundryCode;
 
 
 

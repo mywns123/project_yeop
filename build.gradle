@@ -30,7 +30,7 @@ implementation group: 'com.toedter', name: 'jcalendar', version: '1.4'
 
 jar {
 	version = 1.0
-	mainClassName= 'Problem_yeop.LaundryMain'
+	mainClassName= 'Problem_yeop.Main'
 	baseName= 'UserUI'
 	appendix = 'bin'
 	

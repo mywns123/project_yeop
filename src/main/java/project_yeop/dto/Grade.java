@@ -8,6 +8,12 @@ public class Grade {
 		this.gGrade = gGrade;
 	}
 
+	
+	public Grade(int discountRate) {
+		this.discountRate = discountRate;
+	}
+
+
 	public Grade(String gGrade, int discountRate) {
 		this.gGrade = gGrade;
 		this.discountRate = discountRate;

@@ -16,16 +16,5 @@ public class SalesService {
 	public Sale showSale(Sale sale) {
 		return dao.selectSaleByNo(sale);
 	}
-
-	public int addSale(Sale sale) {
-		return dao.insertSale(sale);
-	}
-
-	public int modifySale(Sale sale) {
-		return dao.updateSale(sale);
-	}
-
-	public int removeSale(Sale sale) {
-		return dao.deleteSale(sale);
-	}
+	
 }

@@ -23,7 +23,7 @@ public class SaleDaoImpl implements SaleDao {
 
 	@Override
 	public List<Sale> selectSaleByAll() {
-		String sql = "select sNo, lLaundryCode, totalCount, totalSales from sales";
+		String sql = "select lLaundryCode, totalCount, totalPrice from sale";
 		try (Connection con = JdbcConn.getConnection();
 				PreparedStatement pstmt = con.prepareStatement(sql);
 				ResultSet rs = pstmt.executeQuery()) {
@@ -40,20 +40,19 @@ public class SaleDaoImpl implements SaleDao {
 		return null;
 	}
 
-	private Sale getSale(ResultSet rs) throws SQLException {
-		int sNo = rs.getInt("sNo");;
+	private Sale getSale(ResultSet rs) throws SQLException {		
 		Laundry lLaundryCode = new Laundry(rs.getString("lLaundryCode"));
-		int totalCount = rs.getInt("totalCount");;
-		int totalSales = rs.getInt("totalSales");;
-		return new Sale(sNo, lLaundryCode, totalCount, totalSales);
+		int totalCount = rs.getInt("totalCount");
+		int totalSales = rs.getInt("totalSales");
+		return new Sale(lLaundryCode, totalCount, totalSales);
 	}
 
 	@Override
 	public Sale selectSaleByNo(Sale sale) {
-		String sql = "select sNo, lLaundryCode, totalCount, totalSales from sales where sNo=?";
+		String sql = "select lLaundryCode, totalCount, totalPrice from sale where lLaundryCode=?";
 		try (Connection con = JdbcConn.getConnection();
 				PreparedStatement pstmt = con.prepareStatement(sql)) {
-				pstmt.setInt(1, sale.getsNo());
+				pstmt.setString(1, sale.getlLaundryCode().getlLaundryCode());
 			try (ResultSet rs = pstmt.executeQuery()) {
 				if (rs.next()) {
 					return getSale(rs);
@@ -65,49 +64,5 @@ public class SaleDaoImpl implements SaleDao {
 		return null;
 	}
 
-	@Override
-	public int insertSale(Sale sale) {		
-			String sql = "insert into sales values(?,?,?,?)";
-			try (Connection con = JdbcConn.getConnection();
-					PreparedStatement pstmt = con.prepareStatement(sql)) {
-					pstmt.setInt(1, sale.getsNo());
-					pstmt.setString(2, sale.getlLaundryCode().getlLaundryCode());				
-					pstmt.setInt(3, sale.getTotalCount());
-					pstmt.setInt(4, sale.getTotalSales());					
-					return pstmt.executeUpdate();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-			return 0;
-	}
-
-	@Override
-	public int updateSale(Sale sale) {
-		String sql = "update sales set lLaundryCode, totalCount, totalSales where sNo =?";
-		try (Connection con = JdbcConn.getConnection();
-				PreparedStatement pstmt = con.prepareStatement(sql)) {			
-				pstmt.setString(1, sale.getlLaundryCode().getlLaundryCode());				
-				pstmt.setInt(2, sale.getTotalCount());
-				pstmt.setInt(3, sale.getTotalSales());	
-				pstmt.setInt(4, sale.getsNo());
-				return pstmt.executeUpdate();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return 0;
-	}
-
-	@Override
-	public int deleteSale(Sale sale) {
-		String sql = "delete from sales where sNo = ?";
-		try (Connection con = JdbcConn.getConnection();
-				PreparedStatement pstmt = con.prepareStatement(sql)) {
-				pstmt.setInt(1, sale.getsNo());
-				return pstmt.executeUpdate();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return 0;
-	}
 
 }

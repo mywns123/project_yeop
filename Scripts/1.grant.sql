@@ -1,4 +1,4 @@
-grant all
-on laundry.*
-to 'user_laundry'@'localhost' identified by 'rootroot';
+GRANT ALL
+ON laundry.*
+TO 'user_laundry'@'localhost' identified BY 'rootroot';
 

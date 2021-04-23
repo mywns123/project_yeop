@@ -1,18 +1,14 @@
 package project_yeop.dto;
 
-public class Sale {	
+public class Sale {
 	private Laundry lLaundryCode;
 	private int totalCount;
-	private int totalSales;
-	
-	public Sale(Laundry lLaundryCode) {
-		this.lLaundryCode = lLaundryCode;
-	}
+	private int totalPrice;
 
-	public Sale(Laundry lLaundryCode, int totalCount, int totalSales) {
+	public Sale(Laundry lLaundryCode, int totalCount, int totalPrice) {
 		this.lLaundryCode = lLaundryCode;
 		this.totalCount = totalCount;
-		this.totalSales = totalSales;
+		this.totalPrice = totalPrice;
 	}
 
 	public Laundry getlLaundryCode() {
@@ -31,20 +27,18 @@ public class Sale {
 		this.totalCount = totalCount;
 	}
 
-	public int getTotalSales() {
-		return totalSales;
+	public int getTotalPrice() {
+		return totalPrice;
 	}
 
-	public void setTotalSales(int totalSales) {
-		this.totalSales = totalSales;
+	public void setTotalPrice(int totalPrice) {
+		this.totalPrice = totalPrice;
 	}
 
 	@Override
 	public String toString() {
-		return String.format("Sale [lLaundryCode=%s, totalCount=%s, totalSales=%s]", lLaundryCode, totalCount,
-				totalSales);
+		return String.format("Sale [lLaundryCode=%s, totalCount=%s, totalPrice=%s]", lLaundryCode, totalCount,
+				totalPrice);
 	}
-
-	
 
 }

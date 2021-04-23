@@ -1,4 +1,4 @@
-select user(), database();
+SELECT USER(), DATABASE();
 
 select gGrade, discountRate from grade  order by field(gGrade,'S','A','B','C') ;
 select lLaundryCode, product, unitPrice from laundry;
