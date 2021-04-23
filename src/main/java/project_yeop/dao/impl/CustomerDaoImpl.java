@@ -127,7 +127,7 @@ public class CustomerDaoImpl implements CustomerDao {
 				pstmt.setBoolean(2, customer.isGender());
 				pstmt.setString(3, customer.getPonNumber());
 				pstmt.setString(4, customer.getAddress());				
-				pstmt.setInt(8, customer.getcNo());
+				pstmt.setInt(5, customer.getcNo());
 				return pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

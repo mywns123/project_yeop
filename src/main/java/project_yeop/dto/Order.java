@@ -10,27 +10,38 @@ public class Order {
 	private String color;
 	private int laundryCount;	
 	private Date receiveDate;	
-	private String ect;
+	private String etc;
 
 	
 	public Order(int no) {
 		this.no = no;
 	}
-
+	
 	
 
-	public Order(Customer ctNo, Laundry laundryCode, String color, int laundryCount, String ect) {
+	public Order(Customer ctNo, Laundry laundryCode, String color, int laundryCount, String etc) {
 		this.ctNo = ctNo;
 		LaundryCode = laundryCode;
 		this.color = color;
 		this.laundryCount = laundryCount;
-		this.ect = ect;
+		this.etc = etc;
+	}
+
+
+
+	public Order(int no, Customer ctNo, Laundry laundryCode, String color, int laundryCount, String etc) {
+		this.no = no;
+		this.ctNo = ctNo;
+		LaundryCode = laundryCode;
+		this.color = color;
+		this.laundryCount = laundryCount;
+		this.etc = etc;
 	}
 
 
 
 	public Order(boolean complete, int no, Customer ctNo, Laundry laundryCode, String color, int laundryCount,
-			Date receiveDate, String ect) {
+			Date receiveDate, String etc) {
 		this.complete = complete;
 		this.no = no;
 		this.ctNo = ctNo;
@@ -38,7 +49,7 @@ public class Order {
 		this.color = color;
 		this.laundryCount = laundryCount;
 		this.receiveDate = receiveDate;
-		this.ect = ect;
+		this.etc = etc;
 	}
 
 
@@ -112,21 +123,21 @@ public class Order {
 	}
 
 
-	public String getEct() {
-		return ect;
+	public String getEtc() {
+		return etc;
 	}
 
 
-	public void setEct(String ect) {
-		this.ect = ect;
+	public void setEtc(String etc) {
+		this.etc = etc;
 	}
 
 
 	@Override
 	public String toString() {
 		return String.format(
-				"Order [complete=%s, no=%s, ctNo=%s, LaundryCode=%s, color=%s, laundryCount=%s, receiveDate=%s, ect=%s]",
-				complete, no, ctNo, LaundryCode, color, laundryCount, receiveDate, ect);
+				"Order [complete=%s, no=%s, ctNo=%s, LaundryCode=%s, color=%s, laundryCount=%s, receiveDate=%s, etc=%s]",
+				complete, no, ctNo, LaundryCode, color, laundryCount, receiveDate, etc);
 	}
 	
 	

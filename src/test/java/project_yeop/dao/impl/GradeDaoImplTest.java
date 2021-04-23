@@ -12,7 +12,6 @@ import project_yeop.dao.GradeDao;
 import project_yeop.dto.Grade;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-
 public class GradeDaoImplTest {
 	private static  GradeDao dao =  GradeDaoImpl.getInstance();
 

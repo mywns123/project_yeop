@@ -88,13 +88,13 @@ public class OrderDaoImpl implements OrderDao {
 		}
 		
 		try {	
-			order.setEct(rs.getString("ect"));
+			order.setEtc(rs.getString("etc"));
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		
 		try {	
-			ctTable.setCustomer(new Customer(rs.getInt("cName")));
+			ctTable.setCustomer(new Customer(rs.getString("cName")));
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -143,11 +143,11 @@ public class OrderDaoImpl implements OrderDao {
 			String sql = "insert into `order`(ctNo, LaundryCode, color, laundryCount,etc) values(?,?,?,?,?)";
 			try (Connection con = JdbcConn.getConnection();
 					PreparedStatement pstmt = con.prepareStatement(sql)) {					
-					pstmt.setInt(2, order.getNo());									
-					pstmt.setString(4, order.getLaundryCode().getlLaundryCode());
-					pstmt.setString(5, order.getColor());
-					pstmt.setInt(6, order.getLaundryCount());				
-					pstmt.setString(9, order.getEct());
+					pstmt.setInt(1, order.getCtNo().getcNo());									
+					pstmt.setString(2, order.getLaundryCode().getlLaundryCode());
+					pstmt.setString(3, order.getColor());
+					pstmt.setInt(4, order.getLaundryCount());				
+					pstmt.setString(5, order.getEtc());
 					return pstmt.executeUpdate();
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -164,7 +164,7 @@ public class OrderDaoImpl implements OrderDao {
 				pstmt.setString(2, order.getLaundryCode().getlLaundryCode());
 				pstmt.setString(3, order.getColor());
 				pstmt.setInt(4, order.getLaundryCount());				
-				pstmt.setString(5, order.getEct());	
+				pstmt.setString(5, order.getEtc());	
 				pstmt.setInt(6, order.getNo());
 				return pstmt.executeUpdate();
 		} catch (SQLException e) {

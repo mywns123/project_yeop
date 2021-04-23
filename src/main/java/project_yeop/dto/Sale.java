@@ -5,6 +5,11 @@ public class Sale {
 	private int totalCount;
 	private int totalPrice;
 
+	
+	public Sale(Laundry lLaundryCode) {
+		this.lLaundryCode = lLaundryCode;
+	}
+
 	public Sale(Laundry lLaundryCode, int totalCount, int totalPrice) {
 		this.lLaundryCode = lLaundryCode;
 		this.totalCount = totalCount;

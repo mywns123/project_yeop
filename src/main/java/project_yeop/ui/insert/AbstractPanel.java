@@ -1,4 +1,4 @@
-package project_yeop.panel;
+package project_yeop.ui.insert;
 
 import javax.swing.JPanel;
 

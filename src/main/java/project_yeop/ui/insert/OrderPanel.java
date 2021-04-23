@@ -1,4 +1,4 @@
-package project_yeop.panel;
+package project_yeop.ui.insert;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
@@ -106,7 +106,7 @@ public class OrderPanel extends AbstractPanel<Order> {
 		comCode.setSelectedItem(item.getLaundryCode());
 		tfCount.setText(String.valueOf(item.getLaundryCount()));	
 		tfColor.setText(String.valueOf(item.getColor()));
-		tfEtc.setText(String.valueOf(item.getEct()));	
+		tfEtc.setText(String.valueOf(item.getEtc()));	
 	}
 	
 	@Override

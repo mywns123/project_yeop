@@ -13,7 +13,7 @@ CREATE TABLE laundry.Order (
 	color        VARCHAR(50) NULL     COMMENT '색상', -- 색상
 	laundryCount INTEGER(2)  NOT NULL COMMENT '세탁수량', -- 세탁수량
 	receiveDate  DATETIME    default CURRENT_TIMESTAMP COMMENT '입고일', -- 입고일
-	etc          CHAR        NULL     COMMENT '기타사항' -- 기타사항
+	etc          CHAR     NULL     COMMENT '기타사항' -- 기타사항
 )
 COMMENT '세탁물 주문표';
 

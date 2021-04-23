@@ -1,4 +1,4 @@
-package project_yeop.panel;
+package project_yeop.ui.insert;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
@@ -73,11 +73,7 @@ public class CustomerPanel extends AbstractPanel<Customer> {
 		tfAddress = new JTextField();
 		tfAddress.setColumns(10);
 		panel.add(tfAddress);
-		
-		JLabel lblEtc = new JLabel("기타사항");
-		lblEtc.setHorizontalAlignment(SwingConstants.CENTER);
-		panel.add(lblEtc);		
-		
+				
 	}
 	@Override
 	public void setItem(Customer item) {		

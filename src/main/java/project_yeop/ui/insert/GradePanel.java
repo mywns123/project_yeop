@@ -1,4 +1,4 @@
-package project_yeop.panel;
+package project_yeop.ui.insert;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;

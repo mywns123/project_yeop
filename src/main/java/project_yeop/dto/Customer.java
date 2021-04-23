@@ -14,7 +14,20 @@ public class Customer {
 		this.cNo = cNo;
 	}
 
+	public Customer(String cName) {
+		this.cName = cName;
+	}
+
 	public Customer(String cName, boolean gender, String ponNumber, String address) {
+		this.cName = cName;
+		this.gender = gender;
+		this.ponNumber = ponNumber;
+		this.address = address;
+	}
+
+	
+	public Customer(int cNo, String cName, boolean gender, String ponNumber, String address) {
+		this.cNo = cNo;
 		this.cName = cName;
 		this.gender = gender;
 		this.ponNumber = ponNumber;
