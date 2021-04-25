@@ -16,6 +16,8 @@ import project_yeop.ui.CustomerUI;
 import project_yeop.ui.GradeUI;
 import project_yeop.ui.LaundryUI;
 import project_yeop.ui.SaleUI;
+import javax.swing.BoxLayout;
+import java.awt.BorderLayout;
 
 @SuppressWarnings("serial")
 public class Management extends JFrame implements ActionListener {
@@ -44,6 +46,42 @@ public class Management extends JFrame implements ActionListener {
 		
 		JPanel pOrder = new JPanel();
 		tabbedPane.addTab("주문입력", null, pOrder, null);
+		pOrder.setLayout(new GridLayout(0, 1, 0, 0));
+		
+		JPanel pNoth = new JPanel();
+		pOrder.add(pNoth);
+		pNoth.setLayout(new BorderLayout(0, 0));
+		
+		JPanel pOd = new JPanel();
+		pNoth.add(pOd);
+		
+		JPanel pBtu = new JPanel();
+		pNoth.add(pBtu, BorderLayout.SOUTH);
+		
+		JButton button = new JButton("New button");
+		pBtu.add(button);
+		
+		JButton button_1 = new JButton("New button");
+		pBtu.add(button_1);
+		
+		JPanel pSouth = new JPanel();
+		pOrder.add(pSouth);
+		pSouth.setLayout(new BorderLayout(0, 0));
+		
+		JPanel pCart = new JPanel();
+		pSouth.add(pCart, BorderLayout.CENTER);
+		
+		JPanel pBtuCart = new JPanel();
+		pSouth.add(pBtuCart, BorderLayout.SOUTH);
+		
+		JButton button_3 = new JButton("New button");
+		pBtuCart.add(button_3);
+		
+		JButton button_4 = new JButton("New button");
+		pBtuCart.add(button_4);
+		
+		JButton button_5 = new JButton("New button");
+		pBtuCart.add(button_5);
 		
 		JPanel pReleased = new JPanel();
 		tabbedPane.addTab("세탁물 출고", null, pReleased, null);
