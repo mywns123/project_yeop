@@ -15,6 +15,7 @@ import project_yeop.exception.InvalidationException;
 
 @SuppressWarnings("serial")
 public class CustomerPanel extends AbstractPanel<Customer> {
+	private JTextField tfNo;
 	private JTextField tfName;
 	private JTextField tfPhon;
 	private JTextField tfAddress;
@@ -34,6 +35,14 @@ public class CustomerPanel extends AbstractPanel<Customer> {
 		panel.setBorder(new EmptyBorder(20, 10, 20, 10));
 		add(panel, BorderLayout.CENTER);
 		panel.setLayout(new GridLayout(0, 2, 20, 10));
+		
+		JLabel lblNo = new JLabel("고객번호");
+		lblNo.setHorizontalAlignment(SwingConstants.CENTER);
+		panel.add(lblNo);
+		
+		tfNo = new JTextField();
+		panel.add(tfNo);
+		tfNo.setColumns(10);
 		
 		JLabel lblName = new JLabel("고 객 명");
 		lblName.setHorizontalAlignment(SwingConstants.CENTER);
@@ -76,7 +85,8 @@ public class CustomerPanel extends AbstractPanel<Customer> {
 				
 	}
 	@Override
-	public void setItem(Customer item) {		
+	public void setItem(Customer item) {	
+		tfNo.setText(String.valueOf(item.getcNo()));
 		tfName.setText(String.valueOf(item.getcName()));
 		tfPhon.setText(String.valueOf(item.getPonNumber()));
 		tfAddress.setText(String.valueOf(item.getAddress()));		
@@ -90,12 +100,13 @@ public class CustomerPanel extends AbstractPanel<Customer> {
 	@Override
 	public Customer getItem() {
 		validCheck();
+		int cNO = Integer.parseInt(tfNo.getText().trim());
 		String cName = tfName.getText().trim();
 		boolean gender = rdbtnFemale.isSelected() ? true : false;	
 		String ponNumber = tfPhon.getText().trim();
 		String address = tfAddress.getText().trim();		
 
-		return new Customer(cName,gender, ponNumber,address);
+		return new Customer(cNO,cName,gender, ponNumber,address);
 	}
 	
 	@Override
@@ -108,6 +119,7 @@ public class CustomerPanel extends AbstractPanel<Customer> {
 	
 	@Override
 	public void clearTf() {
+		tfNo.setText("");
 		tfName.setText("");
 		rdbtnFemale.setSelected(true);
 		tfPhon.setText("");

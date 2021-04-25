@@ -2,12 +2,13 @@ package project_yeop.ui.table;
 
 import javax.swing.SwingConstants;
 
+import project_yeop.dto.CtTable;
 import project_yeop.dto.Customer;
 import project_yeop.exception.NotSelectedException;
 import project_yeop.service.CustomerService;
 
 @SuppressWarnings("serial")
-public class CustomerTablePanel extends AbstractTablePanel<Customer> {
+public class CustomerTablePanel extends AbstractTablePanel<CtTable> {
 
 	private CustomerService service = new CustomerService();
 
@@ -17,7 +18,7 @@ public class CustomerTablePanel extends AbstractTablePanel<Customer> {
 
 	@Override
 	public void initList() {
-		list = service.showCustomers();
+		list = service.showCtTable();
 	}
 
 	@Override
@@ -27,20 +28,22 @@ public class CustomerTablePanel extends AbstractTablePanel<Customer> {
 	}
 
 	@Override
-	public Object[] toArray(Customer t) {
-		return new Object[] { t.getcNo(), t.getcName(), t.isGender(),
-				t.getPonNumber(), t.getAddress(), t.getJoinDate()};
+	public Object[] toArray(CtTable t) {
+		return new Object[] { t.getCustomer().getcNo(), t.getCustomer().getcName(), t.getCustomer().isGender(),
+				t.getCustomer().getPonNumber(), t.getCustomer().getAddress(), t.getCustomer().getJoinDate(),
+				t.getUnReleased(),t.getCount(),t.getcGrade()};
 	}
 
 	@Override
 	public String[] getColumnNames() {
-		return new String[] { "고객번호", "고객명", "성별", "전화번호", "주소", "가입일"};
+		return new String[] { "고객번호", "고객명", "성별", "전화번호", "주소", "가입일","미출고수량","이용도","등급"};
 	}
 
 	@Override
-	public Customer getItem() {
+	public CtTable getItem() {
 		int row = table.getSelectedRow();	
-		String gGrade = (String) table.getValueAt(row, 1);
+		int cNo = (int) table.getValueAt(row, 0);
+		String name = (String) table.getValueAt(row, 1);
 		boolean gender = (boolean) table.getValueAt(row, 2);		
 		String ponNumber = (String) table.getValueAt(row, 3);
 		String address = (String) table.getValueAt(row, 4);
@@ -49,7 +52,7 @@ public class CustomerTablePanel extends AbstractTablePanel<Customer> {
 			throw new NotSelectedException();
 		}
 		
-		return new Customer(gGrade,gender,ponNumber,address);		
+		return new CtTable(new Customer(cNo,name,gender,ponNumber,address)) ;		
 	}
 	
 }
