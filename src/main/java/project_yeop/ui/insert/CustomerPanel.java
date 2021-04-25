@@ -77,13 +77,13 @@ public class CustomerPanel extends AbstractPanel<Customer> {
 	}
 	@Override
 	public void setItem(Customer item) {		
-		tfName.setText(String.valueOf(item.getcNo()));
+		tfName.setText(String.valueOf(item.getcName()));
 		tfPhon.setText(String.valueOf(item.getPonNumber()));
 		tfAddress.setText(String.valueOf(item.getAddress()));		
 		if (item.isGender()) {
 			rdbtnFemale.setSelected(true);
 		} else {
-			rdbtnMale.setSelected(true);
+			rdbtnMale.setSelected(false);
 		}		
 	}
 	
@@ -91,7 +91,7 @@ public class CustomerPanel extends AbstractPanel<Customer> {
 	public Customer getItem() {
 		validCheck();
 		String cName = tfName.getText().trim();
-		boolean gender = rdbtnFemale.isSelected() ? true : false;;	
+		boolean gender = rdbtnFemale.isSelected() ? true : false;	
 		String ponNumber = tfPhon.getText().trim();
 		String address = tfAddress.getText().trim();		
 

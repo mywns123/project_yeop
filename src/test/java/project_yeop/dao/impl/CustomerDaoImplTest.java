@@ -26,7 +26,7 @@ public class CustomerDaoImplTest {
 	@Test
 	public void test01SelectCustomerByAll() {
 		System.out.printf("%s()%n", "test01SelectCustomerByAll");
-		List <CtTable> list = dao.selectCustomerByAll();
+		List <CtTable> list = dao.selectCtTableByAll();
 		Assert.assertNotNull(list);
 	}
 
@@ -34,7 +34,7 @@ public class CustomerDaoImplTest {
 	public void test04SelectCustomerByNo() {
 		System.out.printf("%s()%n", "test04SelectCustomerByNo()");
 		CtTable ctTable = new CtTable(new Customer(12));
-		CtTable searchctTable = dao.selectCustomerByNo(ctTable);
+		CtTable searchctTable = dao.selectCtTableByNo(ctTable);
 		Assert.assertNotNull(searchctTable);	
 	}
 

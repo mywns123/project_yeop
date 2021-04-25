@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import project_yeop.dao.CustomerDao;
@@ -21,15 +22,15 @@ public class CustomerDaoImpl implements CustomerDao {
 	}
 	
 	@Override
-	public List<CtTable> selectCustomerByAll() {
-		String sql = "select cNo, cName, gender, ponNumber, address, joinDate, unDelivered, count, cGrade from ctTable";
+	public List<Customer> selectCustomerByAll() {
+		String sql = "select cNo, cName, gender, ponNumber, address, joinDate from customer";
 		try (Connection con = JdbcConn.getConnection();
 				PreparedStatement pstmt = con.prepareStatement(sql);
 				ResultSet rs = pstmt.executeQuery()) {
 			if (rs.next()) {
-				List<CtTable> list = new ArrayList<>();
+				List<Customer> list = new ArrayList<>();
 				do {
-					list.add(getCtTable(rs));
+					list.add(getCustomer(rs));
 				} while (rs.next());
 				return list;
 			}
@@ -39,61 +40,15 @@ public class CustomerDaoImpl implements CustomerDao {
 		return null;
 	}
 
-	private CtTable getCtTable(ResultSet rs) throws SQLException {
-		Customer customer = null;		
-		int unDelivered = rs.getInt("unDelivered");
-		int count = rs.getInt("count");
-		String cGrade =rs.getString("cGrade");		
-		
-		try {
-			customer = new Customer(rs.getInt("cNo"));
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		
-		try {
-			customer.setcName(rs.getString("cName"));
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		
-		try {
-			customer.setGender(rs.getBoolean("gender"));
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		
-		try {
-			customer.setPonNumber(rs.getString("ponNumber"));
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		
-		try {
-			customer.setAddress(rs.getString("address"));
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		
-		try {
-			customer.setJoinDate(rs.getDate("joinDate"));
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		
-		return new CtTable(customer, unDelivered, count, cGrade);
-	}
-
 	@Override
-	public CtTable selectCustomerByNo(CtTable ctTable) {
-		String sql = "select cNo, cName, gender, ponNumber, address, joinDate, unDelivered, count, cGrade from ctTable"
-				   + " where cNo = ? ";
+	public Customer selectCustomerByNo(Customer customer) {
+		String sql = "select cNo, cName, gender, ponNumber, address, joinDate from customer where cNo = ? ";
 		try (Connection con = JdbcConn.getConnection();
 				PreparedStatement pstmt = con.prepareStatement(sql)) {
-				pstmt.setInt(1, ctTable.getCustomer().getcNo());
+				pstmt.setInt(1, customer.getcNo());
 			try (ResultSet rs = pstmt.executeQuery()) {
 				if (rs.next()) {
-					return getCtTable(rs);
+					return getCustomer(rs);
 				}
 			}
 		} catch (SQLException e) {
@@ -101,6 +56,21 @@ public class CustomerDaoImpl implements CustomerDao {
 		}
 		return null;
 	}
+	
+
+
+	private Customer getCustomer(ResultSet rs) throws SQLException {		
+		int cNo = rs.getInt("cNo");
+		String cName =rs.getString("cName");
+		boolean gender = rs.getBoolean("gender");		
+		String ponNumber = rs.getString("ponNumber");		
+		String address = rs.getString("address");	
+		Date joinDate = rs.getDate("joinDate");
+				
+		return new Customer(cNo, cName, gender,ponNumber, address,joinDate);
+	}
+	
+
 
 	@Override
 	public int insertCustomer(Customer customer) {
@@ -146,6 +116,88 @@ public class CustomerDaoImpl implements CustomerDao {
 			e.printStackTrace();
 		}
 		return 0;
+	}
+
+	@Override
+	public List<CtTable> selectCtTableByAll() {
+		String sql = "select cNo, cName, gender, ponNumber, address, joinDate, unReleased, count, cGrade from ctTable";
+		try (Connection con = JdbcConn.getConnection();
+				PreparedStatement pstmt = con.prepareStatement(sql);
+				ResultSet rs = pstmt.executeQuery()) {
+			if (rs.next()) {
+				List<CtTable> list = new ArrayList<>();
+				do {
+					list.add(getCtTable(rs));
+				} while (rs.next());
+				return list;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	@Override
+	public CtTable selectCtTableByNo(CtTable ctTable) {
+		String sql = "select cNo, cName, gender, ponNumber, address, joinDate, unReleased, count, cGrade from ctTable"
+				   + " where cNo = ? ";
+		try (Connection con = JdbcConn.getConnection();
+				PreparedStatement pstmt = con.prepareStatement(sql)) {
+				pstmt.setInt(1, ctTable.getCustomer().getcNo());
+			try (ResultSet rs = pstmt.executeQuery()) {
+				if (rs.next()) {
+					return getCtTable(rs);
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	private CtTable getCtTable(ResultSet rs) throws SQLException {
+		Customer customer = null;		
+		int unReleased = rs.getInt("unReleased");
+		int count = rs.getInt("count");
+		String cGrade =rs.getString("cGrade");		
+		
+		try {
+			customer = new Customer(rs.getInt("cNo"));
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		try {
+			customer.setcName(rs.getString("cName"));
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		try {
+			customer.setGender(rs.getBoolean("gender"));
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		try {
+			customer.setPonNumber(rs.getString("ponNumber"));
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		try {
+			customer.setAddress(rs.getString("address"));
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		try {
+			customer.setJoinDate(rs.getDate("joinDate"));
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return new CtTable(customer, unReleased, count, cGrade);
 	}
 
 }

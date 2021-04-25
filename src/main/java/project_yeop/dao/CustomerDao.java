@@ -6,14 +6,18 @@ import project_yeop.dto.CtTable;
 import project_yeop.dto.Customer;
 
 public interface CustomerDao {
+	
+	List<Customer> selectCustomerByAll();
 
-	List<CtTable> selectCustomerByAll();
-
-	CtTable selectCustomerByNo(CtTable CtTable);
+	Customer selectCustomerByNo(Customer customer);	
 
 	int insertCustomer(Customer customer);
 
 	int updateCustomer(Customer customer);
 
 	int deleteCustomer(Customer customer);
+	
+	List<CtTable> selectCtTableByAll();
+
+	CtTable selectCtTableByNo(CtTable CtTable);
 }

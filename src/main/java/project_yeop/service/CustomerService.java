@@ -10,12 +10,12 @@ import project_yeop.dto.Customer;
 public class CustomerService {
 	private CustomerDao dao = CustomerDaoImpl.getInstance();
 
-	public List<CtTable> showCustomers() {
+	public List<Customer> showCustomers() {
 		return dao.selectCustomerByAll();
 	}
 
-	public CtTable showCustomer(CtTable ctTable) {
-		return dao.selectCustomerByNo(ctTable);
+	public Customer showCustomer(Customer customer) {
+		return dao.selectCustomerByNo(customer);
 	}
 
 	public int addCustomer(Customer customer) {
@@ -30,4 +30,11 @@ public class CustomerService {
 		return dao.deleteCustomer(customer);
 	}
 
+	public List<CtTable> showCtTable() {
+		return dao.selectCtTableByAll();
+	}
+
+	public CtTable showCtTableNO(CtTable ctTable) {
+		return dao.selectCtTableByNo(ctTable);
+	}
 }

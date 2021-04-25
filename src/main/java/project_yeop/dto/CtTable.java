@@ -2,7 +2,7 @@ package project_yeop.dto;
 
 public class CtTable {
 	private Customer customer;	
-	private int unDelivered;
+	private int unReleased;
 	private int count;
 	private String cGrade;
 	
@@ -10,9 +10,9 @@ public class CtTable {
 		this.customer = customer;
 	}
 	
-	public CtTable(Customer customer, int unDelivered, int count, String cGrade) {
+	public CtTable(Customer customer, int unReleased, int count, String cGrade) {
 		this.customer = customer;
-		this.unDelivered = unDelivered;
+		this.unReleased = unReleased;
 		this.count = count;
 		this.cGrade = cGrade;
 	}
@@ -22,11 +22,11 @@ public class CtTable {
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
 	}
-	public int getUnDelivered() {
-		return unDelivered;
+	public int getUnReleased() {
+		return unReleased;
 	}
-	public void setUnDelivered(int unDelivered) {
-		this.unDelivered = unDelivered;
+	public void setUnReleased(int unReleased) {
+		this.unReleased = unReleased;
 	}
 	public int getCount() {
 		return count;
@@ -42,7 +42,7 @@ public class CtTable {
 	}
 	@Override
 	public String toString() {
-		return String.format("CtTable [customer=%s, unDelivered=%s, count=%s, cGrade=%s]", customer, unDelivered, count,
+		return String.format("CtTable [customer=%s, unReleased=%s, count=%s, cGrade=%s]", customer, unReleased, count,
 				cGrade);
 	}
 	

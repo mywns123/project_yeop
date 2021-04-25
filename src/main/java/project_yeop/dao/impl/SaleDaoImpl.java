@@ -43,8 +43,8 @@ public class SaleDaoImpl implements SaleDao {
 	private Sale getSale(ResultSet rs) throws SQLException {		
 		Laundry lLaundryCode = new Laundry(rs.getString("lLaundryCode"));
 		int totalCount = rs.getInt("totalCount");
-		int totalSales = rs.getInt("totalSales");
-		return new Sale(lLaundryCode, totalCount, totalSales);
+		int totalPrice = rs.getInt("totalPrice");
+		return new Sale(lLaundryCode, totalCount, totalPrice);
 	}
 
 	@Override

@@ -2,10 +2,10 @@ DROP VIEW IF EXISTS ctTable;
 DROP VIEW IF EXISTS odTable;
 DROP VIEW IF EXISTS sale;
 
-CREATE VIEW ctTable
+CREATE VIEW laundry.ctTable
 AS
 SELECT cNo, cName, gender, ponNumber, address, joinDate,
-	count(complete =FALSE) AS unDelivered,
+	count(complete =FALSE) AS unReleased,
 	count(laundryCount) AS count,
 	(CASE   WHEN count(laundryCount) <= 50 THEN 'C'
 			WHEN 50 < count(laundryCount) <= 100 THEN 'B'
@@ -18,7 +18,7 @@ SELECT cNo, cName, gender, ponNumber, address, joinDate,
 
 
 
-CREATE VIEW odTable
+CREATE VIEW laundry.odTable
 AS
 SELECT o.complete, o.`no`,
 	c.cNo, c.cName, g.gGrade, g.discountRate,
@@ -33,7 +33,7 @@ LEFT JOIN grade g ON c.cGrade = g.gGrade;
 
 
 
-CREATE VIEW sale
+CREATE VIEW laundry.sale
 AS
 SELECT l.lLaundryCode , sum(o.laundryCount) AS 'totalCount' , sum(o.price) AS 'totalPrice'  
 FROM laundry l LEFT JOIN odTable o ON l.lLaundryCode = o.lLaundryCode

@@ -21,7 +21,7 @@ public class GradeDaoImpl implements GradeDao {
 
 	@Override
 	public List<Grade> selectGradeByAll() {
-		String sql = "select gGrade, discountRate from grade";
+		String sql = "select gGrade, discountRate from grade order by field(gGrade,'S','A','B','C')";
 		try (Connection con = JdbcConn.getConnection();
 				PreparedStatement pstmt = con.prepareStatement(sql);
 				ResultSet rs = pstmt.executeQuery()) {
