@@ -26,22 +26,10 @@ public class Management extends JFrame implements ActionListener {
 	private JButton btuCus;
 	private JButton btuSales;
 
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Management frame = new Management();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
 	public Management() {
 		initialize();
 	}
+	
 	private void initialize() {
 		setTitle("세탁물 관리");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

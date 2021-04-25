@@ -23,36 +23,36 @@ public class CustomerTablePanel extends AbstractTablePanel<CtTable> {
 
 	@Override
 	protected void setAlignAndWidth() {
-		setTableCellAlign(SwingConstants.CENTER, 0, 1, 2, 3, 4, 5);
-		setTableCellWidth(100, 100, 100, 100, 100, 100);
+		setTableCellAlign(SwingConstants.CENTER, 0, 1, 2, 3, 4, 5, 6, 7, 8);
+		setTableCellWidth(100, 100, 100, 100, 100, 100, 100, 100, 100);
 	}
 
 	@Override
 	public Object[] toArray(CtTable t) {
 		return new Object[] { t.getCustomer().getcNo(), t.getCustomer().getcName(), t.getCustomer().isGender(),
 				t.getCustomer().getPonNumber(), t.getCustomer().getAddress(), t.getCustomer().getJoinDate(),
-				t.getUnReleased(),t.getCount(),t.getcGrade()};
+				t.getUnReleased(), t.getCount(), t.getcGrade() };
 	}
 
 	@Override
 	public String[] getColumnNames() {
-		return new String[] { "고객번호", "고객명", "성별", "전화번호", "주소", "가입일","미출고수량","이용도","등급"};
+		return new String[] { "고객번호", "고객명", "성별", "전화번호", "주소", "가입일", "미출고수량", "이용도", "등급" };
 	}
 
 	@Override
 	public CtTable getItem() {
-		int row = table.getSelectedRow();	
+		int row = table.getSelectedRow();
 		int cNo = (int) table.getValueAt(row, 0);
 		String name = (String) table.getValueAt(row, 1);
-		boolean gender = (boolean) table.getValueAt(row, 2);		
+		boolean gender = (boolean) table.getValueAt(row, 2);
 		String ponNumber = (String) table.getValueAt(row, 3);
 		String address = (String) table.getValueAt(row, 4);
 
-		if(row == -1) {
+		if (row == -1) {
 			throw new NotSelectedException();
 		}
-		
-		return new CtTable(new Customer(cNo,name,gender,ponNumber,address)) ;		
+
+		return new CtTable(new Customer(cNo, name, gender, ponNumber, address));
 	}
-	
+
 }

@@ -27,7 +27,7 @@ public class OrderDaoImpl implements OrderDao {
 	}
 
 	@Override
-	public List<OdTable> selectOrderByAll() {
+	public List<OdTable> selectOdTableByAll() {
 		String sql = "select complete, `no`, cNo, cName, gGrade, discountRate, color, lLaundryCode, product, unitPrice, laundryCount, price, receiveDate, releaseDate, etc from odTable";
 		try (Connection con = JdbcConn.getConnection();
 				PreparedStatement pstmt = con.prepareStatement(sql);
@@ -122,7 +122,7 @@ public class OrderDaoImpl implements OrderDao {
 	}
 
 	@Override
-	public OdTable selectOrderByNo(OdTable odTable) {
+	public OdTable selectOdTableByNo(OdTable odTable) {
 		String sql = "select complete, `no`, cNo, cName, gGrade, discountRate, color, lLaundryCode, product, unitPrice, laundryCount, price, receiveDate, releaseDate, etc from odTable where `no`=?";
 		try (Connection con = JdbcConn.getConnection();
 				PreparedStatement pstmt = con.prepareStatement(sql)) {

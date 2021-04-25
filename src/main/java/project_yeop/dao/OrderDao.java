@@ -7,9 +7,9 @@ import project_yeop.dto.Order;
 
 public interface OrderDao {
 
-	List<OdTable> selectOrderByAll();
+	List<OdTable> selectOdTableByAll();
 
-	OdTable selectOrderByNo(OdTable odTable);
+	OdTable selectOdTableByNo(OdTable odTable);
 
 	int insertOrder(Order order);
 

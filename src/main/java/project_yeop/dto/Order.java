@@ -27,9 +27,18 @@ public class Order {
 		this.etc = etc;
 	}
 
-
-
 	public Order(int no, Customer ctNo, Laundry laundryCode, String color, int laundryCount, String etc) {
+		this.no = no;
+		this.ctNo = ctNo;
+		LaundryCode = laundryCode;
+		this.color = color;
+		this.laundryCount = laundryCount;
+		this.etc = etc;
+	}
+
+	public Order(boolean complete, int no, Customer ctNo, Laundry laundryCode, String color, int laundryCount,
+			String etc) {
+		this.complete = complete;
 		this.no = no;
 		this.ctNo = ctNo;
 		LaundryCode = laundryCode;

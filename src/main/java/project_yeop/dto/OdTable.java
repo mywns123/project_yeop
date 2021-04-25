@@ -14,6 +14,13 @@ public class OdTable {
 		this.order = order;
 	}
 
+	
+	public OdTable(Order order, Date releaseDate) {
+		this.order = order;
+		this.releaseDate = releaseDate;
+	}
+
+
 	public OdTable(Order order, CtTable ctTable, Grade grade, Laundry laundry, int price, Date releaseDate) {
 		this.order = order;
 		this.ctTable = ctTable;

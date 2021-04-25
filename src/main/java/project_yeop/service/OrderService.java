@@ -10,12 +10,12 @@ import project_yeop.dto.Order;
 public class OrderService {
 	private OrderDao dao = OrderDaoImpl.getInstance();
 
-	public List<OdTable> showOrders() {
-		return dao.selectOrderByAll();
+	public List<OdTable> showOdTables() {
+		return dao.selectOdTableByAll();
 	}
 
-	public OdTable showOrder(OdTable odTable) {
-		return dao.selectOrderByNo(odTable);
+	public OdTable showOdTable(OdTable odTable) {
+		return dao.selectOdTableByNo(odTable);
 	}
 
 	public int addOrder(Order order) {

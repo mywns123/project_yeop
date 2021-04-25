@@ -36,7 +36,7 @@ public class GradeTablePanel extends AbstractTablePanel<Grade> {
 
 	@Override
 	public String[] getColumnNames() {
-		return new String[] { "고객 등급", "할인율" };
+		return new String[] { "회원 등급", "할인율" };
 	}
 
 	@Override

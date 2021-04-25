@@ -112,13 +112,13 @@ public class OrderPanel extends AbstractPanel<Order> {
 	@Override
 	public Order getItem() {
 		validCheck();
-		Customer cNo = new Customer(Integer.parseInt(tfCount.getText().trim()));
+		Customer ctNo = new Customer(Integer.parseInt(tfNum.getText().trim()));
 		Laundry LaundryCode = (Laundry)comCode.getSelectedItem();		
 		int laundryCount = Integer.parseInt(tfCount.getText().trim());
 		String color = tfColor.getText().trim();
 		String ect = tfEtc.getText().trim();		
 
-		return new Order(cNo, LaundryCode,color,laundryCount,ect);
+		return new Order(ctNo, LaundryCode,color,laundryCount,ect);
 	}
 	@Override
 	public void validCheck() {

@@ -12,14 +12,11 @@ import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 import javax.swing.border.EmptyBorder;
 
-import project_yeop.dto.CtTable;
 import project_yeop.dto.Customer;
 import project_yeop.exception.InvalidationException;
 import project_yeop.exception.SqlConstraintException;
 import project_yeop.service.CustomerService;
-import project_yeop.ui.insert.AbstractPanel;
 import project_yeop.ui.insert.CustomerPanel;
-import project_yeop.ui.table.AbstractTablePanel;
 import project_yeop.ui.table.CustomerTablePanel;
 
 @SuppressWarnings("serial")

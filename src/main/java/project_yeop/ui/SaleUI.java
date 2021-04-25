@@ -41,13 +41,8 @@ public class SaleUI extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(new GridLayout(1, 0, 0, 0));
 	
-		pTable = creatTablePanel();
+		pTable = new SaleTablePanel();
 		contentPane.add(pTable);
 	}
-
-	private SaleTablePanel creatTablePanel() {
-		return new SaleTablePanel();
-	}
-
 	
 }

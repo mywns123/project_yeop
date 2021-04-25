@@ -27,7 +27,7 @@ public class OrderDaoImplTest {
 	@Test
 	public void test01SelectOrderByAll() {
 		System.out.printf("%s()%n", "test01SelectOrderByAll");
-		List <OdTable> list = dao.selectOrderByAll();
+		List <OdTable> list = dao.selectOdTableByAll();
 		Assert.assertNotNull(list);
 	}
 
@@ -35,7 +35,7 @@ public class OrderDaoImplTest {
 	public void test04SelectOrderByNo() {
 		System.out.printf("%s()%n", "test04SelectOrderByNo()");
 		OdTable odTable = new OdTable(new Order(4));
-		OdTable searchodTable = dao.selectOrderByNo(odTable);
+		OdTable searchodTable = dao.selectOdTableByNo(odTable);
 		Assert.assertNotNull(searchodTable);
 	}
 
