@@ -1,4 +1,4 @@
-package project_yeop.ui;
+package project_yeop.ui.frame;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -14,19 +14,19 @@ import javax.swing.border.EmptyBorder;
 
 import project_yeop.exception.InvalidationException;
 import project_yeop.exception.SqlConstraintException;
-import project_yeop.ui.insert.AbstractPanel;
-import project_yeop.ui.table.AbstractTablePanel;
+import project_yeop.ui.panel.insert.AbstractInsertPanel;
+import project_yeop.ui.panel.table.AbstractTablePanel;
 
 @SuppressWarnings("serial")
-public abstract class AbstractUI<T> extends JFrame implements ActionListener {
+public abstract class AbstractFrameUI<T> extends JFrame implements ActionListener {
 
 	private JPanel contentPane;
 	protected JButton btnAdd;
 	private JButton btnClear;
-	protected AbstractPanel<T> pPanel;
+	protected AbstractInsertPanel<T> pPanel;
 	protected AbstractTablePanel<T> pTable;
 
-	public AbstractUI() {
+	public AbstractFrameUI() {
 		setService();
 		initialize();
 		tableLoadData();
@@ -108,7 +108,7 @@ public abstract class AbstractUI<T> extends JFrame implements ActionListener {
 
 	protected abstract void tableLoadData();
 
-	protected abstract AbstractPanel<T> creatPanel();
+	protected abstract AbstractInsertPanel<T> creatPanel();
 
 	protected abstract AbstractTablePanel<T> creatTablePanel();
 

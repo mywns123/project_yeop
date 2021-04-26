@@ -1,4 +1,4 @@
-package project_yeop.ui.insert;
+package project_yeop.ui.panel.insert;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
@@ -14,7 +14,7 @@ import project_yeop.dto.Customer;
 import project_yeop.exception.InvalidationException;
 
 @SuppressWarnings("serial")
-public class CustomerPanel extends AbstractPanel<Customer> {
+public class CustomerInsertPanel extends AbstractInsertPanel<Customer> {
 	private JTextField tfNo;
 	private JTextField tfName;
 	private JTextField tfPhon;
@@ -23,7 +23,7 @@ public class CustomerPanel extends AbstractPanel<Customer> {
 	private JRadioButton rdbtnMale;
 	private JRadioButton rdbtnFemale;
 	
-	public CustomerPanel() {
+	public CustomerInsertPanel() {
 		initialize();		
 	}
 	

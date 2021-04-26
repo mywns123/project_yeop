@@ -1,4 +1,4 @@
-package project_yeop.ui.insert;
+package project_yeop.ui.panel.insert;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
@@ -13,11 +13,11 @@ import project_yeop.dto.Grade;
 import project_yeop.exception.InvalidationException;
 
 @SuppressWarnings("serial")
-public class GradePanel extends AbstractPanel<Grade> {
+public class GradeInsertPanel extends AbstractInsertPanel<Grade> {
 	private JTextField tfGrade;
 	private JTextField tfDC;
 
-	public GradePanel() {
+	public GradeInsertPanel() {
 		initialize();
 	}
 

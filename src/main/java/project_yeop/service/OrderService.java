@@ -14,10 +14,6 @@ public class OrderService {
 		return dao.selectOdTableByAll();
 	}
 
-	public OdTable showOdTable(OdTable odTable) {
-		return dao.selectOdTableByNo(odTable);
-	}
-
 	public int addOrder(Order order) {
 		return dao.insertOrder(order);
 	}
@@ -29,4 +25,16 @@ public class OrderService {
 	public int removeOrder(Order order) {
 		return dao.deleteOrder(order);
 	}
+	
+	
+
+	public OdTable showOdTable(OdTable odTable) {
+		return dao.selectOdTableByNo(odTable);
+	}
+
+	
+	
+	
+	
+	
 }

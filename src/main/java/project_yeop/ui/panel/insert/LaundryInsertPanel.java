@@ -1,4 +1,4 @@
-package project_yeop.ui.insert;
+package project_yeop.ui.panel.insert;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
@@ -13,12 +13,12 @@ import project_yeop.dto.Laundry;
 import project_yeop.exception.InvalidationException;
 
 @SuppressWarnings("serial")
-public class LaundryPanel extends AbstractPanel<Laundry> {
+public class LaundryInsertPanel extends AbstractInsertPanel<Laundry> {
 	private JTextField tfLaundry;
 	private JTextField tflPro;
 	private JTextField tfUP;
 
-	public LaundryPanel() {
+	public LaundryInsertPanel() {
 		initialize();
 	}
 

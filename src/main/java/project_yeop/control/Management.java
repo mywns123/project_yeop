@@ -1,6 +1,5 @@
 package project_yeop.control;
 
-import java.awt.EventQueue;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,12 +11,11 @@ import javax.swing.JTabbedPane;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 
-import project_yeop.ui.CustomerUI;
-import project_yeop.ui.GradeUI;
-import project_yeop.ui.LaundryUI;
-import project_yeop.ui.SaleUI;
-import javax.swing.BoxLayout;
-import java.awt.BorderLayout;
+import project_yeop.ui.frame.CustomerFrameUI;
+import project_yeop.ui.frame.GradeFrameUI;
+import project_yeop.ui.frame.LaundryFrameUI;
+import project_yeop.ui.frame.OrderFrameUI;
+import project_yeop.ui.frame.SaleFrameUI;
 
 @SuppressWarnings("serial")
 public class Management extends JFrame implements ActionListener {
@@ -27,6 +25,7 @@ public class Management extends JFrame implements ActionListener {
 	private JButton btuLaundry;
 	private JButton btuCus;
 	private JButton btuSales;
+	private JButton btnOrder;
 
 	public Management() {
 		initialize();
@@ -45,64 +44,38 @@ public class Management extends JFrame implements ActionListener {
 		contentPane.add(tabbedPane);
 		
 		JPanel pOrder = new JPanel();
-		tabbedPane.addTab("주문입력", null, pOrder, null);
-		pOrder.setLayout(new GridLayout(0, 1, 0, 0));
-		
-		JPanel pNoth = new JPanel();
-		pOrder.add(pNoth);
-		pNoth.setLayout(new BorderLayout(0, 0));
-		
-		JPanel pOd = new JPanel();
-		pNoth.add(pOd);
-		
-		JPanel pBtu = new JPanel();
-		pNoth.add(pBtu, BorderLayout.SOUTH);
-		
-		JButton button = new JButton("New button");
-		pBtu.add(button);
-		
-		JButton button_1 = new JButton("New button");
-		pBtu.add(button_1);
-		
-		JPanel pSouth = new JPanel();
-		pOrder.add(pSouth);
-		pSouth.setLayout(new BorderLayout(0, 0));
-		
-		JPanel pCart = new JPanel();
-		pSouth.add(pCart, BorderLayout.CENTER);
-		
-		JPanel pBtuCart = new JPanel();
-		pSouth.add(pBtuCart, BorderLayout.SOUTH);
-		
-		JButton button_3 = new JButton("New button");
-		pBtuCart.add(button_3);
-		
-		JButton button_4 = new JButton("New button");
-		pBtuCart.add(button_4);
-		
-		JButton button_5 = new JButton("New button");
-		pBtuCart.add(button_5);
-		
-		JPanel pReleased = new JPanel();
-		tabbedPane.addTab("세탁물 출고", null, pReleased, null);
+		tabbedPane.addTab("주문입력", null, pOrder, null);		
 		
 		JPanel pCheck = new JPanel();
-		tabbedPane.addTab("조회 / 수정", null, pCheck, null);
-		
+		tabbedPane.addTab("조회 / 수정", null, pCheck, null);		
+				
+		JPanel pReleased = new JPanel();
+		tabbedPane.addTab("세탁물 출고", null, pReleased, null);		
+				
 		JPanel pUnReleased = new JPanel();
 		tabbedPane.addTab("미출고", null, pUnReleased, null);
+		
+		JPanel pOdState = new JPanel();
+		tabbedPane.addTab("전체주문현황", null, pOdState, null);
+		
+		JPanel pCtState = new JPanel();
+		tabbedPane.addTab("회원 조회", null, pCtState, null);
 		
 		JPanel pPS = new JPanel();
 		tabbedPane.addTab("관리 및 설정", null, pPS, null);
 		pPS.setLayout(new GridLayout(0, 1, 0, 0));
 		
 		JPanel pManagement = new JPanel();
-		pManagement.setBorder(new TitledBorder(null, "\uAD00\uB9AC", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		pManagement.setBorder(new TitledBorder(null, "관리", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		pPS.add(pManagement);
 		pManagement.setLayout(new GridLayout(0, 2, 20, 0));
 		
 		btuCus = new JButton("고객 관리");
 		btuCus.addActionListener(this);
+		
+		btnOrder = new JButton("주문 관리");
+		btnOrder.addActionListener(this);
+		pManagement.add(btnOrder);
 		pManagement.add(btuCus);
 		
 		btuSales = new JButton("매출 관리");
@@ -110,7 +83,7 @@ public class Management extends JFrame implements ActionListener {
 		pManagement.add(btuSales);
 		
 		JPanel pSetting = new JPanel();
-		pSetting.setBorder(new TitledBorder(null, "\uC124\uC815", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		pSetting.setBorder(new TitledBorder(null, "설정", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		pPS.add(pSetting);
 		pSetting.setLayout(new GridLayout(0, 2, 20, 0));
 		
@@ -124,6 +97,9 @@ public class Management extends JFrame implements ActionListener {
 	}
 
 	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == btnOrder) {
+			actionPerformedBtnOrder(e);
+		}		
 		if (e.getSource() == btuSales) {
 			actionPerformedBtuSales(e);
 		}
@@ -138,19 +114,23 @@ public class Management extends JFrame implements ActionListener {
 		}
 	}
 	protected void actionPerformedBtuGrade(ActionEvent e) {
-		GradeUI frame = new GradeUI();
+		GradeFrameUI frame = new GradeFrameUI();
 		frame.setVisible(true);
 	}
 	protected void actionPerformedBtuLaundry(ActionEvent e) {
-		LaundryUI frame = new LaundryUI();
+		LaundryFrameUI frame = new LaundryFrameUI();
 		frame.setVisible(true);
 	}
 	protected void actionPerformedBtuCus(ActionEvent e) {
-		CustomerUI frame = new CustomerUI();
+		CustomerFrameUI frame = new CustomerFrameUI();
 		frame.setVisible(true);
 	}
 	protected void actionPerformedBtuSales(ActionEvent e) {
-		SaleUI frame = new SaleUI();
+		SaleFrameUI frame = new SaleFrameUI();
+		frame.setVisible(true);
+	}	
+	protected void actionPerformedBtnOrder(ActionEvent e) {
+		OrderFrameUI frame = new OrderFrameUI();
 		frame.setVisible(true);
 	}
 }

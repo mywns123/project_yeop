@@ -1,4 +1,4 @@
-package project_yeop.ui.insert;
+package project_yeop.ui.panel.insert;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
@@ -20,7 +20,7 @@ import project_yeop.exception.InvalidationException;
 import project_yeop.service.LaundryService;
 
 @SuppressWarnings("serial")
-public class OrderPanel extends AbstractPanel<Order> {
+public class OrderInsertPanel extends AbstractInsertPanel<Order> {
 	private LaundryService service;
 	
 	private JTextField tfNum;
@@ -30,7 +30,7 @@ public class OrderPanel extends AbstractPanel<Order> {
 	private JComboBox<Laundry> comCode;
 	
 	
-	public OrderPanel() {
+	public OrderInsertPanel() {
 		initialize();
 	}
 	
@@ -55,7 +55,7 @@ public class OrderPanel extends AbstractPanel<Order> {
 		lblCode.setHorizontalAlignment(SwingConstants.CENTER);
 		panel.add(lblCode);
 		
-		comCode = new JComboBox<>();
+		comCode = new JComboBox<Laundry>();
 		panel.add(comCode);
 		
 		JLabel lblCount = new JLabel("수    량");

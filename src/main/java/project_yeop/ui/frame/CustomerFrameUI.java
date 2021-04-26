@@ -1,4 +1,4 @@
-package project_yeop.ui;
+package project_yeop.ui.frame;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -16,19 +16,19 @@ import project_yeop.dto.Customer;
 import project_yeop.exception.InvalidationException;
 import project_yeop.exception.SqlConstraintException;
 import project_yeop.service.CustomerService;
-import project_yeop.ui.insert.CustomerPanel;
-import project_yeop.ui.table.CustomerTablePanel;
+import project_yeop.ui.panel.insert.CustomerInsertPanel;
+import project_yeop.ui.panel.table.CustomerTablePanel;
 
 @SuppressWarnings("serial")
-public class CustomerUI extends JFrame implements ActionListener {
+public class CustomerFrameUI extends JFrame implements ActionListener {
 	private JPanel contentPane;
 	protected JButton btnAdd;
 	private JButton btnClear;
-	protected CustomerPanel pPanel;
+	protected CustomerInsertPanel pPanel;
 	protected CustomerTablePanel pTable;
 	private CustomerService service;
 	
-	public CustomerUI() {
+	public CustomerFrameUI() {
 		setService();
 		initialize();
 		tableLoadData();
@@ -119,8 +119,8 @@ public class CustomerUI extends JFrame implements ActionListener {
 		
 	}
 
-	protected CustomerPanel creatPanel() {
-		return new CustomerPanel();
+	protected CustomerInsertPanel creatPanel() {
+		return new CustomerInsertPanel();
 
 	}
 

@@ -41,7 +41,7 @@ public class Laundry {
 
 	@Override
 	public String toString() {
-		return String.format("Laundry [lLaundryCode=%s, product=%s, unitPrice=%s]", lLaundryCode, product, unitPrice);
+		return String.format("%s(%s)", lLaundryCode, product);
 	}
 
 }

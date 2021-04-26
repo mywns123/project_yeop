@@ -13,10 +13,6 @@ public class GradeService {
 		return dao.selectGradeByAll();
 	}
 
-	public Grade showGrade(Grade grade) {
-		return dao.selectGradeByNo(grade);
-	}
-
 	public int modifyGrade(Grade grade) {
 		return dao.updateGrade(grade);
 	}
@@ -29,4 +25,12 @@ public class GradeService {
 		return dao.deleteGrade(grade);
 	}
 
+	
+
+	public Grade showGrade(Grade grade) {
+		return dao.selectGradeByNo(grade);
+	}
+
+	
+	
 }

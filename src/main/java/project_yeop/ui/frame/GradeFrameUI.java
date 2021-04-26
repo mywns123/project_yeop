@@ -1,4 +1,4 @@
-package project_yeop.ui;
+package project_yeop.ui.frame;
 
 import java.awt.event.ActionEvent;
 
@@ -6,13 +6,13 @@ import javax.swing.JOptionPane;
 
 import project_yeop.dto.Grade;
 import project_yeop.service.GradeService;
-import project_yeop.ui.insert.AbstractPanel;
-import project_yeop.ui.insert.GradePanel;
-import project_yeop.ui.table.AbstractTablePanel;
-import project_yeop.ui.table.GradeTablePanel;
+import project_yeop.ui.panel.insert.AbstractInsertPanel;
+import project_yeop.ui.panel.insert.GradeInsertPanel;
+import project_yeop.ui.panel.table.AbstractTablePanel;
+import project_yeop.ui.panel.table.GradeTablePanel;
 
 @SuppressWarnings("serial")
-public class GradeUI extends AbstractUI<Grade> {
+public class GradeFrameUI extends AbstractFrameUI<Grade> {
 
 	private GradeService service;
 
@@ -28,8 +28,8 @@ public class GradeUI extends AbstractUI<Grade> {
 	}
 
 	@Override
-	protected AbstractPanel<Grade> creatPanel() {
-		return new GradePanel();
+	protected AbstractInsertPanel<Grade> creatPanel() {
+		return new GradeInsertPanel();
 	}
 
 	@Override

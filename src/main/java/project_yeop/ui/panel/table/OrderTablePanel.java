@@ -1,4 +1,4 @@
-package project_yeop.ui.table;
+package project_yeop.ui.panel.table;
 
 import java.util.Date;
 

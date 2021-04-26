@@ -13,10 +13,6 @@ public class LaundryService {
 		return dao.selectLaundryByAll();
 	}
 
-	public Laundry showLaundry(Laundry laundry) {
-		return dao.selectLaundryByNo(laundry);
-	}
-
 	public int addLaundry(Laundry laundry) {
 		return dao.insertLaundry(laundry);
 	}
@@ -28,4 +24,11 @@ public class LaundryService {
 	public int removeLaundry(Laundry laundry) {
 		return dao.deleteLaundry(laundry);
 	}
+	
+	
+	
+	public Laundry showLaundry(Laundry laundry) {
+		return dao.selectLaundryByNo(laundry);
+	}
+
 }

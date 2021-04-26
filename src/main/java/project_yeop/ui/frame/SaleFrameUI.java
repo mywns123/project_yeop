@@ -1,4 +1,4 @@
-package project_yeop.ui;
+package project_yeop.ui.frame;
 
 import java.awt.GridLayout;
 
@@ -7,16 +7,16 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import project_yeop.service.SalesService;
-import project_yeop.ui.table.SaleTablePanel;
+import project_yeop.ui.panel.table.SaleTablePanel;
 
 @SuppressWarnings("serial")
-public class SaleUI extends JFrame {
+public class SaleFrameUI extends JFrame {
 
 	private JPanel contentPane;
 	private SaleTablePanel pTable;
 	private SalesService service;
 
-	public SaleUI() {
+	public SaleFrameUI() {
 		setService();
 		initialize();
 		tableLoadData();

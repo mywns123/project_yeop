@@ -1,4 +1,4 @@
-package project_yeop.ui;
+package project_yeop.ui.frame;
 
 import java.awt.event.ActionEvent;
 
@@ -6,13 +6,13 @@ import javax.swing.JOptionPane;
 
 import project_yeop.dto.Laundry;
 import project_yeop.service.LaundryService;
-import project_yeop.ui.insert.AbstractPanel;
-import project_yeop.ui.insert.LaundryPanel;
-import project_yeop.ui.table.AbstractTablePanel;
-import project_yeop.ui.table.LaundryTablePanel;
+import project_yeop.ui.panel.insert.AbstractInsertPanel;
+import project_yeop.ui.panel.insert.LaundryInsertPanel;
+import project_yeop.ui.panel.table.AbstractTablePanel;
+import project_yeop.ui.panel.table.LaundryTablePanel;
 
 @SuppressWarnings("serial")
-public class LaundryUI extends AbstractUI<Laundry> {
+public class LaundryFrameUI extends AbstractFrameUI<Laundry> {
 
 	private LaundryService service;
 
@@ -28,8 +28,8 @@ public class LaundryUI extends AbstractUI<Laundry> {
 	}
 
 	@Override
-	protected AbstractPanel<Laundry> creatPanel() {
-		return new LaundryPanel();
+	protected AbstractInsertPanel<Laundry> creatPanel() {
+		return new LaundryInsertPanel();
 	}
 
 	@Override

@@ -1,9 +1,9 @@
-package project_yeop.ui.insert;
+package project_yeop.ui.panel.insert;
 
 import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
-public abstract class AbstractPanel<T> extends JPanel {
+public abstract class AbstractInsertPanel<T> extends JPanel {
 
 	public abstract void setItem(T item);
 
