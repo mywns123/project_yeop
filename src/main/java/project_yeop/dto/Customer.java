@@ -93,8 +93,7 @@ public class Customer {
 
 	@Override
 	public String toString() {
-		return String.format("Customer [cNo=%s, cName=%s, gender=%s, ponNumber=%s, address=%s, joinDate=%s]", cNo,
-				cName, gender, ponNumber, address, joinDate);
+		return String.format("%s", cNo);
 	}
 	
 	

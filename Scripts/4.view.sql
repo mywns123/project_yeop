@@ -1,6 +1,8 @@
 DROP VIEW IF EXISTS ctTable;
 DROP VIEW IF EXISTS odTable;
-DROP VIEW IF EXISTS sale;
+DROP VIEW IF EXISTS salebylLaundry;
+DROP VIEW IF EXISTS salebyCt;
+
 
 CREATE VIEW laundry.ctTable
 AS
@@ -33,13 +35,27 @@ LEFT JOIN grade g ON c.cGrade = g.gGrade;
 
 
 
-CREATE VIEW laundry.sale
+CREATE VIEW laundry.salebylLaundry
 AS
 SELECT l.lLaundryCode , sum(o.laundryCount) AS 'totalCount' , sum(o.price) AS 'totalPrice'  
 FROM laundry l LEFT JOIN odTable o ON l.lLaundryCode = o.lLaundryCode
 GROUP BY l.lLaundryCode;
 
+CREATE VIEW laundry.salebyCt
+AS
+SELECT c.cNo, c.cName, sum(o.laundryCount) AS 'totalCount' , sum(o.price) AS 'totalPrice'  
+FROM ctTable c LEFT JOIN odTable o ON c.cNo = o.cNo
+GROUP BY c.cNo;
 
 
+select month(receiveDate),sum(laundryCount) AS 'totalCount' , sum(price) AS 'totalPrice' 
+FROM odTable
+where year(receiveDate) = year(now())
+GROUP BY month(receiveDate);
 
+
+SELECT month(receiveDate),lLaundryCode , sum(laundryCount) AS 'totalCount' , sum(price) AS 'totalPrice'  
+FROM odTable 
+where year(receiveDate) = year(now())
+GROUP BY month(receiveDate), lLaundryCode;
 

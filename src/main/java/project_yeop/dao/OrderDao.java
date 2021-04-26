@@ -9,11 +9,17 @@ public interface OrderDao {
 
 	List<OdTable> selectOdTableByAll();
 
-	OdTable selectOdTableByNo(OdTable odTable);
+	List<OdTable> selectOdTableByUnComplete();
+	
+	List<OdTable> selectOdTableByreleaseDate();
 
 	int insertOrder(Order order);
 
 	int updateOrder(Order order);
 
 	int deleteOrder(Order order);
+	
+	OdTable selectOdTableByNo(OdTable odTable);
 }
+
+

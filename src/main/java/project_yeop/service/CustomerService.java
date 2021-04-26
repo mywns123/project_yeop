@@ -10,14 +10,6 @@ import project_yeop.dto.Customer;
 public class CustomerService {
 	private CustomerDao dao = CustomerDaoImpl.getInstance();
 
-	public int modifyCustomer(Customer customer) {
-		return dao.updateCustomer(customer);
-	}
-
-	public int removeCustomer(Customer customer) {
-		return dao.deleteCustomer(customer);
-	}
-
 	public List<CtTable> showCtTable() {
 		return dao.selectCtTableByAll();
 	}
@@ -26,23 +18,16 @@ public class CustomerService {
 		return dao.selectCtTableByNo(ctTable);
 	}
 	
-	
-	
-	
-	
-	
-	public Customer showCustomer(Customer customer) {
-		return dao.selectCustomerByNo(customer);
-	}
-	
-	public List<Customer> showCustomers() {
-		return dao.selectCustomerByAll();
-	}
-
 	public int addCustomer(Customer customer) {
 		return dao.insertCustomer(customer);
 	}
 	
-	
+	public int modifyCustomer(Customer customer) {
+		return dao.updateCustomer(customer);
+	}
+
+	public int removeCustomer(Customer customer) {
+		return dao.deleteCustomer(customer);
+	}
 	
 }

@@ -14,6 +14,14 @@ public class OrderService {
 		return dao.selectOdTableByAll();
 	}
 
+	public List<OdTable> showOdTableUnComplete() {
+		return dao.selectOdTableByUnComplete();
+	}
+	
+	public List<OdTable> showOdTablereleaseDate() {
+		return dao.selectOdTableByreleaseDate();
+	}
+			
 	public int addOrder(Order order) {
 		return dao.insertOrder(order);
 	}

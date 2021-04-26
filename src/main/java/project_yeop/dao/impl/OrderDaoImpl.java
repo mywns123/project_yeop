@@ -11,6 +11,7 @@ import java.util.List;
 
 import project_yeop.dao.OrderDao;
 import project_yeop.db.JdbcConn;
+import project_yeop.dto.Column;
 import project_yeop.dto.CtTable;
 import project_yeop.dto.Customer;
 import project_yeop.dto.Grade;
@@ -35,6 +36,30 @@ public class OrderDaoImpl implements OrderDao {
 			if (rs.next()) {
 				List<OdTable> list = new ArrayList<>();
 				do {
+					list.add(getOdTable(rs));					
+				} while (rs.next());
+				/*
+				 * for (OdTable e : list) { System.out.println(e); }
+				 */
+				return list;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
+
+	@Override
+	public List<OdTable> selectOdTableByUnComplete() {
+		String sql = "select complete, `no`, cNo, cName, gGrade, discountRate, color, lLaundryCode, product, unitPrice, laundryCount, price, receiveDate, releaseDate, etc from odTable"
+					+"  where complete = false";
+		try (Connection con = JdbcConn.getConnection();
+				PreparedStatement pstmt = con.prepareStatement(sql);
+				ResultSet rs = pstmt.executeQuery()) {
+			if (rs.next()) {
+				List<OdTable> list = new ArrayList<>();
+				do {
 					list.add(getOdTable(rs));
 				} while (rs.next());
 				return list;
@@ -45,6 +70,26 @@ public class OrderDaoImpl implements OrderDao {
 		return null;
 	}
 
+	@Override
+	public List<OdTable> selectOdTableByreleaseDate() {
+		String sql = "select complete, `no`, cNo, cName, gGrade, discountRate, color, lLaundryCode, product, unitPrice, laundryCount, price, receiveDate, releaseDate, etc from odTable"
+					+"  where complete = false and releaseDate < now()";
+		try (Connection con = JdbcConn.getConnection();
+				PreparedStatement pstmt = con.prepareStatement(sql);
+				ResultSet rs = pstmt.executeQuery()) {
+			if (rs.next()) {
+				List<OdTable> list = new ArrayList<>();
+				do {
+					list.add(getOdTable(rs));
+				} while (rs.next());
+				return list;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
 	private OdTable getOdTable(ResultSet rs) throws SQLException {
 		Order order = null;
 		CtTable ctTable = null;	
@@ -54,8 +99,8 @@ public class OrderDaoImpl implements OrderDao {
 		Date releaseDate = rs.getDate("releaseDate");
 		
 		try {
-			order = new Order(rs.getInt("cNo"));
-			ctTable = new CtTable((new Customer(rs.getInt("cNo"))));
+			order = new Order(rs.getInt("no"));
+			ctTable = new CtTable(new Customer(rs.getInt("cNo")));
 			grade = new Grade(rs.getString("gGrade"));	
 			laundry = new Laundry(rs.getString("lLaundryCode"));					
 		} catch (SQLException e) {
@@ -185,5 +230,7 @@ public class OrderDaoImpl implements OrderDao {
 		}
 		return 0;
 	}
+
+	
 
 }

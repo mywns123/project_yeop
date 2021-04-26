@@ -55,7 +55,7 @@ public class OrderInsertPanel extends AbstractInsertPanel<Order> {
 		lblCode.setHorizontalAlignment(SwingConstants.CENTER);
 		panel.add(lblCode);
 		
-		comCode = new JComboBox<Laundry>();
+		comCode = new JComboBox<>();
 		panel.add(comCode);
 		
 		JLabel lblCount = new JLabel("수    량");
@@ -93,7 +93,7 @@ public class OrderInsertPanel extends AbstractInsertPanel<Order> {
 	public void setService(LaundryService service) {
 		this.service = service;
 		
-		List<Laundry> list = service.showLaundrys();
+		List<Laundry> list = service.showLaundrys();		
 		DefaultComboBoxModel<Laundry> model = new DefaultComboBoxModel<>(new Vector<>(list));
 		comCode.setModel(model);
 		

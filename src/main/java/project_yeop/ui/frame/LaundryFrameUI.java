@@ -16,6 +16,11 @@ public class LaundryFrameUI extends AbstractFrameUI<Laundry> {
 
 	private LaundryService service;
 
+	
+	public LaundryFrameUI() {
+		setTitle("세탁물 코드표");
+	}
+
 	@Override
 	protected void setService() {
 		service = new LaundryService();

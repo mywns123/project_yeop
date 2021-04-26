@@ -16,6 +16,10 @@ public class GradeFrameUI extends AbstractFrameUI<Grade> {
 
 	private GradeService service;
 
+	public GradeFrameUI() {
+		setTitle("회원 등급표");
+	}
+
 	@Override
 	protected void setService() {
 		service = new GradeService();

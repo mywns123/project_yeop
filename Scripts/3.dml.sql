@@ -39,3 +39,6 @@ insert into  `order`(ctNo, LaundryCode, color, laundryCount,etc)
 
 insert into  `order`(ctNo, LaundryCode, color, laundryCount,etc)
 	values(1,"GGG","blue",2,null);
+
+insert into  `order`(ctNo, LaundryCode, color, laundryCount,receiveDate,etc)
+	values(5,"BBB","BLACK",7,"2021-04-01",null);

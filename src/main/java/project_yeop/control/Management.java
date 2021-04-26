@@ -11,11 +11,19 @@ import javax.swing.JTabbedPane;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 
+import project_yeop.service.ColumnService;
+import project_yeop.service.CustomerService;
 import project_yeop.ui.frame.CustomerFrameUI;
 import project_yeop.ui.frame.GradeFrameUI;
 import project_yeop.ui.frame.LaundryFrameUI;
 import project_yeop.ui.frame.OrderFrameUI;
 import project_yeop.ui.frame.SaleFrameUI;
+import project_yeop.ui.panel.CheckUI;
+import project_yeop.ui.panel.CtStateUI;
+import project_yeop.ui.panel.OdStateUI;
+import project_yeop.ui.panel.OrderUI;
+import project_yeop.ui.panel.ReleasedUI;
+import project_yeop.ui.panel.UnReleasedUI;
 
 @SuppressWarnings("serial")
 public class Management extends JFrame implements ActionListener {
@@ -29,12 +37,20 @@ public class Management extends JFrame implements ActionListener {
 
 	public Management() {
 		initialize();
+		setService();
 	}
 	
+	private void setService() {
+		ColumnService service1 = new ColumnService();				
+		CustomerService service	= new CustomerService();
+		
+		
+	}
+
 	private void initialize() {
 		setTitle("세탁물 관리");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 550, 600);
+		setBounds(100, 100, 1000, 600);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -43,22 +59,22 @@ public class Management extends JFrame implements ActionListener {
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		contentPane.add(tabbedPane);
 		
-		JPanel pOrder = new JPanel();
+		JPanel pOrder = new OrderUI();
 		tabbedPane.addTab("주문입력", null, pOrder, null);		
 		
-		JPanel pCheck = new JPanel();
+		JPanel pCheck = new CheckUI();
 		tabbedPane.addTab("조회 / 수정", null, pCheck, null);		
 				
-		JPanel pReleased = new JPanel();
+		JPanel pReleased = new ReleasedUI();
 		tabbedPane.addTab("세탁물 출고", null, pReleased, null);		
 				
-		JPanel pUnReleased = new JPanel();
+		JPanel pUnReleased = new UnReleasedUI();
 		tabbedPane.addTab("미출고", null, pUnReleased, null);
 		
-		JPanel pOdState = new JPanel();
+		JPanel pOdState = new OdStateUI();
 		tabbedPane.addTab("전체주문현황", null, pOdState, null);
 		
-		JPanel pCtState = new JPanel();
+		JPanel pCtState = new CtStateUI();
 		tabbedPane.addTab("회원 조회", null, pCtState, null);
 		
 		JPanel pPS = new JPanel();
@@ -70,7 +86,7 @@ public class Management extends JFrame implements ActionListener {
 		pPS.add(pManagement);
 		pManagement.setLayout(new GridLayout(0, 2, 20, 0));
 		
-		btuCus = new JButton("고객 관리");
+		btuCus = new JButton("회원 관리");
 		btuCus.addActionListener(this);
 		
 		btnOrder = new JButton("주문 관리");
@@ -78,9 +94,23 @@ public class Management extends JFrame implements ActionListener {
 		pManagement.add(btnOrder);
 		pManagement.add(btuCus);
 		
-		btuSales = new JButton("매출 관리");
+		JPanel pStatistics = new JPanel();
+		pStatistics.setBorder(new TitledBorder(null, "\uD1B5\uACC4", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		pPS.add(pStatistics);
+		pStatistics.setLayout(new GridLayout(1, 1, 10, 0));
+		
+		JButton btnNewButton_1 = new JButton("월별 매출");
+		pStatistics.add(btnNewButton_1);
+		
+		JButton btnNewButton_2 = new JButton("1년 누적 매출");
+		pStatistics.add(btnNewButton_2);
+		
+		btuSales = new JButton("제품별 누적 매출");
+		pStatistics.add(btuSales);
+		
+		JButton btnNewButton = new JButton("회원별 누적 매출");
+		pStatistics.add(btnNewButton);
 		btuSales.addActionListener(this);
-		pManagement.add(btuSales);
 		
 		JPanel pSetting = new JPanel();
 		pSetting.setBorder(new TitledBorder(null, "설정", TitledBorder.LEADING, TitledBorder.TOP, null, null));

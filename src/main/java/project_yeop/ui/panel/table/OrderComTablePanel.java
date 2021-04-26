@@ -12,7 +12,7 @@ import project_yeop.exception.NotSelectedException;
 import project_yeop.service.OrderService;
 
 @SuppressWarnings("serial")
-public class OrderTablePanel extends AbstractTablePanel<OdTable>{
+public class OrderComTablePanel extends AbstractTablePanel<OdTable>{
 
 	private OrderService service = new OrderService();
 
@@ -22,7 +22,7 @@ public class OrderTablePanel extends AbstractTablePanel<OdTable>{
 
 	@Override
 	public void initList() {
-		list = service.showOdTables();
+		list = service.showOdTableUnComplete();
 		
 	}
 
@@ -37,7 +37,7 @@ public class OrderTablePanel extends AbstractTablePanel<OdTable>{
 	public Object[] toArray(OdTable t) {
 		return new Object[] {   t.getOrder().isComplete(),
 								t.getOrder().getNo(),
-								t.getCtTable().getCustomer().getcNo(),
+							    t.getCtTable().getCustomer().getcNo(),
 							    t.getCtTable().getCustomer().getcName(),
 							    t.getGrade().getgGrade(),
 							    t.getGrade().getDiscountRate(),
@@ -64,8 +64,8 @@ public class OrderTablePanel extends AbstractTablePanel<OdTable>{
 		int row = table.getSelectedRow();
 		boolean complete = (boolean) table.getValueAt(row, 0);
 		int no = (int) table.getValueAt(row, 1);
-		Customer ctNo = new Customer ((int) table.getValueAt(row, 2));		
-		Laundry LaundryCode = new Laundry((String) table.getValueAt(row, 7));
+		Customer ctNo = (Customer) table.getValueAt(row, 2);		
+		Laundry LaundryCode = (Laundry) table.getValueAt(row, 7);
 		String color = (String) table.getValueAt(row, 6);
 		int laundryCount = (int) table.getValueAt(row, 10);
 		Date releaseDate = (Date) table.getValueAt(row, 13);

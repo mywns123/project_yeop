@@ -23,7 +23,7 @@ public class SaleDaoImpl implements SaleDao {
 
 	@Override
 	public List<Sale> selectSaleByAll() {
-		String sql = "select lLaundryCode, totalCount, totalPrice from sale";
+		String sql = "select lLaundryCode, totalCount, totalPrice from salebyCt";
 		try (Connection con = JdbcConn.getConnection();
 				PreparedStatement pstmt = con.prepareStatement(sql);
 				ResultSet rs = pstmt.executeQuery()) {
@@ -49,7 +49,7 @@ public class SaleDaoImpl implements SaleDao {
 
 	@Override
 	public Sale selectSaleByNo(Sale sale) {
-		String sql = "select lLaundryCode, totalCount, totalPrice from sale where lLaundryCode=?";
+		String sql = "select lLaundryCode, totalCount, totalPrice from salebyCt where lLaundryCode=?";
 		try (Connection con = JdbcConn.getConnection();
 				PreparedStatement pstmt = con.prepareStatement(sql)) {
 				pstmt.setString(1, sale.getlLaundryCode().getlLaundryCode());

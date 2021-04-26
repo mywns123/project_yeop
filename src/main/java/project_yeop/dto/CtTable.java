@@ -42,7 +42,7 @@ public class CtTable {
 	}
 	@Override
 	public String toString() {
-		return String.format("CtTable [customer=%s, unReleased=%s, count=%s, cGrade=%s]", customer, unReleased, count,
+		return String.format("%s,%s, %s, %s", customer, unReleased, count,
 				cGrade);
 	}
 	
