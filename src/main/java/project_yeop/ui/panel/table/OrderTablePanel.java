@@ -35,7 +35,8 @@ public class OrderTablePanel extends AbstractTablePanel<OdTable>{
 
 	@Override
 	public Object[] toArray(OdTable t) {
-		return new Object[] {   t.getOrder().isComplete(),
+		String complete =  t.getOrder().isComplete() == true? "출고": "미출고";
+		return new Object[] {  complete,
 								t.getOrder().getNo(),
 								t.getCtTable().getCustomer().getcNo(),
 							    t.getCtTable().getCustomer().getcName(),

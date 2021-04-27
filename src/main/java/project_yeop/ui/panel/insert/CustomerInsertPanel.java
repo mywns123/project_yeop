@@ -3,6 +3,7 @@ package project_yeop.ui.panel.insert;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 
+import javax.swing.ButtonGroup;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
@@ -20,6 +21,7 @@ public class CustomerInsertPanel extends AbstractInsertPanel<Customer> {
 	private JTextField tfPhon;
 	private JTextField tfAddress;
 	
+	private final ButtonGroup buttonGroup = new ButtonGroup();
 	private JRadioButton rdbtnMale;
 	private JRadioButton rdbtnFemale;
 	
@@ -60,11 +62,13 @@ public class CustomerInsertPanel extends AbstractInsertPanel<Customer> {
 		panel.add(panel_1);
 		panel_1.setLayout(new GridLayout(0, 2, 0, 0));
 		
-		rdbtnMale = new JRadioButton("남");
-		rdbtnMale.setSelected(true);
+		rdbtnMale = new JRadioButton("남");		
+		buttonGroup.add(rdbtnFemale);
 		panel_1.add(rdbtnMale);
 		
 		rdbtnFemale = new JRadioButton("여");
+		rdbtnFemale.setSelected(true);
+		buttonGroup.add(rdbtnFemale);
 		panel_1.add(rdbtnFemale);
 		
 		JLabel lblPhon = new JLabel("연 락 처");
@@ -93,7 +97,7 @@ public class CustomerInsertPanel extends AbstractInsertPanel<Customer> {
 		if (item.isGender()) {
 			rdbtnFemale.setSelected(true);
 		} else {
-			rdbtnMale.setSelected(false);
+			rdbtnMale.setSelected(true);
 		}		
 	}
 	

@@ -18,6 +18,11 @@ public class Customer {
 		this.cName = cName;
 	}
 
+	public Customer(int cNo, String cName) {
+		this.cNo = cNo;
+		this.cName = cName;
+	}
+
 	public Customer(String cName, boolean gender, String ponNumber, String address) {
 		this.cName = cName;
 		this.gender = gender;

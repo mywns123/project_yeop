@@ -29,6 +29,10 @@ public class OrderService {
 	public int modifyOrder(Order order) {
 		return dao.updateOrder(order);
 	}
+	
+	public int RelOrder(Order order) {
+		return dao.relOrder(order);
+	}
 
 	public int removeOrder(Order order) {
 		return dao.deleteOrder(order);

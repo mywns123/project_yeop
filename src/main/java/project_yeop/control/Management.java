@@ -98,7 +98,7 @@ public class Management extends JFrame implements ActionListener {
 		pManagement.add(btuCus);
 		
 		JPanel pStatistics = new JPanel();
-		pStatistics.setBorder(new TitledBorder(null, "\uD1B5\uACC4", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		pStatistics.setBorder(new TitledBorder(null, "통계", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		pPS.add(pStatistics);
 		pStatistics.setLayout(new GridLayout(1, 1, 10, 0));
 		

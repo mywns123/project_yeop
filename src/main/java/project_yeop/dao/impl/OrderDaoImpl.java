@@ -35,10 +35,7 @@ public class OrderDaoImpl implements OrderDao {
 				List<OdTable> list = new ArrayList<>();
 				do {
 					list.add(getOdTable(rs));					
-				} while (rs.next());
-				
-				  for (OdTable e : list) { System.out.println(e.getCtTable()); }
-				 
+				} while (rs.next());				 
 				return list;
 			}
 		} catch (SQLException e) {
@@ -137,10 +134,12 @@ public class OrderDaoImpl implements OrderDao {
 		}
 		
 		try {	
-			ctTable.setCustomer(new Customer(rs.getString("cName")));
+			ctTable.setCustomer(new Customer(rs.getInt("cNo"),rs.getString("cName")));
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		
+	
 		
 		try {	
 			grade.setDiscountRate(rs.getInt("discountRate"));
@@ -227,6 +226,19 @@ public class OrderDaoImpl implements OrderDao {
 			e.printStackTrace();
 		}
 		return 0;
+	}
+
+	@Override
+	public int relOrder(Order order) {		
+		String sql = "update `order` set complete = true where  `no`=?";
+		try (Connection con = JdbcConn.getConnection();
+				PreparedStatement pstmt = con.prepareStatement(sql)) {
+				pstmt.setInt(1, order.getNo());				
+				return pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return 0;		
 	}	
 
 }

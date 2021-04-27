@@ -5,7 +5,7 @@ DROP VIEW IF EXISTS salebylLaundry;
 DROP VIEW IF EXISTS salebyCt;
 DROP VIEW IF EXISTS salebyDate;
 
-CREATE VIEW laundry.ctTable
+CREATE VIEW laundry_ju.ctTable
 AS
 SELECT cNo, cName, gender, ponNumber, address, joinDate,
 	count(complete =FALSE) AS unReleased,
@@ -18,7 +18,7 @@ SELECT cNo, cName, gender, ponNumber, address, joinDate,
 	FROM customer LEFT JOIN `order` ON cNo = ctNo
 	GROUP BY cNo;
 
-CREATE VIEW laundry.odTable
+CREATE VIEW laundry_ju.odTable
 AS
 SELECT o.complete, o.`no`,
 	c.cNo, c.cName, g.gGrade, g.discountRate,
@@ -31,19 +31,19 @@ FROM `order` o LEFT JOIN laundry l ON o.LaundryCode = l.lLaundryCode
 LEFT JOIN ctTable c ON o.ctNo = c.cNo
 LEFT JOIN grade g ON c.cGrade = g.gGrade;
 
-CREATE VIEW laundry.salebylLaundry
+CREATE VIEW laundry_ju.salebylLaundry
 AS
 SELECT l.lLaundryCode , sum(o.laundryCount) AS 'totalCount' , sum(o.price) AS 'totalPrice'  
 FROM laundry l LEFT JOIN odTable o ON l.lLaundryCode = o.lLaundryCode
 GROUP BY l.lLaundryCode;
 
-CREATE VIEW laundry.salebyCt
+CREATE VIEW laundry_ju.salebyCt
 AS
 SELECT c.cNo, c.cName, sum(o.laundryCount) AS 'totalCount' , sum(o.price) AS 'totalPrice'  
 FROM ctTable c LEFT JOIN odTable o ON c.cNo = o.cNo
 GROUP BY c.cNo;
 
-CREATE VIEW laundry.salebyDate
+CREATE VIEW laundry_ju.salebyDate
 AS
 SELECT month(receiveDate) AS 'month' ,lLaundryCode , sum(laundryCount) AS 'totalCount' , sum(price) AS 'totalPrice'  
 FROM odTable 

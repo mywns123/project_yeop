@@ -19,18 +19,18 @@ insert into laundry values("FFF","치마",7000);
 insert into laundry values("GGG","가디건",9000);
 insert into laundry values("HHH","신발",3000);
 
-insert into customer(cName, gender, ponNumber, address) values("이영호",true,"01012345678","달서구");
-insert into customer(cName, gender, ponNumber, address) values("김상호",true,"01012345678","남구");
-insert into customer(cName, gender, ponNumber, address) values("박일권",true,"01012345678","남구");
-insert into customer(cName, gender, ponNumber, address) values("이기영",true,"01012345678","달서구");
-insert into customer(cName, gender, ponNumber, address) values("이정호",true,"01012345678","달서구");
-insert into customer(cName, gender, ponNumber, address) values("이지수",false,"01012345678","달서구");
-insert into customer(cName, gender, ponNumber, address) values("기미경",false,"01012345678","달서구");
-insert into customer(cName, gender, ponNumber, address) values("이정호",true,"01012345678","달서구");
-insert into customer(cName, gender, ponNumber, address) values("박영호",true,"01012345678","달서구");
-insert into customer(cName, gender, ponNumber, address) values("이예지",false,"01012345678","달서구");
-insert into customer(cName, gender, ponNumber, address) values("이인욱",true,"01012345678","달서구");
-insert into customer(cName, gender, ponNumber, address) values("이정호",true,"01012345678","달서구");
+insert into customer(cName, gender, ponNumber, address) values("이영호",0,"01012345678","달서구");
+insert into customer(cName, gender, ponNumber, address) values("김상호",0,"01012345678","남구");
+insert into customer(cName, gender, ponNumber, address) values("박일권",0,"01012345678","남구");
+insert into customer(cName, gender, ponNumber, address) values("이기영",1,"01012345678","달서구");
+insert into customer(cName, gender, ponNumber, address) values("이정호",0,"01012345678","달서구");
+insert into customer(cName, gender, ponNumber, address) values("이지수",1,"01012345678","달서구");
+insert into customer(cName, gender, ponNumber, address) values("기미경",1,"01012345678","달서구");
+insert into customer(cName, gender, ponNumber, address) values("이정호",0,"01012345678","달서구");
+insert into customer(cName, gender, ponNumber, address) values("박영호",0,"01012345678","달서구");
+insert into customer(cName, gender, ponNumber, address) values("이예지",1,"01012345678","달서구");
+insert into customer(cName, gender, ponNumber, address) values("이인욱",0,"01012345678","달서구");
+insert into customer(cName, gender, ponNumber, address) values("이정호",0,"01012345678","달서구");
 
 insert into  `order`(complete,ctNo, LaundryCode, color, laundryCount,receiveDate,etc)
 	values(true,5,"BBB","BLACK",7,"2021-01-01",null);

@@ -65,7 +65,7 @@ public class salebyCtDaoImpl implements salebyCtDao {
 		int totalPrice = rs.getInt("totalPrice");
 		
 		try {	
-			ctTable.setCustomer(new Customer(rs.getString("cName")));
+			ctTable.setCustomer(new Customer(rs.getInt("cNo"),rs.getString("cName")));
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

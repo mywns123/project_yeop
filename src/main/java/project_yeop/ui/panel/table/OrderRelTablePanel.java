@@ -35,7 +35,8 @@ public class OrderRelTablePanel extends AbstractTablePanel<OdTable>{
 
 	@Override
 	public Object[] toArray(OdTable t) {
-		return new Object[] {   t.getOrder().isComplete(),
+		String complete =  t.getOrder().isComplete() == true? "출고": "미출고";
+		return new Object[] {   complete,
 								t.getOrder().getNo(),
 							    t.getCtTable().getCustomer().getcNo(),
 							    t.getCtTable().getCustomer().getcName(),
@@ -64,8 +65,8 @@ public class OrderRelTablePanel extends AbstractTablePanel<OdTable>{
 		int row = table.getSelectedRow();
 		boolean complete = (boolean) table.getValueAt(row, 0);
 		int no = (int) table.getValueAt(row, 1);
-		Customer ctNo = (Customer) table.getValueAt(row, 2);		
-		Laundry LaundryCode = (Laundry) table.getValueAt(row, 7);
+		Customer ctNo = new Customer ((int) table.getValueAt(row, 2));		
+		Laundry LaundryCode = new Laundry((String) table.getValueAt(row, 7));		
 		String color = (String) table.getValueAt(row, 6);
 		int laundryCount = (int) table.getValueAt(row, 10);
 		Date releaseDate = (Date) table.getValueAt(row, 13);
@@ -75,7 +76,7 @@ public class OrderRelTablePanel extends AbstractTablePanel<OdTable>{
 			throw new NotSelectedException();
 		}
 
-		return new OdTable(new Order(complete, no, ctNo, LaundryCode, color, laundryCount, etc),releaseDate);
+		return new OdTable(new Order(complete, no, ctNo, LaundryCode,color, laundryCount, etc),releaseDate);
 	}
 
 }

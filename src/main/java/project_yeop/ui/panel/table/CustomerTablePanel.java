@@ -29,7 +29,8 @@ public class CustomerTablePanel extends AbstractTablePanel<CtTable> {
 
 	@Override
 	public Object[] toArray(CtTable t) {
-		return new Object[] { t.getCustomer().getcNo(), t.getCustomer().getcName(), t.getCustomer().isGender(),
+		String gender = t.getCustomer().isGender() == true ? "남성" : "여성";
+		return new Object[] { t.getCustomer().getcNo(), t.getCustomer().getcName(), gender,
 				t.getCustomer().getPonNumber(), t.getCustomer().getAddress(), t.getCustomer().getJoinDate(),
 				t.getUnReleased(), t.getCount(), t.getcGrade() };
 	}

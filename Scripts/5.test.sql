@@ -32,5 +32,5 @@ select * from odTable where complete = false;
 
 select * from odTable where complete = false and releaseDate < now();
 
-
+update `order` set complete = true where  `no`=4; 
 

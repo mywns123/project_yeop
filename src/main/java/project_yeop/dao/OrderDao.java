@@ -19,6 +19,8 @@ public interface OrderDao {
 
 	int deleteOrder(Order order);
 	
+	int relOrder(Order order);
+	
 	OdTable selectOdTableByNo(OdTable odTable);
 }
 
