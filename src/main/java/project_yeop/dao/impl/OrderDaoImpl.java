@@ -6,12 +6,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-
 import java.util.List;
 
 import project_yeop.dao.OrderDao;
 import project_yeop.db.JdbcConn;
-import project_yeop.dto.Column;
 import project_yeop.dto.CtTable;
 import project_yeop.dto.Customer;
 import project_yeop.dto.Grade;
@@ -38,9 +36,9 @@ public class OrderDaoImpl implements OrderDao {
 				do {
 					list.add(getOdTable(rs));					
 				} while (rs.next());
-				/*
-				 * for (OdTable e : list) { System.out.println(e); }
-				 */
+				
+				  for (OdTable e : list) { System.out.println(e.getCtTable()); }
+				 
 				return list;
 			}
 		} catch (SQLException e) {
@@ -229,8 +227,6 @@ public class OrderDaoImpl implements OrderDao {
 			e.printStackTrace();
 		}
 		return 0;
-	}
-
-	
+	}	
 
 }

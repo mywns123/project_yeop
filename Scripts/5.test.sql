@@ -5,8 +5,9 @@ select * from `order`;
 
 select * from ctTable;
 select * from odTable;
-select * from sale;
-
+select * from salebylLaundry;
+select * from salebyCt;
+select * from salebyDate;
 
 select gGrade, discountRate from grade order by field(gGrade,'S','A','B','C') ;
 select lLaundryCode, product, unitPrice from laundry;
@@ -15,7 +16,11 @@ select complete, `no`, ctNo, LaundryCode, color, laundryCount, receiveDate, etc 
 
 select cNo, cName, gender, ponNumber, address, joinDate, unReleased, count, cGrade from ctTable;
 select complete, `no`, cNo, cName, gGrade, discountRate, color, lLaundryCode, product, unitPrice, laundryCount, price, receiveDate, releaseDate, etc from odTable;
-select lLaundryCode, totalCount, totalPrice from sale;
+select lLaundryCode, totalCount, totalPrice from salebylLaundry;
+select cNo, cName, totalCount, totalPrice from salebyCt;
+select `month`, lLaundryCode, totalCount, totalPrice from salebyDate;
+select `month`, totalCount, totalPrice from salebyDate group by `month`;
+
 
 delete from customer where cNo =7;
 

@@ -7,28 +7,28 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import project_yeop.dao.SaleDao;
+import project_yeop.dao.salebylLaundryDao;
 import project_yeop.db.JdbcConn;
 import project_yeop.dto.Laundry;
-import project_yeop.dto.Sale;
+import project_yeop.dto.salebylLaundry;
 
-public class SaleDaoImpl implements SaleDao {
+public class salebylLaundryDaoImpl implements salebylLaundryDao {
 
-	private static SaleDaoImpl instance =new SaleDaoImpl();
+	private static salebylLaundryDaoImpl instance =new salebylLaundryDaoImpl();
 	
 	
-	public static SaleDaoImpl getInstance() {
+	public static salebylLaundryDaoImpl getInstance() {
 		return instance;
 	}
 
 	@Override
-	public List<Sale> selectSaleByAll() {
-		String sql = "select lLaundryCode, totalCount, totalPrice from salebyCt";
+	public List<salebylLaundry> selectSaleByAll() {
+		String sql = "select lLaundryCode, totalCount, totalPrice from salebylLaundry";
 		try (Connection con = JdbcConn.getConnection();
 				PreparedStatement pstmt = con.prepareStatement(sql);
 				ResultSet rs = pstmt.executeQuery()) {
 			if (rs.next()) {
-				List<Sale> list = new ArrayList<>();
+				List<salebylLaundry> list = new ArrayList<>();
 				do {
 					list.add(getSale(rs));
 				} while (rs.next());
@@ -40,16 +40,16 @@ public class SaleDaoImpl implements SaleDao {
 		return null;
 	}
 
-	private Sale getSale(ResultSet rs) throws SQLException {		
+	private salebylLaundry getSale(ResultSet rs) throws SQLException {		
 		Laundry lLaundryCode = new Laundry(rs.getString("lLaundryCode"));
 		int totalCount = rs.getInt("totalCount");
 		int totalPrice = rs.getInt("totalPrice");
-		return new Sale(lLaundryCode, totalCount, totalPrice);
+		return new salebylLaundry(lLaundryCode, totalCount, totalPrice);
 	}
 
 	@Override
-	public Sale selectSaleByNo(Sale sale) {
-		String sql = "select lLaundryCode, totalCount, totalPrice from salebyCt where lLaundryCode=?";
+	public salebylLaundry selectSaleByNo(salebylLaundry sale) {
+		String sql = "select lLaundryCode, totalCount, totalPrice from salebylLaundry where lLaundryCode=?";
 		try (Connection con = JdbcConn.getConnection();
 				PreparedStatement pstmt = con.prepareStatement(sql)) {
 				pstmt.setString(1, sale.getlLaundryCode().getlLaundryCode());

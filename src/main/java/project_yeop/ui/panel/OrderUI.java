@@ -2,13 +2,17 @@ package project_yeop.ui.panel;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import project_yeop.dto.Order;
+import project_yeop.service.LaundryService;
+import project_yeop.service.OrderService;
 import project_yeop.ui.panel.insert.OrderInsertPanel;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 
 @SuppressWarnings("serial")
 public class OrderUI extends JPanel implements ActionListener {
@@ -17,8 +21,13 @@ public class OrderUI extends JPanel implements ActionListener {
 	private JButton btnAdd;
 	private JButton btnback;
 	private JButton btnClear;
+	private OrderService service;
+	private JPanel pOd;
+	private LaundryService lservice;
 
 	public OrderUI() {
+		service = new OrderService();
+		lservice = new LaundryService();
 		initialize();
 	}
 
@@ -29,7 +38,8 @@ public class OrderUI extends JPanel implements ActionListener {
 		add(pNoth);
 		pNoth.setLayout(new BorderLayout(0, 0));
 
-		JPanel pOd = new OrderInsertPanel();
+		pOd = new OrderInsertPanel();
+		((OrderInsertPanel) pOd).setService(lservice);
 		pNoth.add(pOd);
 
 		JPanel pBtu = new JPanel();
@@ -57,7 +67,7 @@ public class OrderUI extends JPanel implements ActionListener {
 		btnAdd.addActionListener(this);
 		pBtuCart.add(btnAdd);
 
-		btnback = new JButton("선택 취소");
+		btnback = new JButton("선택 삭제");
 		btnback.addActionListener(this);
 		pBtuCart.add(btnback);
 
@@ -86,9 +96,15 @@ public class OrderUI extends JPanel implements ActionListener {
 	}
 
 	protected void actionPerformedBtnAddCart(ActionEvent e) {
+		Order order = ((OrderInsertPanel) pOd).getItem();
+		service.addOrder(order);
+		
+		((OrderInsertPanel) pOd).clearTf();
+		JOptionPane.showMessageDialog(null, order + " 추가했습니다.");
 	}
 
 	protected void actionPerformedBtnClearCart(ActionEvent e) {
+		((OrderInsertPanel) pOd).clearTf();
 	}
 
 	protected void actionPerformedBtnAdd(ActionEvent e) {
@@ -98,5 +114,6 @@ public class OrderUI extends JPanel implements ActionListener {
 	}
 
 	protected void actionPerformedBtnClear(ActionEvent e) {
+		
 	}
 }

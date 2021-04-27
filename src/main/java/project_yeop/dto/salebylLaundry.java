@@ -1,16 +1,16 @@
 package project_yeop.dto;
 
-public class Sale {
+public class salebylLaundry {
 	private Laundry lLaundryCode;
 	private int totalCount;
 	private int totalPrice;
 
 	
-	public Sale(Laundry lLaundryCode) {
+	public salebylLaundry(Laundry lLaundryCode) {
 		this.lLaundryCode = lLaundryCode;
 	}
 
-	public Sale(Laundry lLaundryCode, int totalCount, int totalPrice) {
+	public salebylLaundry(Laundry lLaundryCode, int totalCount, int totalPrice) {
 		this.lLaundryCode = lLaundryCode;
 		this.totalCount = totalCount;
 		this.totalPrice = totalPrice;

@@ -24,6 +24,45 @@ insert into customer(cName, gender, ponNumber, address) values("김상호",true,
 insert into customer(cName, gender, ponNumber, address) values("박일권",true,"01012345678","남구");
 insert into customer(cName, gender, ponNumber, address) values("이기영",true,"01012345678","달서구");
 insert into customer(cName, gender, ponNumber, address) values("이정호",true,"01012345678","달서구");
+insert into customer(cName, gender, ponNumber, address) values("이지수",false,"01012345678","달서구");
+insert into customer(cName, gender, ponNumber, address) values("기미경",false,"01012345678","달서구");
+insert into customer(cName, gender, ponNumber, address) values("이정호",true,"01012345678","달서구");
+insert into customer(cName, gender, ponNumber, address) values("박영호",true,"01012345678","달서구");
+insert into customer(cName, gender, ponNumber, address) values("이예지",false,"01012345678","달서구");
+insert into customer(cName, gender, ponNumber, address) values("이인욱",true,"01012345678","달서구");
+insert into customer(cName, gender, ponNumber, address) values("이정호",true,"01012345678","달서구");
+
+insert into  `order`(complete,ctNo, LaundryCode, color, laundryCount,receiveDate,etc)
+	values(true,5,"BBB","BLACK",7,"2021-01-01",null);
+
+insert into  `order`(complete,ctNo, LaundryCode, color, laundryCount,receiveDate,etc)
+	values(true,4,"DDD","BLACK",7,"2021-02-01",null);
+
+insert into  `order`(complete, ctNo, LaundryCode, color, laundryCount,receiveDate,etc)
+	values(true,3,"BBB","BLACK",7,"2021-03-01",null);
+
+insert into  `order`(ctNo, LaundryCode, color, laundryCount,receiveDate,etc)
+	values(8,"EEE","BLACK",7,"2021-03-04",null);
+
+insert into  `order`(ctNo, LaundryCode, color, laundryCount,receiveDate,etc)
+	values(6,"BBB","BLACK",7,"2021-03-22",null);
+insert into  `order`(ctNo, LaundryCode, color, laundryCount,receiveDate,etc)
+	values(9,"FFF","BLACK",7,"2021-03-25",null);
+
+insert into  `order`(ctNo, LaundryCode, color, laundryCount,receiveDate,etc)
+	values(5,"HHH","BLACK",7,"2021-03-25",null);
+
+insert into  `order`(ctNo, LaundryCode, color, laundryCount,receiveDate,etc)
+	values(7,"HHH","BLACK",7,"2021-04-01",null);
+
+insert into  `order`(ctNo, LaundryCode, color, laundryCount,receiveDate,etc)
+	values(10,"HHH","BLACK",7,"2021-04-01",null);
+
+insert into  `order`(ctNo, LaundryCode, color, laundryCount,receiveDate,etc)
+	values(11,"HHH","BLACK",7,"2021-04-01",null);
+
+insert into  `order`(ctNo, LaundryCode, color, laundryCount,receiveDate,etc)
+	values(12,"HHH","BLACK",7,"2021-04-01",null);
 
 insert into  `order`(ctNo, LaundryCode, color, laundryCount,etc)
 	values(1,"AAA","blue",3,null);
@@ -40,5 +79,4 @@ insert into  `order`(ctNo, LaundryCode, color, laundryCount,etc)
 insert into  `order`(ctNo, LaundryCode, color, laundryCount,etc)
 	values(1,"GGG","blue",2,null);
 
-insert into  `order`(ctNo, LaundryCode, color, laundryCount,receiveDate,etc)
-	values(5,"BBB","BLACK",7,"2021-04-01",null);
+

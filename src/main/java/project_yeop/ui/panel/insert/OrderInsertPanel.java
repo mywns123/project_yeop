@@ -123,8 +123,7 @@ public class OrderInsertPanel extends AbstractInsertPanel<Order> {
 	@Override
 	public void validCheck() {
 		if (tfNum.getText().contentEquals("") || tfCount.getText().equals("")
-				|| tfColor.getText().equals("")|| tfEtc.getText().equals("")
-				|| comCode.getSelectedIndex() == -1) {
+				|| tfColor.getText().equals("")|| comCode.getSelectedIndex() == -1) {
 			throw new InvalidationException();
 		}			
 	}

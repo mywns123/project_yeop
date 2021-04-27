@@ -11,13 +11,14 @@ import javax.swing.JTabbedPane;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 
-import project_yeop.service.ColumnService;
-import project_yeop.service.CustomerService;
 import project_yeop.ui.frame.CustomerFrameUI;
 import project_yeop.ui.frame.GradeFrameUI;
 import project_yeop.ui.frame.LaundryFrameUI;
 import project_yeop.ui.frame.OrderFrameUI;
-import project_yeop.ui.frame.SaleFrameUI;
+import project_yeop.ui.frame.salebyCtFrameUI;
+import project_yeop.ui.frame.salebyMonthFrameUI;
+import project_yeop.ui.frame.salebyYearFrameUI;
+import project_yeop.ui.frame.salebylLaundryFrameUI;
 import project_yeop.ui.panel.CheckUI;
 import project_yeop.ui.panel.CtStateUI;
 import project_yeop.ui.panel.OdStateUI;
@@ -32,8 +33,11 @@ public class Management extends JFrame implements ActionListener {
 	private JButton btuGrade;
 	private JButton btuLaundry;
 	private JButton btuCus;
-	private JButton btuSales;
+	private JButton btuSalesbyLaundry;
 	private JButton btnOrder;
+	private JButton btuSalesbyMonth;
+	private JButton btuSalesbyYear;
+	private JButton btuSalesbyCt;
 
 	public Management() {
 		initialize();
@@ -41,9 +45,8 @@ public class Management extends JFrame implements ActionListener {
 	}
 	
 	private void setService() {
-		ColumnService service1 = new ColumnService();				
-		CustomerService service	= new CustomerService();
-		
+//		ColumnService service1 = new ColumnService();				
+//		CustomerService service	= new CustomerService();		
 		
 	}
 
@@ -99,18 +102,21 @@ public class Management extends JFrame implements ActionListener {
 		pPS.add(pStatistics);
 		pStatistics.setLayout(new GridLayout(1, 1, 10, 0));
 		
-		JButton btnNewButton_1 = new JButton("월별 매출");
-		pStatistics.add(btnNewButton_1);
+		btuSalesbyMonth = new JButton("월별 제품 매출");
+		btuSalesbyMonth.addActionListener(this);
+		pStatistics.add(btuSalesbyMonth);
 		
-		JButton btnNewButton_2 = new JButton("1년 누적 매출");
-		pStatistics.add(btnNewButton_2);
+		btuSalesbyYear = new JButton("월별 매출");
+		btuSalesbyYear.addActionListener(this);
+		pStatistics.add(btuSalesbyYear);
 		
-		btuSales = new JButton("제품별 누적 매출");
-		pStatistics.add(btuSales);
+		btuSalesbyLaundry = new JButton("제품별 누적 매출");
+		pStatistics.add(btuSalesbyLaundry);
 		
-		JButton btnNewButton = new JButton("회원별 누적 매출");
-		pStatistics.add(btnNewButton);
-		btuSales.addActionListener(this);
+		btuSalesbyCt = new JButton("회원별 누적 매출");
+		btuSalesbyCt.addActionListener(this);
+		pStatistics.add(btuSalesbyCt);
+		btuSalesbyLaundry.addActionListener(this);
 		
 		JPanel pSetting = new JPanel();
 		pSetting.setBorder(new TitledBorder(null, "설정", TitledBorder.LEADING, TitledBorder.TOP, null, null));
@@ -127,10 +133,19 @@ public class Management extends JFrame implements ActionListener {
 	}
 
 	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == btuSalesbyCt) {
+			actionPerformedBtuSalesbyCt(e);
+		}
+		if (e.getSource() == btuSalesbyYear) {
+			actionPerformedBtuSalesbyYear(e);
+		}
+		if (e.getSource() == btuSalesbyMonth) {
+			actionPerformedBtuSalesbyMonth(e);
+		}
 		if (e.getSource() == btnOrder) {
 			actionPerformedBtnOrder(e);
 		}		
-		if (e.getSource() == btuSales) {
+		if (e.getSource() == btuSalesbyLaundry) {
 			actionPerformedBtuSales(e);
 		}
 		if (e.getSource() == btuCus) {
@@ -156,11 +171,23 @@ public class Management extends JFrame implements ActionListener {
 		frame.setVisible(true);
 	}
 	protected void actionPerformedBtuSales(ActionEvent e) {
-		SaleFrameUI frame = new SaleFrameUI();
+		salebylLaundryFrameUI frame = new salebylLaundryFrameUI();
 		frame.setVisible(true);
 	}	
 	protected void actionPerformedBtnOrder(ActionEvent e) {
 		OrderFrameUI frame = new OrderFrameUI();
+		frame.setVisible(true);
+	}
+	protected void actionPerformedBtuSalesbyMonth(ActionEvent e) {
+		salebyMonthFrameUI frame = new salebyMonthFrameUI();
+		frame.setVisible(true);
+	}
+	protected void actionPerformedBtuSalesbyYear(ActionEvent e) {
+		salebyYearFrameUI frame = new salebyYearFrameUI();
+		frame.setVisible(true);
+	}
+	protected void actionPerformedBtuSalesbyCt(ActionEvent e) {
+		salebyCtFrameUI frame = new salebyCtFrameUI();
 		frame.setVisible(true);
 	}
 }

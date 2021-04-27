@@ -5,7 +5,9 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
+import java.util.Vector;
 
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JMenuItem;
@@ -18,10 +20,8 @@ import project_yeop.dto.Column;
 import project_yeop.exception.InvalidationException;
 import project_yeop.exception.SqlConstraintException;
 import project_yeop.service.ColumnService;
-import project_yeop.service.CustomerService;
 import project_yeop.service.OrderService;
 import project_yeop.ui.frame.OrderFrameUI;
-import project_yeop.ui.panel.table.CustomerTablePanel;
 import project_yeop.ui.panel.table.OrderTablePanel;
 
 @SuppressWarnings("serial")
@@ -48,6 +48,10 @@ public class OdStateUI extends JPanel implements ActionListener {
 		panel.setLayout(new GridLayout(0, 2, 0, 0));
 
 		comCul = new JComboBox<>();
+		List<Column> list = service1.odTableColumn();
+		DefaultComboBoxModel<Column> model = new DefaultComboBoxModel<>(new Vector<>(list)); comCul.setModel(model);
+		comCul.setModel(model);	
+		comCul.setSelectedIndex(-1);
 		panel.add(comCul);
 
 		JPanel panel_2 = new JPanel();
@@ -101,17 +105,7 @@ public class OdStateUI extends JPanel implements ActionListener {
 
 	protected void setService() {
 		service = new OrderService();
-		service1 = new ColumnService();
-		List<Column> list = service1.odTableColumn();
-		for (Column e : list) {
-			System.out.println(e);
-		}
-		/*
-		 * DefaultComboBoxModel<Column> model = new DefaultComboBoxModel<>(new
-		 * Vector<>(list)); comCul.setModel(model);
-		 * 
-		 * comCul.setSelectedIndex(-1);
-		 */
+		service1 = new ColumnService();	 
 	}
 
 	protected void tableLoadData() {

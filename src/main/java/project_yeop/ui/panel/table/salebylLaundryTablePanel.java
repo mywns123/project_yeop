@@ -3,16 +3,16 @@ package project_yeop.ui.panel.table;
 import javax.swing.SwingConstants;
 
 import project_yeop.dto.Laundry;
-import project_yeop.dto.Sale;
+import project_yeop.dto.salebylLaundry;
 import project_yeop.exception.NotSelectedException;
-import project_yeop.service.SalesService;
+import project_yeop.service.salebylLaundryService;
 
 @SuppressWarnings("serial")
-public class SaleTablePanel extends AbstractTablePanel<Sale> {
+public class salebylLaundryTablePanel extends AbstractTablePanel<salebylLaundry> {
 
-	private SalesService service = new SalesService();
+	private salebylLaundryService service = new salebylLaundryService();
 
-	public void setService(SalesService service) {
+	public void setService(salebylLaundryService service) {
 		this.service = service;
 	}
 
@@ -30,7 +30,7 @@ public class SaleTablePanel extends AbstractTablePanel<Sale> {
 	}
 
 	@Override
-	public Object[] toArray(Sale t) {
+	public Object[] toArray(salebylLaundry t) {
 		return new Object[] { t.getlLaundryCode().getlLaundryCode(), t.getTotalCount(), t.getTotalPrice() };
 	}
 
@@ -40,7 +40,7 @@ public class SaleTablePanel extends AbstractTablePanel<Sale> {
 	}
 
 	@Override
-	public Sale getItem() {
+	public salebylLaundry getItem() {
 		int row = table.getSelectedRow();
 		Laundry lLaundryCode = (Laundry) table.getValueAt(row, 0);
 		int TotalCount = (int) table.getValueAt(row, 1);
@@ -49,7 +49,7 @@ public class SaleTablePanel extends AbstractTablePanel<Sale> {
 		if (row == -1) {
 			throw new NotSelectedException();
 		}
-		return new Sale(lLaundryCode, TotalCount, TotalPrice);
+		return new salebylLaundry(lLaundryCode, TotalCount, TotalPrice);
 
 	}
 

@@ -46,7 +46,11 @@ public class CtStateUI extends JPanel implements ActionListener {
 		add(panel, BorderLayout.NORTH);
 		panel.setLayout(new GridLayout(0, 2, 0, 0));
 		
-		comCul = new JComboBox<>();		
+		comCul = new JComboBox<>();
+		List<Column> list = service1.ctTableColumn();		
+		DefaultComboBoxModel<Column> model = new DefaultComboBoxModel<>(new Vector<>(list));
+		comCul.setModel(model);		  
+		comCul.setSelectedIndex(-1);
 		panel.add(comCul);
 		
 		JPanel panel_2 = new JPanel();
@@ -105,17 +109,8 @@ public class CtStateUI extends JPanel implements ActionListener {
 
 	protected void setService() {		
 		service = new CustomerService();
-		service1 = new  ColumnService();
-		List<Column> list = service1.ctTableColumn();
-		for(Column e : list) {
-			System.out.println(e);
-		}
-		/*
-		 * DefaultComboBoxModel<Column> model = new DefaultComboBoxModel<>(new
-		 * Vector<>(list)); comCul.setModel(model);
-		 * 
-		 * comCul.setSelectedIndex(-1);
-		 */		
+		service1 = new  ColumnService();		
+		 		
 	}
 	
 	protected void tableLoadData() {
