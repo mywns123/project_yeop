@@ -14,6 +14,8 @@ import project_yeop.dto.CtTable;
 import project_yeop.dto.Customer;
 import project_yeop.dto.Grade;
 import project_yeop.dto.Order;
+import project_yeop.service.CustomerService;
+import project_yeop.service.GradeService;
 import project_yeop.service.LaundryService;
 import project_yeop.service.OrderService;
 import project_yeop.ui.panel.insert.OrderInsertPanel;
@@ -48,10 +50,14 @@ public class OrderUI extends JPanel implements ActionListener {
 	private JTextField tfPrice;
 	private JLabel lblPrice;
 	private JTextField tfCode;
+	private CustomerService cService;
+	private GradeService gService;
 
 	public OrderUI() {
 		service = new OrderService();
 		lservice = new LaundryService();
+		cService = new CustomerService();
+		gService = new GradeService();
 		initialize();
 	}
 
@@ -232,16 +238,23 @@ public class OrderUI extends JPanel implements ActionListener {
 	}
 
 	protected void actionPerformedBtnAddCart(ActionEvent e) {
-		Order order = pOd.getItem();	
+		Order order = pOd.getItem();
+		int no = order.getCtNo().getcNo();
+		CtTable ctTable = new CtTable(new Customer(no));
+		String name = cService.showCtTableNO(ctTable).getCustomer().getcName();
+		String grade = cService.showCtTableNO(ctTable).getcGrade();
+		Grade g = new Grade(grade);		
+		int dis  = gService.showGrade(g).getDiscountRate();
+		
 		int up =order.getLaundryCode().getUnitPrice();
 		int count = order.getLaundryCount();
 		DecimalFormat df = new DecimalFormat("#,###.#");
 		String unp = df.format(up);	
-		String tp = df.format(up*count);
-		tfNo.setText(order.getCtNo().getcNo()+"");		
-		tfName.setText(order.getCtNo().getcName()+"");
-		tfGrade.setText("");
-		tfDis.setText("");		
+		String tp = df.format(up*count*(1-dis*0.01));
+		tfNo.setText(no+"");		
+		tfName.setText(name +"");
+		tfGrade.setText(grade +"");
+		tfDis.setText(dis +"%");		
 		tfCode.setText(order.getLaundryCode().getlLaundryCode()+"");
 		tfPro.setText(order.getLaundryCode().getProduct()+"");
 		tfUp.setText(unp+"원");
