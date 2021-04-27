@@ -24,12 +24,12 @@ public class CustomerTablePanel extends AbstractTablePanel<CtTable> {
 	@Override
 	protected void setAlignAndWidth() {
 		setTableCellAlign(SwingConstants.CENTER, 0, 1, 2, 3, 4, 5, 6, 7, 8);
-		setTableCellWidth(100, 100, 100, 100, 100, 100, 100, 100, 100);
+		setTableCellWidth(100, 100, 150, 150, 150, 150, 100, 100, 100);
 	}
 
 	@Override
 	public Object[] toArray(CtTable t) {
-		String gender = t.getCustomer().isGender() == true ? "남성" : "여성";
+		String gender = t.getCustomer().isGender() == true ? "여성" : "남성";
 		return new Object[] { t.getCustomer().getcNo(), t.getCustomer().getcName(), gender,
 				t.getCustomer().getPonNumber(), t.getCustomer().getAddress(), t.getCustomer().getJoinDate(),
 				t.getUnReleased(), t.getCount(), t.getcGrade() };
@@ -45,7 +45,7 @@ public class CustomerTablePanel extends AbstractTablePanel<CtTable> {
 		int row = table.getSelectedRow();
 		int cNo = (int) table.getValueAt(row, 0);
 		String name = (String) table.getValueAt(row, 1);
-		boolean gender = (boolean) table.getValueAt(row, 2);
+//		boolean gender = table.getValueAt(row, 2) == female ? "false" : "true"; 
 		String ponNumber = (String) table.getValueAt(row, 3);
 		String address = (String) table.getValueAt(row, 4);
 
@@ -53,7 +53,7 @@ public class CustomerTablePanel extends AbstractTablePanel<CtTable> {
 			throw new NotSelectedException();
 		}
 
-		return new CtTable(new Customer(cNo, name, gender, ponNumber, address));
+		return new CtTable(new Customer(cNo, name, /* gender, */ ponNumber, address));
 	}
 
 }

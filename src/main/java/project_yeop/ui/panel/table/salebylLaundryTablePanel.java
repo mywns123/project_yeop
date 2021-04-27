@@ -1,5 +1,7 @@
 package project_yeop.ui.panel.table;
 
+import java.text.DecimalFormat;
+
 import javax.swing.SwingConstants;
 
 import project_yeop.dto.Laundry;
@@ -24,14 +26,17 @@ public class salebylLaundryTablePanel extends AbstractTablePanel<salebylLaundry>
 
 	@Override
 	protected void setAlignAndWidth() {
-		setTableCellAlign(SwingConstants.CENTER, 0, 1, 2);
+		setTableCellAlign(SwingConstants.CENTER, 0, 1);
+		setTableCellAlign(SwingConstants.RIGHT, 2);
 		setTableCellWidth(100, 100, 150);
 
 	}
 
 	@Override
 	public Object[] toArray(salebylLaundry t) {
-		return new Object[] { t.getlLaundryCode().getlLaundryCode(), t.getTotalCount(), t.getTotalPrice() };
+		DecimalFormat df = new DecimalFormat("#,###.#");
+		String ret = df.format(t.getTotalPrice());	
+		return new Object[] { t.getlLaundryCode().getlLaundryCode(), t.getTotalCount(),  ret + "원"   };
 	}
 
 	@Override

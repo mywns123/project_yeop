@@ -66,8 +66,7 @@ public class CustomerInsertPanel extends AbstractInsertPanel<Customer> {
 		buttonGroup.add(rdbtnFemale);
 		panel_1.add(rdbtnMale);
 		
-		rdbtnFemale = new JRadioButton("여");
-		rdbtnFemale.setSelected(true);
+		rdbtnFemale = new JRadioButton("여");		
 		buttonGroup.add(rdbtnFemale);
 		panel_1.add(rdbtnFemale);
 		

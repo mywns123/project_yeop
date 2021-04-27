@@ -9,6 +9,7 @@ import java.util.List;
 
 import project_yeop.dao.CustomerDao;
 import project_yeop.db.JdbcConn;
+import project_yeop.dto.Column;
 import project_yeop.dto.CtTable;
 import project_yeop.dto.Customer;
 
@@ -42,8 +43,9 @@ public class CustomerDaoImpl implements CustomerDao {
 	@Override
 	public CtTable selectCtTableByNo(CtTable ctTable) {
 		String sql = "select cNo, cName, gender, ponNumber, address, joinDate, unReleased, count, cGrade from ctTable"
-				+ " where cNo = ? ";
-		try (Connection con = JdbcConn.getConnection(); PreparedStatement pstmt = con.prepareStatement(sql)) {
+				+ " where cNo = ? ";	
+		try (Connection con = JdbcConn.getConnection();
+				PreparedStatement pstmt = con.prepareStatement(sql)) {			
 			pstmt.setInt(1, ctTable.getCustomer().getcNo());
 			try (ResultSet rs = pstmt.executeQuery()) {
 				if (rs.next()) {
@@ -53,6 +55,23 @@ public class CustomerDaoImpl implements CustomerDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		return null;
+	}
+	@Override
+	public CtTable selectCtTableByName(CtTable ctTable) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public CtTable selectCtTableByGender(CtTable ctTable) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public CtTable selectCtTableByGrade(CtTable ctTable) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -142,6 +161,6 @@ public class CustomerDaoImpl implements CustomerDao {
 			e.printStackTrace();
 		}
 		return 0;
-	}
+	}	
 
 }

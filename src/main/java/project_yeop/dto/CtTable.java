@@ -6,10 +6,17 @@ public class CtTable {
 	private int count;
 	private String cGrade;
 	
+	public CtTable() {
+	}
+
 	public CtTable(Customer customer) {
 		this.customer = customer;
 	}
 	
+	public CtTable(String cGrade) {
+		this.cGrade = cGrade;
+	}
+
 	public CtTable(Customer customer, int unReleased, int count, String cGrade) {
 		this.customer = customer;
 		this.unReleased = unReleased;

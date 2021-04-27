@@ -1,5 +1,8 @@
 package project_yeop.ui.panel.table;
 
+import java.text.DecimalFormat;
+import java.text.ParseException;
+
 import javax.swing.SwingConstants;
 
 import project_yeop.dto.CtTable;
@@ -25,14 +28,18 @@ public class salebyCtTablePanel extends AbstractTablePanel<salebyCt> {
 
 	@Override
 	protected void setAlignAndWidth() {
-		setTableCellAlign(SwingConstants.CENTER, 0, 1, 2,3);
+		setTableCellAlign(SwingConstants.CENTER, 0, 1, 2);
+		setTableCellAlign(SwingConstants.RIGHT, 3);
+
 		setTableCellWidth(100, 100,100, 150);
 
 	}
 
 	@Override
 	public Object[] toArray(salebyCt t) {
-		return new Object[] { t.getCtTable().getCustomer().getcNo(), t.getCtTable().getCustomer().getcName(), t.getTotalCount(), t.getTotalPrice() };
+		DecimalFormat df = new DecimalFormat("#,###.#");
+		String ret = df.format(t.getTotalPrice());	
+		return new Object[] { t.getCtTable().getCustomer().getcNo(), t.getCtTable().getCustomer().getcName(), t.getTotalCount(), ret + "원" };
 	}
 
 	@Override
@@ -45,12 +52,20 @@ public class salebyCtTablePanel extends AbstractTablePanel<salebyCt> {
 		int row = table.getSelectedRow();
 		CtTable ctTable = new CtTable( new Customer((int) table.getValueAt(row, 0)));		
 		int TotalCount = (int) table.getValueAt(row, 2);
-		int TotalPrice = (int) table.getValueAt(row, 3);
-
+		String TotalPrice = (String) table.getValueAt(row, 3);
+		String t = TotalPrice.replace("원", "");
+		DecimalFormat df2 = new DecimalFormat("0,000");
+		int i = 0;
+		try {
+			i = df2.parse(t).intValue();
+		} catch (ParseException e) {			
+			e.printStackTrace();
+		}		
+		
 		if (row == -1) {
 			throw new NotSelectedException();
 		}
-		return new salebyCt(ctTable, TotalCount, TotalPrice);
+		return new salebyCt(ctTable, TotalCount, i);
 
 	}
 

@@ -1,5 +1,8 @@
 package project_yeop.ui.panel.table;
 
+import java.text.DecimalFormat;
+import java.text.ParseException;
+
 import javax.swing.SwingConstants;
 
 import project_yeop.dto.Laundry;
@@ -22,13 +25,16 @@ public class LaundryTablePanel extends AbstractTablePanel<Laundry> {
 
 	@Override
 	protected void setAlignAndWidth() {
-		setTableCellAlign(SwingConstants.CENTER, 0, 1, 2);
+		setTableCellAlign(SwingConstants.CENTER, 0, 1);
+		setTableCellAlign(SwingConstants.RIGHT, 2);
 		setTableCellWidth(100, 150, 100);
 	}
 
 	@Override
 	public Object[] toArray(Laundry t) {
-		return new Object[] { t.getlLaundryCode(), t.getProduct(), t.getUnitPrice() };
+		DecimalFormat df = new DecimalFormat("#,###.#");
+		String ret = df.format(t.getUnitPrice());		
+		return new Object[] { t.getlLaundryCode(), t.getProduct(), ret + "원" };
 	}
 
 	@Override
@@ -41,12 +47,21 @@ public class LaundryTablePanel extends AbstractTablePanel<Laundry> {
 		int row = table.getSelectedRow();
 		String lLaundryCode = (String) table.getValueAt(row, 0);
 		String Product = (String) table.getValueAt(row, 1);
-		int UnitPrice = (int) table.getValueAt(row, 2);
-
+		
+		String UnitPrice = (String) table.getValueAt(row, 2);
+		String t = UnitPrice.replace("원", "");
+		DecimalFormat df2 = new DecimalFormat("0,000");
+		int i = 0;
+		try {
+			i = df2.parse(t).intValue();
+		} catch (ParseException e) {			
+			e.printStackTrace();
+		}		
+		
 		if (row == -1) {
 			throw new NotSelectedException();
 		}
-		return new Laundry(lLaundryCode, Product, UnitPrice);
+		return new Laundry(lLaundryCode, Product, i);
 
 	}
 

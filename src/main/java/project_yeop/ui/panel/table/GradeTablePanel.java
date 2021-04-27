@@ -31,7 +31,8 @@ public class GradeTablePanel extends AbstractTablePanel<Grade> {
 
 	@Override
 	public Object[] toArray(Grade t) {
-		return new Object[] { t.getgGrade(), t.getDiscountRate() };
+		return new Object[] { t.getgGrade(),
+				t.getDiscountRate()+"%" };
 	}
 
 	@Override
@@ -43,12 +44,15 @@ public class GradeTablePanel extends AbstractTablePanel<Grade> {
 	public Grade getItem() {
 		int row = table.getSelectedRow();
 		String gGrade = (String) table.getValueAt(row, 0);
-		int dis = (int) table.getValueAt(row, 1);
-
+		
+		String dis = (String) table.getValueAt(row, 1);
+		String t = dis.replace("%", "");
+		int t1 = Integer.parseInt(t);
+		
 		if (row == -1) {
 			throw new NotSelectedException();
 		}
-		return new Grade(gGrade, dis);
+		return new Grade(gGrade, t1);
 	}
 
 }

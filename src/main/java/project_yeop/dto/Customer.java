@@ -18,9 +18,21 @@ public class Customer {
 		this.cName = cName;
 	}
 
+	public Customer(boolean gender) {
+		this.gender = gender;
+	}
+
 	public Customer(int cNo, String cName) {
 		this.cNo = cNo;
 		this.cName = cName;
+	}
+	
+
+	public Customer(int cNo, String cName, String ponNumber, String address) {
+		this.cNo = cNo;
+		this.cName = cName;
+		this.ponNumber = ponNumber;
+		this.address = address;
 	}
 
 	public Customer(String cName, boolean gender, String ponNumber, String address) {
@@ -100,6 +112,7 @@ public class Customer {
 	public String toString() {
 		return String.format("%s", cNo);
 	}
+
 	
 	
 

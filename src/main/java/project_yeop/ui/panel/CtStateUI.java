@@ -17,6 +17,8 @@ import javax.swing.JPopupMenu;
 import javax.swing.JTextField;
 
 import project_yeop.dto.Column;
+import project_yeop.dto.CtTable;
+import project_yeop.dto.Customer;
 import project_yeop.exception.InvalidationException;
 import project_yeop.exception.SqlConstraintException;
 import project_yeop.service.ColumnService;
@@ -27,10 +29,9 @@ import project_yeop.ui.panel.table.CustomerTablePanel;
 @SuppressWarnings("serial")
 public class CtStateUI extends JPanel implements ActionListener {
 	private JTextField tfSearch;
-	private JComboBox<Column> comCul;
+	private JComboBox<String> comCul;
 	private CustomerTablePanel pTable;
-	private CustomerService service;
-	private ColumnService service1;
+	private CustomerService service;	
 	private JButton btnFind;
 	
 	public CtStateUI() {
@@ -47,9 +48,10 @@ public class CtStateUI extends JPanel implements ActionListener {
 		panel.setLayout(new GridLayout(0, 2, 0, 0));
 		
 		comCul = new JComboBox<>();
-		List<Column> list = service1.ctTableColumn();		
-		DefaultComboBoxModel<Column> model = new DefaultComboBoxModel<>(new Vector<>(list));
-		comCul.setModel(model);		  
+		String[] sArr= {"cGrade","cNo","cName","gender","놀자"};
+		DefaultComboBoxModel<String> Model = new DefaultComboBoxModel<String>(sArr);
+		
+		comCul.setModel(Model);		  
 		comCul.setSelectedIndex(-1);
 		panel.add(comCul);
 		
@@ -108,9 +110,7 @@ public class CtStateUI extends JPanel implements ActionListener {
 	
 
 	protected void setService() {		
-		service = new CustomerService();
-		service1 = new  ColumnService();		
-		 		
+		service = new CustomerService();		 		
 	}
 	
 	protected void tableLoadData() {
@@ -123,6 +123,21 @@ public class CtStateUI extends JPanel implements ActionListener {
 	}
 	
 	protected void actionPerformedBtnFind(ActionEvent e) {
+		String com = (String) comCul.getSelectedItem();
+		Column col = new Column(com);	
+		CtTable ctTable = new CtTable();
+		CtTable c;
+		if(com == "cGrade") {
+			ctTable = new CtTable(tfSearch.getText().trim());
+		}else if(com == "cNo") {
+			ctTable = new CtTable(new Customer(Integer.parseInt(tfSearch.getText().trim())));
+			c =	service.showCtTableNO(ctTable);
+			System.out.println(c);
+		}else if(com == "cName"||com == "gender") {
+			ctTable = new CtTable(new Customer(tfSearch.getText().trim()));
+		}		
+		
+//		pTable= new CustomerTablePanel(c);
 		
 	}
 }

@@ -3,6 +3,10 @@ package project_yeop.dto;
 public class Column {
 	private String  column_name;
 
+	public Column() {
+		
+	}
+
 	public Column(String column_name) {
 		this.column_name = column_name;
 	}
