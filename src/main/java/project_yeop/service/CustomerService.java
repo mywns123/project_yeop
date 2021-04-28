@@ -15,6 +15,11 @@ public class CustomerService {
 		return dao.selectCtTableByAll();
 	}
 
+	public List<CtTable> showCtTableNO(int no) {
+		return dao.selectCtTableByNo(no);
+	}
+	
+	
 	public CtTable showCtTableNO(CtTable ctTable) {
 		return dao.selectCtTableByNo(ctTable);
 	}

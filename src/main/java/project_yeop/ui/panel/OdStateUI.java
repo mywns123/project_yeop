@@ -16,6 +16,7 @@ import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 import javax.swing.JTextField;
 
+import project_yeop.control.Management;
 import project_yeop.dto.Column;
 import project_yeop.exception.InvalidationException;
 import project_yeop.exception.SqlConstraintException;
@@ -109,7 +110,7 @@ public class OdStateUI extends JPanel implements ActionListener {
 	}
 
 	protected void tableLoadData() {
-		((OrderTablePanel) pTable).setService(service);
+		pTable.setService(service);
 		pTable.loadData();
 	}
 
@@ -118,7 +119,7 @@ public class OdStateUI extends JPanel implements ActionListener {
 	}
 
 	protected void actionPerformedBtnFind(ActionEvent e) {
-
+		
 	}
 
 }

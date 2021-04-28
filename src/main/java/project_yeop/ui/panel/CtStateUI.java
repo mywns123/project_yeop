@@ -33,6 +33,8 @@ public class CtStateUI extends JPanel implements ActionListener {
 	private CustomerTablePanel pTable;
 	private CustomerService service;	
 	private JButton btnFind;
+	List<CtTable> list;
+	List<CtTable> list1;
 	
 	public CtStateUI() {
 		setService();
@@ -114,7 +116,7 @@ public class CtStateUI extends JPanel implements ActionListener {
 	}
 	
 	protected void tableLoadData() {
-		((CustomerTablePanel) pTable).setService(service);
+		pTable.setService(service);
 		pTable.loadData();		
 	}
 	
@@ -130,9 +132,18 @@ public class CtStateUI extends JPanel implements ActionListener {
 		if(com == "cGrade") {
 			ctTable = new CtTable(tfSearch.getText().trim());
 		}else if(com == "cNo") {
-			ctTable = new CtTable(new Customer(Integer.parseInt(tfSearch.getText().trim())));
-			c =	service.showCtTableNO(ctTable);
-			System.out.println(c);
+			int no =Integer.parseInt(tfSearch.getText().trim());
+			list = service.showCtTableNO(no);
+			list1 = service.showCtTable();
+			for(CtTable c1 : list) {
+				System.out.println(c1);
+			}
+			for(CtTable c2 : list1) {
+				System.out.println(c2);
+			}
+			pTable.setList();
+			pTable.loadData();
+			
 		}else if(com == "cName"||com == "gender") {
 			ctTable = new CtTable(new Customer(tfSearch.getText().trim()));
 		}		

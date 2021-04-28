@@ -57,23 +57,47 @@ public class CustomerDaoImpl implements CustomerDao {
 		}
 		return null;
 	}
+	
 	@Override
-	public CtTable selectCtTableByName(CtTable ctTable) {
+	public List<CtTable> selectCtTableByNo(int no) {
+		String sql = "select cNo, cName, gender, ponNumber, address, joinDate, unReleased, count, cGrade from ctTable"
+				+ " where cNo = ? ";
+		try (Connection con = JdbcConn.getConnection();
+				PreparedStatement pstmt = con.prepareStatement(sql)){
+				pstmt.setInt(1, no);
+				try (ResultSet rs = pstmt.executeQuery()) {
+					if (rs.next()) {			
+						List<CtTable> list = new ArrayList<>();
+						do {
+							list.add(getCtTable(rs));
+						} while (rs.next());
+						return list;
+					}
+				}
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+				return null;
+	}
+	
+	@Override
+	public List<CtTable> selectCtTableByName(String name) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public CtTable selectCtTableByGender(CtTable ctTable) {
+	public List<CtTable> selectCtTableByGender() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public CtTable selectCtTableByGrade(CtTable ctTable) {
+	public List<CtTable> selectCtTableByGrade(String grade) {
 		// TODO Auto-generated method stub
 		return null;
-	}
+	}	
+	
 
 	private CtTable getCtTable(ResultSet rs) throws SQLException {
 		Customer customer = null;
@@ -161,6 +185,10 @@ public class CustomerDaoImpl implements CustomerDao {
 			e.printStackTrace();
 		}
 		return 0;
-	}	
+	}
+
+
+
+	
 
 }

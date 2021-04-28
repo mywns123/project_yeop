@@ -24,6 +24,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import java.awt.Font;
 import java.awt.Color;
+import java.awt.Dimension;
 
 @SuppressWarnings("serial")
 public class OrderUI extends JPanel implements ActionListener {
@@ -52,6 +53,10 @@ public class OrderUI extends JPanel implements ActionListener {
 	private JTextField tfCode;
 	private CustomerService cService;
 	private GradeService gService;
+	private JLabel lblPro;
+	private JLabel lblUp;
+	private JLabel lblNewLabel_2;
+	private JLabel lblNewLabel;
 
 	public OrderUI() {
 		service = new OrderService();
@@ -105,7 +110,7 @@ public class OrderUI extends JPanel implements ActionListener {
 		pCart.add(tfNo);
 		tfNo.setColumns(10);
 		
-		lblcName = new JLabel("고객명");
+		lblcName = new JLabel("회원명");
 		lblcName.setHorizontalAlignment(SwingConstants.CENTER);
 		pCart.add(lblcName);
 		
@@ -161,6 +166,10 @@ public class OrderUI extends JPanel implements ActionListener {
 		pCart.add(tfCode);
 		tfCode.setColumns(10);
 		
+		lblPro = new JLabel("제품명");
+		lblPro.setHorizontalAlignment(SwingConstants.CENTER);
+		pCart.add(lblPro);
+		
 		tfPro = new JTextField();
 		tfPro.setBackground(Color.WHITE);
 		tfPro.setDisabledTextColor(Color.BLACK);
@@ -170,16 +179,6 @@ public class OrderUI extends JPanel implements ActionListener {
 		tfPro.setEnabled(false);
 		pCart.add(tfPro);
 		tfPro.setColumns(10);
-		
-		tfUp = new JTextField();
-		tfUp.setBackground(Color.WHITE);
-		tfUp.setDisabledTextColor(Color.BLACK);
-		tfUp.setSelectionColor(Color.BLACK);
-		tfUp.setFont(new Font("굴림", Font.BOLD, 14));
-		tfUp.setHorizontalAlignment(SwingConstants.RIGHT);
-		tfUp.setEnabled(false);
-		pCart.add(tfUp);
-		tfUp.setColumns(10);
 		
 		lblCount = new JLabel("수 량");
 		lblCount.setHorizontalAlignment(SwingConstants.CENTER);
@@ -195,7 +194,29 @@ public class OrderUI extends JPanel implements ActionListener {
 		pCart.add(tfCount);
 		tfCount.setColumns(10);
 		
-		lblPrice = new JLabel("가 격");
+		lblUp = new JLabel("제품단가");
+		lblUp.setHorizontalAlignment(SwingConstants.CENTER);
+		pCart.add(lblUp);
+		
+		tfUp = new JTextField();
+		tfUp.setBackground(Color.WHITE);
+		tfUp.setDisabledTextColor(Color.BLACK);
+		tfUp.setSelectionColor(Color.BLACK);
+		tfUp.setFont(new Font("굴림", Font.BOLD, 14));
+		tfUp.setHorizontalAlignment(SwingConstants.RIGHT);
+		tfUp.setEnabled(false);
+		pCart.add(tfUp);
+		tfUp.setColumns(10);
+		
+		lblNewLabel_2 = new JLabel("금액산정");
+		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
+		pCart.add(lblNewLabel_2);
+		
+		lblNewLabel = new JLabel("제품 단가 * 수량 * (1 - 할인율)");
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		pCart.add(lblNewLabel);
+		
+		lblPrice = new JLabel("받을  금액");
 		lblPrice.setHorizontalAlignment(SwingConstants.CENTER);
 		pCart.add(lblPrice);
 		
@@ -264,6 +285,7 @@ public class OrderUI extends JPanel implements ActionListener {
 
 	protected void actionPerformedBtnClearCart(ActionEvent e) {
 		pOd.clearTf();
+		
 	}
 
 	protected void actionPerformedBtnAdd(ActionEvent e) {

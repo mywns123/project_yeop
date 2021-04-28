@@ -9,14 +9,16 @@ import project_yeop.dto.Customer;
 public interface CustomerDao {
 
 	List<CtTable> selectCtTableByAll();
+	
+	List<CtTable> selectCtTableByNo(int no);
+	
+	List<CtTable> selectCtTableByName(String name);
 
-	CtTable selectCtTableByNo(CtTable ctTable);
+	List<CtTable> selectCtTableByGender();
 
-	CtTable selectCtTableByName(CtTable ctTable);
+	List<CtTable> selectCtTableByGrade(String grade);
 
-	CtTable selectCtTableByGender(CtTable ctTable);
-
-	CtTable selectCtTableByGrade(CtTable ctTable);
+	CtTable selectCtTableByNo(CtTable ctTable);	
 
 	int insertCustomer(Customer customer);
 

@@ -34,6 +34,7 @@ public class CheckUI extends JPanel implements ActionListener {
 	private ColumnService service1;
 	private JButton btnFind;
 	
+	
 	public CheckUI() {
 		setService();
 		initialize();
@@ -108,8 +109,8 @@ public class CheckUI extends JPanel implements ActionListener {
 		service1 = new ColumnService();		
 	}
 
-	protected void tableLoadData() {
-		((OrderComTablePanel) pTable).setService(service);
+	public void tableLoadData() {
+		pTable.setService(service);
 		pTable.loadData();
 	}
 
@@ -118,7 +119,7 @@ public class CheckUI extends JPanel implements ActionListener {
 	}
 
 	protected void actionPerformedBtnFind(ActionEvent e) {
-
+		
 	}
 
 }

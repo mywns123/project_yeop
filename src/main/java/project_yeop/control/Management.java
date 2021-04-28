@@ -29,7 +29,7 @@ import project_yeop.ui.panel.UnReleasedUI;
 @SuppressWarnings("serial")
 public class Management extends JFrame implements ActionListener {
 
-	private JPanel contentPane;
+	public JPanel contentPane;
 	private JButton btuGrade;
 	private JButton btuLaundry;
 	private JButton btuCus;
@@ -38,6 +38,7 @@ public class Management extends JFrame implements ActionListener {
 	private JButton btuSalesbyMonth;
 	private JButton btuSalesbyYear;
 	private JButton btuSalesbyCt;
+	public JPanel pCheck;
 
 	public Management() {
 		initialize();
@@ -65,7 +66,7 @@ public class Management extends JFrame implements ActionListener {
 		JPanel pOrder = new OrderUI();
 		tabbedPane.addTab("주문입력", null, pOrder, null);		
 		
-		JPanel pCheck = new CheckUI();
+		pCheck = new CheckUI();
 		tabbedPane.addTab("조회", null, pCheck, null);		
 				
 		JPanel pReleased = new ReleasedUI();
