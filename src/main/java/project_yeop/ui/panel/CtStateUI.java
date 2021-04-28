@@ -133,11 +133,9 @@ public class CtStateUI extends JPanel implements ActionListener {
 			ctTable = new CtTable(tfSearch.getText().trim());
 		}else if(com == "cNo") {
 			int no =Integer.parseInt(tfSearch.getText().trim());
-			list = service.showCtTableNO(no);
+			service.showCtTableNO(no);
 			list1 = service.showCtTable();
-			for(CtTable c1 : list) {
-				System.out.println(c1);
-			}
+			
 			for(CtTable c2 : list1) {
 				System.out.println(c2);
 			}
