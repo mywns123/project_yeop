@@ -3,7 +3,7 @@
   associations="true" dependencies="true" nesting-relationships="true" router="FAN">  
   <class id="1" language="java" name="project_yeop.dto.OdTable" project="project_yeop" 
     file="/project_yeop/src/main/java/project_yeop/dto/OdTable.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="387" width="252" x="761" y="36"/>    
+    <position height="-1" width="-1" x="706" y="208"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -12,7 +12,7 @@
   </class>  
   <class id="2" language="java" name="project_yeop.dto.CtTable" project="project_yeop" 
     file="/project_yeop/src/main/java/project_yeop/dto/CtTable.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="315" width="173" x="361" y="463"/>    
+    <position height="-1" width="-1" x="416" y="290"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -21,7 +21,7 @@
   </class>  
   <class id="3" language="java" name="project_yeop.dto.salebylLaundry" project="project_yeop" 
     file="/project_yeop/src/main/java/project_yeop/dto/salebylLaundry.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="261" width="179" x="1127" y="463"/>    
+    <position height="-1" width="-1" x="1324" y="964"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -30,7 +30,7 @@
   </class>  
   <class id="4" language="java" name="project_yeop.dto.Column" project="project_yeop" 
     file="/project_yeop/src/main/java/project_yeop/dto/Column.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="153" width="167" x="361" y="36"/>    
+    <position height="-1" width="-1" x="159" y="96"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -39,7 +39,7 @@
   </class>  
   <class id="5" language="java" name="project_yeop.dto.Grade" project="project_yeop" 
     file="/project_yeop/src/main/java/project_yeop/dto/Grade.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="243" width="147" x="574" y="463"/>    
+    <position height="-1" width="-1" x="1047" y="968"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -48,7 +48,7 @@
   </class>  
   <class id="6" language="java" name="project_yeop.dto.Laundry" project="project_yeop" 
     file="/project_yeop/src/main/java/project_yeop/dto/Laundry.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1240" y="941"/>    
+    <position height="-1" width="-1" x="1047" y="662"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -57,7 +57,7 @@
   </class>  
   <class id="7" language="java" name="project_yeop.dto.Order" project="project_yeop" 
     file="/project_yeop/src/main/java/project_yeop/dto/Order.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="567" width="305" x="761" y="463"/>    
+    <position height="-1" width="-1" x="734" y="805"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -66,7 +66,7 @@
   </class>  
   <class id="8" language="java" name="project_yeop.dto.salebyCt" project="project_yeop" 
     file="/project_yeop/src/main/java/project_yeop/dto/salebyCt.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="261" width="142" x="568" y="36"/>    
+    <position height="-1" width="-1" x="148" y="336"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -75,7 +75,7 @@
   </class>  
   <class id="9" language="java" name="project_yeop.dto.salebyDate" project="project_yeop" 
     file="/project_yeop/src/main/java/project_yeop/dto/salebyDate.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="333" width="179" x="1346" y="463"/>    
+    <position height="-1" width="-1" x="1327" y="637"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -84,7 +84,7 @@
   </class>  
   <class id="10" language="java" name="project_yeop.dto.Customer" project="project_yeop" 
     file="/project_yeop/src/main/java/project_yeop/dto/Customer.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="182" y="853"/>    
+    <position height="-1" width="-1" x="379" y="796"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -92,84 +92,124 @@
     </display>  
   </class>  
   <association id="11">    
-    <end type="SOURCE" refId="7" navigable="false">      
-      <attribute id="12" name="LaundryCode"/>      
-      <multiplicity id="13" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="6" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="14">    
     <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="15" name="customer"/>      
-      <multiplicity id="16" minimum="0" maximum="1"/>    
+      <attribute id="12" name="customer">        
+        <position height="0" width="0" x="197" y="-57"/>      
+      </attribute>      
+      <multiplicity id="13" minimum="0" maximum="1">        
+        <position height="0" width="0" x="197" y="-57"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="10" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
+  <association id="14">    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="15" name="ctTable">        
+        <position height="0" width="0" x="-31" y="-330"/>      
+      </attribute>      
+      <multiplicity id="16" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-31" y="-330"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
   <association id="17">    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="18" name="ctNo">        
+        <position height="0" width="0" x="197" y="-57"/>      
+      </attribute>      
+      <multiplicity id="19" minimum="0" maximum="1">        
+        <position height="0" width="0" x="197" y="-57"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="10" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="20">    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="21" name="lLaundryCode">        
+        <position height="0" width="0" x="-193" y="-279"/>      
+      </attribute>      
+      <multiplicity id="22" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-193" y="-279"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="23">    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="24" name="LaundryCode">        
+        <position height="0" width="0" x="-193" y="-279"/>      
+      </attribute>      
+      <multiplicity id="25" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-193" y="-279"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="26">    
     <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="18" name="grade"/>      
-      <multiplicity id="19" minimum="0" maximum="1"/>    
+      <attribute id="27" name="grade">        
+        <position height="0" width="0" x="400" y="384"/>      
+      </attribute>      
+      <multiplicity id="28" minimum="0" maximum="1">        
+        <position height="0" width="0" x="400" y="384"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="5" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="20">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="21" name="ctTable"/>      
-      <multiplicity id="22" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="2" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="23">    
-    <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="24" name="ctTable"/>      
-      <multiplicity id="25" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="2" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="26">    
-    <end type="SOURCE" refId="7" navigable="false">      
-      <attribute id="27" name="ctNo"/>      
-      <multiplicity id="28" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="10" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
   <association id="29">    
-    <bendpoint x="1096" y="463"/>    
     <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="30" name="laundry"/>      
-      <multiplicity id="31" minimum="0" maximum="1"/>    
+      <attribute id="30" name="order">        
+        <position height="0" width="0" x="-179" y="59"/>      
+      </attribute>      
+      <multiplicity id="31" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-179" y="59"/>      
+      </multiplicity>    
     </end>    
-    <end type="TARGET" refId="6" navigable="true"/>    
+    <end type="TARGET" refId="7" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="32">    
-    <end type="SOURCE" refId="3" navigable="false">      
-      <attribute id="33" name="lLaundryCode"/>      
-      <multiplicity id="34" minimum="0" maximum="1"/>    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="33" name="lLaundryCode">        
+        <position height="0" width="0" x="-193" y="-279"/>      
+      </attribute>      
+      <multiplicity id="34" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-193" y="-279"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="6" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="35">    
-    <end type="SOURCE" refId="9" navigable="false">      
-      <attribute id="36" name="lLaundryCode"/>      
-      <multiplicity id="37" minimum="0" maximum="1"/>    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="36" name="ctTable">        
+        <position height="0" width="0" x="-31" y="-330"/>      
+      </attribute>      
+      <multiplicity id="37" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-31" y="-330"/>      
+      </multiplicity>    
     </end>    
-    <end type="TARGET" refId="6" navigable="true"/>    
+    <end type="TARGET" refId="2" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="38">    
+    <bendpoint x="1096" y="463"/>    
     <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="39" name="order"/>      
-      <multiplicity id="40" minimum="0" maximum="1"/>    
+      <attribute id="39" name="laundry">        
+        <position height="0" width="0" x="-193" y="-279"/>      
+      </attribute>      
+      <multiplicity id="40" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-193" y="-279"/>      
+      </multiplicity>    
     </end>    
-    <end type="TARGET" refId="7" navigable="true"/>    
+    <end type="TARGET" refId="6" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
