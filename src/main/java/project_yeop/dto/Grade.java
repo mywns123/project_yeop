@@ -1,7 +1,9 @@
 package project_yeop.dto;
 
 public class Grade {
-	private String gGrade;
+	private String gGrade;	
+	private int losal;	
+	private int hiosal;
 	private int discountRate;
 
 	public Grade(String gGrade) {
@@ -18,6 +20,35 @@ public class Grade {
 		this.gGrade = gGrade;
 		this.discountRate = discountRate;
 	}
+
+	public int getLosal() {
+		return losal;
+	}
+
+
+	public void setLosal(int losal) {
+		this.losal = losal;
+	}
+
+
+	public int getHiosal() {
+		return hiosal;
+	}
+
+
+	public void setHiosal(int hiosal) {
+		this.hiosal = hiosal;
+	}
+
+
+	public Grade(String gGrade,  int losal, int hiosal,int discountRate) {
+		this.gGrade = gGrade;
+		
+		this.losal = losal;
+		this.hiosal = hiosal;
+		this.discountRate = discountRate;
+	}
+
 
 	public String getgGrade() {
 		return gGrade;

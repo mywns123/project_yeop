@@ -1,3 +1,4 @@
+DROP VIEW IF EXISTS ct;
 DROP VIEW IF EXISTS ctTable;
 DROP VIEW IF EXISTS odTable;
 
@@ -5,21 +6,29 @@ DROP VIEW IF EXISTS salebylLaundry;
 DROP VIEW IF EXISTS salebyCt;
 DROP VIEW IF EXISTS salebyDate;
 
-CREATE VIEW laundry_jy.ctTable
+CREATE VIEW laundry_jy.ct
 AS
 SELECT cNo, cName, gender, ponNumber, address, joinDate,
 	count(case when complete = false then 1 end) AS unReleased,
 	count(laundryCount) AS count,
-	sum(laundryCount * unitPrice) as pr,
-	(CASE   WHEN 0 < sum(laundryCount * unitPrice) <= 50000  THEN 'C'
-			WHEN 50000 < sum(laundryCount * unitPrice) <= 100000   THEN 'B'
-			WHEN 100000 < sum(laundryCount * unitPrice) <= 200000   THEN 'A'
-			WHEN 200000 < sum(laundryCount * unitPrice) THEN 'S'			
-			ELSE 'S'
-			END) AS 'cGrade'
-	FROM customer LEFT JOIN `order`o ON cNo = ctNo	
+	sum(laundryCount * unitPrice) as pr
+	FROM customer c LEFT JOIN `order` o ON cNo = ctNo	
 	LEFT JOIN laundry l ON o.LaundryCode = l.lLaundryCode
 	GROUP BY cNo;
+	
+	
+	
+
+
+CREATE VIEW laundry_jy.ctTable
+AS
+SELECT cNo, cName, gender, ponNumber, address, joinDate,
+	unReleased,
+	count,
+	pr,
+	g.gGrade as cGrade
+	FROM ct c join grade g		
+	where pr between g.losal and g.hiosal;
 
  
 CREATE VIEW laundry_jy.odTable

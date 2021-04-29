@@ -21,7 +21,7 @@ public class GradeDaoImpl implements GradeDao {
 
 	@Override
 	public List<Grade> selectGradeByAll() {
-		String sql = "select gGrade, discountRate from grade order by field(gGrade,'S','A','B','C')";
+		String sql = "select gGrade, losal, hiosal, discountRate from grade order by field(gGrade,'S','A','B','C')";
 		try (Connection con = JdbcConn.getConnection();
 				PreparedStatement pstmt = con.prepareStatement(sql);
 				ResultSet rs = pstmt.executeQuery()) {
@@ -40,14 +40,15 @@ public class GradeDaoImpl implements GradeDao {
 
 	private Grade getGrade(ResultSet rs) throws SQLException {
 		String gGrade = rs.getString("gGrade");
+		int losal = rs.getInt("losal");
+		int hiosal = rs.getInt("hiosal");
 		int discountRate = rs.getInt("discountRate");
-
-		return new Grade(gGrade, discountRate);
+		return new Grade(gGrade,losal, hiosal,discountRate);
 	}
 
 	@Override
 	public Grade selectGradeByNo(Grade grade) {
-		String sql = "select gGrade, discountRate from grade where gGrade=?";
+		String sql = "select gGrade, losal, hiosal, discountRate from grade where gGrade=?";
 		try (Connection con = JdbcConn.getConnection();
 				PreparedStatement pstmt = con.prepareStatement(sql)) {
 				pstmt.setString(1, grade.getgGrade());
@@ -64,11 +65,13 @@ public class GradeDaoImpl implements GradeDao {
 
 	@Override
 	public int insertGrade(Grade grade) {
-		String sql = "insert into grade values(?,?)";
+		String sql = "insert into grade values(?,?,?,?)";
 		try (Connection con = JdbcConn.getConnection();
 				PreparedStatement pstmt = con.prepareStatement(sql)) {
 				pstmt.setString(1, grade.getgGrade());
-				pstmt.setInt(2, grade.getDiscountRate());
+				pstmt.setInt(2, grade.getLosal());
+				pstmt.setInt(3, grade.getHiosal());
+				pstmt.setInt(4, grade.getDiscountRate());
 				return pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -78,11 +81,13 @@ public class GradeDaoImpl implements GradeDao {
 
 	@Override
 	public int updateGrade(Grade grade) {
-		String sql = "update grade set discountRate = ? where gGrade =?";
+		String sql = "update grade set losal =?, hiosal =?, discountRate = ? where gGrade =?";
 		try (Connection con = JdbcConn.getConnection();
 				PreparedStatement pstmt = con.prepareStatement(sql)) {
-				pstmt.setInt(1, grade.getDiscountRate());
-				pstmt.setString(2, grade.getgGrade());
+				pstmt.setInt(1, grade.getLosal());
+				pstmt.setInt(2, grade.getHiosal());
+				pstmt.setInt(3, grade.getDiscountRate());
+				pstmt.setString(4, grade.getgGrade());
 				return pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

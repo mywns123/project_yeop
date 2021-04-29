@@ -5,10 +5,10 @@ select lLaundryCode, product, unitPrice from laundry;
 select cNo, cName, gender, ponNumber, address, joinDate from customer;
 select complete, `no`, ctNo, LaundryCode, color, laundryCount, receiveDate, etc from `order`;
 
-insert into grade values("S",30);
-insert into grade values("A",20);
-insert into grade values("B",10);
-insert into grade values("C",5);
+insert into grade(gGrade, losal, discountRate) values("S", 400001, 30);
+insert into grade(gGrade, losal, hiosal, discountRate)  values("A", 200001, 400000, 20);
+insert into grade(gGrade, losal, hiosal, discountRate)  values("B", 100001, 200000, 10);
+insert into grade(gGrade, losal, hiosal, discountRate)  values("C", 0, 100000,5);
 
 insert into laundry values("AAA","양복상의",8000);
 insert into laundry values("BBB","양복하의",5000);

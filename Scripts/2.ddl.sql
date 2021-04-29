@@ -30,6 +30,8 @@ ALTER TABLE laundry_jy.Order
 -- 등급별 할인율
 CREATE TABLE laundry_jy.Grade (
 	gGrade       CHAR(2)    NOT NULL COMMENT '등급', -- 등급
+	losal		 INTEGER    NULL	 COMMENT '최저값',	
+	hiosal		 INTEGER    NULL 	 COMMENT '최고값',
 	discountRate INTEGER(3) NULL     COMMENT '할인율' -- 할인율
 )
 COMMENT '등급별 할인율';

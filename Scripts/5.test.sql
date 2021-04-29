@@ -9,7 +9,7 @@ select * from salebylLaundry;
 select * from salebyCt;
 select * from salebyDate;
 
-select gGrade, discountRate from grade order by field(gGrade,'S','A','B','C') ;
+select gGrade, losal, hiosal, discountRate from grade order by field(gGrade,'S','A','B','C') ;
 select lLaundryCode, product, unitPrice from laundry;
 select cNo, cName, gender, ponNumber, address, joinDate from customer;
 select complete, `no`, ctNo, LaundryCode, color, laundryCount, receiveDate, etc from `order`;
@@ -48,3 +48,12 @@ where unReleased > 0;
 
 select complete, `no`, cNo, cName, gGrade, discountRate, color, lLaundryCode, product, unitPrice, laundryCount, price, receiveDate, releaseDate, etc from odTable
 where complete = false and releaseDate < now() and cNo = 8; 
+
+
+
+
+SELECT *
+	FROM customer c LEFT JOIN `order` o ON cNo = ctNo	
+	LEFT JOIN laundry l ON o.LaundryCode = l.lLaundryCode join grade g	
+	GROUP BY cNo
+	having sum(laundryCount * unitPrice) between g.losal and g.hiosal;
