@@ -1,5 +1,7 @@
 package project_yeop.ui.panel.table;
 
+import java.util.List;
+
 import javax.swing.SwingConstants;
 
 import project_yeop.dto.CtTable;
@@ -16,6 +18,10 @@ public class CustomerTablePanel extends AbstractTablePanel<CtTable> {
 		this.service = service;
 	}
 
+	public void setSearchList(List<CtTable> ctList) {
+		list = ctList;
+	}
+	
 	@Override
 	public void initList() {
 		list = service.showCtTable();
@@ -37,7 +43,7 @@ public class CustomerTablePanel extends AbstractTablePanel<CtTable> {
 
 	@Override
 	public String[] getColumnNames() {
-		return new String[] { "고객번호", "고객명", "성별", "전화번호", "주소", "가입일", "미출고수량", "이용도", "등급" };
+		return new String[] { "회원번호", "회원명", "성별", "전화번호", "주소", "가입일", "미출고주문", "누적이용도", "등급" };
 	}
 
 	@Override

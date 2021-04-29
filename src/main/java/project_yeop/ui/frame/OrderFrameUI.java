@@ -117,7 +117,7 @@ public class OrderFrameUI extends JFrame implements ActionListener {
 	}
 
 	protected void tableLoadData() {
-		((OrderTablePanel) pTable).setService(service);
+		pTable.setService(service);
 		pTable.loadData();
 
 	}

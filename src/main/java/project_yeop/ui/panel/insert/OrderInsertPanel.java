@@ -42,7 +42,7 @@ public class OrderInsertPanel extends AbstractInsertPanel<Order> {
 		add(panel);
 		panel.setLayout(new GridLayout(0, 2, 20, 10));
 		
-		JLabel lblNum = new JLabel("고객번호");
+		JLabel lblNum = new JLabel("회원번호");
 		lblNum.setHorizontalAlignment(SwingConstants.CENTER);
 		panel.add(lblNum);
 		

@@ -15,7 +15,7 @@ import project_yeop.ui.panel.table.GradeTablePanel;
 public class GradeFrameUI extends AbstractFrameUI<Grade> {
 
 	private GradeService service;
-
+	
 	public GradeFrameUI() {
 		setTitle("회원 등급표");
 	}

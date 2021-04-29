@@ -2,7 +2,6 @@ package project_yeop.dao;
 
 import java.util.List;
 
-import project_yeop.dto.Column;
 import project_yeop.dto.CtTable;
 import project_yeop.dto.Customer;
 
@@ -14,9 +13,11 @@ public interface CustomerDao {
 	
 	List<CtTable> selectCtTableByName(String name);
 
-	List<CtTable> selectCtTableByGender();
+	List<CtTable> selectCtTableByGender(boolean gender);
 
 	List<CtTable> selectCtTableByGrade(String grade);
+	
+	List<CtTable> selectCtTableByUnRel();
 
 	CtTable selectCtTableByNo(CtTable ctTable);	
 

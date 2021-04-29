@@ -4,7 +4,6 @@ import java.util.List;
 
 import project_yeop.dao.CustomerDao;
 import project_yeop.dao.impl.CustomerDaoImpl;
-import project_yeop.dto.Column;
 import project_yeop.dto.CtTable;
 import project_yeop.dto.Customer;
 
@@ -19,7 +18,22 @@ public class CustomerService {
 		return dao.selectCtTableByNo(no);
 	}
 	
+	public List<CtTable> showCtTableGrade(String grade) {
+		return dao.selectCtTableByGrade(grade);
+	}
 	
+	public List<CtTable> showCtTableName(String name) {
+		return dao.selectCtTableByName(name);
+	}
+	
+	public List<CtTable> showCtTableGender(boolean gender) {
+		return dao.selectCtTableByGender(gender);
+	}
+	
+	public List<CtTable> showCtTableUnRel() {
+		return dao.selectCtTableByUnRel();
+	}
+		
 	public CtTable showCtTableNO(CtTable ctTable) {
 		return dao.selectCtTableByNo(ctTable);
 	}

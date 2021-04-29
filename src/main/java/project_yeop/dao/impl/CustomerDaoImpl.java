@@ -82,22 +82,91 @@ public class CustomerDaoImpl implements CustomerDao {
 	
 	@Override
 	public List<CtTable> selectCtTableByName(String name) {
-		// TODO Auto-generated method stub
-		return null;
+		String sql = "select cNo, cName, gender, ponNumber, address, joinDate, unReleased, count, cGrade from ctTable"
+				+ " where cName like '%?%'";
+		try (Connection con = JdbcConn.getConnection();
+				PreparedStatement pstmt = con.prepareStatement(sql)){
+				pstmt.setString(1, name);
+				try (ResultSet rs = pstmt.executeQuery()) {
+					if (rs.next()) {			
+						List<CtTable> list = new ArrayList<>();
+						do {
+							list.add(getCtTable(rs));
+						} while (rs.next());
+						return list;
+					}
+				}
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+				return null;
 	}
 
-	@Override
-	public List<CtTable> selectCtTableByGender() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 
 	@Override
 	public List<CtTable> selectCtTableByGrade(String grade) {
-		// TODO Auto-generated method stub
-		return null;
+		String sql = "select cNo, cName, gender, ponNumber, address, joinDate, unReleased, count, cGrade from ctTable"
+				+ " where cGrade = ? ";
+		try (Connection con = JdbcConn.getConnection();
+				PreparedStatement pstmt = con.prepareStatement(sql)){
+				pstmt.setString(1, grade);
+				try (ResultSet rs = pstmt.executeQuery()) {
+					if (rs.next()) {			
+						List<CtTable> list = new ArrayList<>();
+						do {
+							list.add(getCtTable(rs));
+						} while (rs.next());
+						return list;
+					}
+				}
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+				return null;
 	}	
 	
+	@Override
+	public List<CtTable> selectCtTableByGender(boolean gender) {
+		String sql = "select cNo, cName, gender, ponNumber, address, joinDate, unReleased, count, cGrade from ctTable"
+				+ " where gender = ? ";
+		try (Connection con = JdbcConn.getConnection();
+				PreparedStatement pstmt = con.prepareStatement(sql)){
+				pstmt.setBoolean(1, gender);
+				try (ResultSet rs = pstmt.executeQuery()) {
+					if (rs.next()) {			
+						List<CtTable> list = new ArrayList<>();
+						do {
+							list.add(getCtTable(rs));
+						} while (rs.next());
+						return list;
+					}
+				}
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+				return null;
+	}
+
+	@Override
+	public List<CtTable> selectCtTableByUnRel() {
+		String sql = "select cNo, cName, gender, ponNumber, address, joinDate, unReleased, count, cGrade from ctTable"
+				+ " where unReleased > 0";		
+		try (Connection con = JdbcConn.getConnection();
+				PreparedStatement pstmt = con.prepareStatement(sql);
+				ResultSet rs = pstmt.executeQuery()) {
+			if (rs.next()) {
+				List<CtTable> list = new ArrayList<>();
+				do {
+					list.add(getCtTable(rs));
+				} while (rs.next());
+				return list;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 
 	private CtTable getCtTable(ResultSet rs) throws SQLException {
 		Customer customer = null;
@@ -187,8 +256,5 @@ public class CustomerDaoImpl implements CustomerDao {
 		return 0;
 	}
 
-
-
 	
-
 }

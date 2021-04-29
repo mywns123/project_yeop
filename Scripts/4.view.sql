@@ -8,7 +8,7 @@ DROP VIEW IF EXISTS salebyDate;
 CREATE VIEW laundry_jy.ctTable
 AS
 SELECT cNo, cName, gender, ponNumber, address, joinDate,
-	count(complete =FALSE) AS unReleased,
+	count(case when complete = false then 1 end) AS unReleased,
 	count(laundryCount) AS count,
 	(CASE   WHEN count(laundryCount) <= 50 THEN 'C'
 			WHEN 50 < count(laundryCount) <= 100 THEN 'B'

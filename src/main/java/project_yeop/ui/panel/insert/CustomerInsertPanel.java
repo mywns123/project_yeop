@@ -43,6 +43,7 @@ public class CustomerInsertPanel extends AbstractInsertPanel<Customer> {
 		panel.add(lblNo);
 		
 		tfNo = new JTextField();
+		tfNo.setEditable(false);
 		panel.add(tfNo);
 		tfNo.setColumns(10);
 		
@@ -63,7 +64,7 @@ public class CustomerInsertPanel extends AbstractInsertPanel<Customer> {
 		panel_1.setLayout(new GridLayout(0, 2, 0, 0));
 		
 		rdbtnMale = new JRadioButton("남");		
-		buttonGroup.add(rdbtnFemale);
+		buttonGroup.add(rdbtnMale);
 		panel_1.add(rdbtnMale);
 		
 		rdbtnFemale = new JRadioButton("여");		

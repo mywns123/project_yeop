@@ -34,3 +34,13 @@ select * from odTable where complete = false and releaseDate < now();
 
 update `order` set complete = true where  `no`=4; 
 
+select cNo, cName, gender, ponNumber, address, joinDate, unReleased, count, cGrade from ctTable
+where gender = false;
+
+select cNo, cName, gender, ponNumber, address, joinDate, unReleased, count, cGrade from ctTable
+where cName like '%이%';
+
+where cGrade = 'A'; 
+
+
+where unReleased > 0;

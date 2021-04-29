@@ -62,7 +62,7 @@ public class OrderTablePanel extends AbstractTablePanel<OdTable>{
 
 	@Override
 	public String[] getColumnNames() {
-		return new String[] {  "완료", "접수번호","고객번호", "고객명", "회원등급","할인율", "색상", "세탁물코드", "제품명", "단가","수량", "총가격 ", "입고일", "출고일","기타사항" };
+		return new String[] {  "완료", "주문번호","회원번호", "고객명", "회원등급","할인율", "색상", "세탁물코드", "제품명", "단가","수량", "총가격 ", "입고일", "출고일","기타사항" };
 
 	}
 

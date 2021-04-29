@@ -44,7 +44,7 @@ public class salebyCtTablePanel extends AbstractTablePanel<salebyCt> {
 
 	@Override
 	public String[] getColumnNames() {
-		return new String[] { "고객 번호","고객명", "누정수량", "총 매출" };
+		return new String[] { "회원번호","회원명", "누정수량", "누적 매출" };
 	}
 
 	@Override

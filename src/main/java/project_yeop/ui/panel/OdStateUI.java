@@ -92,7 +92,7 @@ public class OdStateUI extends JPanel implements ActionListener {
 					actionPerformdMenuUpdate();
 				}
 			}
-		} catch (InvalidationException | SqlConstraintException e1) {
+		} catch (InvalidationException | SqlConstraintException | NumberFormatException e1) {
 			JOptionPane.showMessageDialog(null, e1.getMessage());
 		} catch (Exception e1) {
 			e1.printStackTrace();

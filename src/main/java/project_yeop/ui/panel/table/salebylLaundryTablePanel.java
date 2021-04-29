@@ -41,7 +41,7 @@ public class salebylLaundryTablePanel extends AbstractTablePanel<salebylLaundry>
 
 	@Override
 	public String[] getColumnNames() {
-		return new String[] { "세탁물 코드", "누정수량", "총 매출" };
+		return new String[] { "세탁물 코드", "누정수량", "누적 매출" };
 	}
 
 	@Override
