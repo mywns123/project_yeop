@@ -24,7 +24,7 @@ public class CustomerFrameUI extends JFrame implements ActionListener {
 	private JPanel contentPane;
 	protected JButton btnAdd;
 	private JButton btnClear;
-	protected CustomerInsertPanel pPanel;
+	public CustomerInsertPanel pPanel;
 	protected CustomerTablePanel pTable;
 	private CustomerService service;
 	

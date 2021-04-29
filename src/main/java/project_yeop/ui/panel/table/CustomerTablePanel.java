@@ -51,15 +51,14 @@ public class CustomerTablePanel extends AbstractTablePanel<CtTable> {
 		int row = table.getSelectedRow();
 		int cNo = (int) table.getValueAt(row, 0);
 		String name = (String) table.getValueAt(row, 1);
-//		boolean gender = table.getValueAt(row, 2) == female ? "false" : "true"; 
+		boolean gender = (boolean) table.getValueAt(row, 2).equals("남성") ? false : true;
 		String ponNumber = (String) table.getValueAt(row, 3);
-		String address = (String) table.getValueAt(row, 4);
-
+		String address = (String) table.getValueAt(row, 4);		
 		if (row == -1) {
 			throw new NotSelectedException();
 		}
 
-		return new CtTable(new Customer(cNo, name, /* gender, */ ponNumber, address));
+		return new CtTable(new Customer(cNo, name,  gender, ponNumber, address));
 	}
 
 }

@@ -10,14 +10,18 @@ AS
 SELECT cNo, cName, gender, ponNumber, address, joinDate,
 	count(case when complete = false then 1 end) AS unReleased,
 	count(laundryCount) AS count,
-	(CASE   WHEN count(laundryCount) <= 50 THEN 'C'
-			WHEN 50 < count(laundryCount) <= 100 THEN 'B'
-			WHEN 100 < count(laundryCount) <= 200 THEN 'A'
+	sum(laundryCount * unitPrice) as pr,
+	(CASE   WHEN 0 < sum(laundryCount * unitPrice) <= 50000  THEN 'C'
+			WHEN 50000 < sum(laundryCount * unitPrice) <= 100000   THEN 'B'
+			WHEN 100000 < sum(laundryCount * unitPrice) <= 200000   THEN 'A'
+			WHEN 200000 < sum(laundryCount * unitPrice) THEN 'S'			
 			ELSE 'S'
 			END) AS 'cGrade'
-	FROM customer LEFT JOIN `order` ON cNo = ctNo
+	FROM customer LEFT JOIN `order`o ON cNo = ctNo	
+	LEFT JOIN laundry l ON o.LaundryCode = l.lLaundryCode
 	GROUP BY cNo;
 
+ 
 CREATE VIEW laundry_jy.odTable
 AS
 SELECT o.complete, o.`no`,

@@ -83,7 +83,7 @@ public class CustomerDaoImpl implements CustomerDao {
 	@Override
 	public List<CtTable> selectCtTableByName(String name) {
 		String sql = "select cNo, cName, gender, ponNumber, address, joinDate, unReleased, count, cGrade from ctTable"
-				+ " where cName like '%?%'";
+				+ " where cName like ?";
 		try (Connection con = JdbcConn.getConnection();
 				PreparedStatement pstmt = con.prepareStatement(sql)){
 				pstmt.setString(1, name);
