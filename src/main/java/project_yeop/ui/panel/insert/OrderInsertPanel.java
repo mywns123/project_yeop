@@ -28,6 +28,8 @@ public class OrderInsertPanel extends AbstractInsertPanel<Order> {
 	private JTextField tfColor;
 	private JTextField tfEtc;
 	private JComboBox<Laundry> comCode;
+	public JTextField tfNo;
+	public JLabel lblNo;
 	
 	
 	public OrderInsertPanel() {
@@ -42,12 +44,22 @@ public class OrderInsertPanel extends AbstractInsertPanel<Order> {
 		add(panel);
 		panel.setLayout(new GridLayout(0, 2, 20, 10));
 		
+		lblNo = new JLabel("접수 번호");
+		lblNo.setHorizontalAlignment(SwingConstants.CENTER);
+		panel.add(lblNo);
+		
+		tfNo = new JTextField();
+		tfNo.setHorizontalAlignment(SwingConstants.CENTER);
+		tfNo.setEditable(false);
+		panel.add(tfNo);
+		tfNo.setColumns(10);
+		
 		JLabel lblNum = new JLabel("회원번호");
 		lblNum.setHorizontalAlignment(SwingConstants.CENTER);
 		panel.add(lblNum);
 		
 		tfNum = new JTextField();
-		tfNum.setHorizontalAlignment(SwingConstants.LEFT);
+		tfNum.setHorizontalAlignment(SwingConstants.CENTER);
 		panel.add(tfNum);
 		tfNum.setColumns(10);
 		
@@ -63,7 +75,7 @@ public class OrderInsertPanel extends AbstractInsertPanel<Order> {
 		panel.add(lblCount);
 		
 		tfCount = new JTextField();
-		tfCount.setHorizontalAlignment(SwingConstants.LEFT);
+		tfCount.setHorizontalAlignment(SwingConstants.CENTER);
 		tfCount.setColumns(10);
 		panel.add(tfCount);
 		
@@ -72,7 +84,7 @@ public class OrderInsertPanel extends AbstractInsertPanel<Order> {
 		panel.add(lblColor);
 		
 		tfColor = new JTextField();
-		tfColor.setHorizontalAlignment(SwingConstants.LEFT);
+		tfColor.setHorizontalAlignment(SwingConstants.CENTER);
 		tfColor.setColumns(10);
 		panel.add(tfColor);
 		
@@ -81,7 +93,7 @@ public class OrderInsertPanel extends AbstractInsertPanel<Order> {
 		panel.add(lblEtc);
 		
 		tfEtc = new JTextField();
-		tfEtc.setHorizontalAlignment(SwingConstants.LEFT);
+		tfEtc.setHorizontalAlignment(SwingConstants.CENTER);
 		tfEtc.setColumns(10);
 		panel.add(tfEtc);
 	}
@@ -103,7 +115,7 @@ public class OrderInsertPanel extends AbstractInsertPanel<Order> {
 	
 	@Override
 	public void setItem(Order item) {
-		String.valueOf(item.getNo());
+		tfNo.setText(String.valueOf(item.getNo()));
 		tfNum.setText(String.valueOf(item.getCtNo().getcNo()));
 		comCode.setSelectedItem(item.getLaundryCode());
 		tfCount.setText(String.valueOf(item.getLaundryCount()));	
@@ -114,13 +126,14 @@ public class OrderInsertPanel extends AbstractInsertPanel<Order> {
 	@Override
 	public Order getItem() {
 		validCheck();
+		int no = Integer.parseInt(tfNo.getText().trim());
 		Customer ctNo = new Customer(Integer.parseInt(tfNum.getText().trim()));
 		Laundry LaundryCode = (Laundry)comCode.getSelectedItem();
 		int laundryCount = Integer.parseInt(tfCount.getText().trim());
 		String color = tfColor.getText().trim();
 		String ect = tfEtc.getText().trim();		
 
-		return new Order(ctNo, LaundryCode,color,laundryCount,ect);
+		return new Order(no,ctNo, LaundryCode,color,laundryCount,ect);
 	}
 	@Override
 	public void validCheck() {

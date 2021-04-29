@@ -89,6 +89,8 @@ public class OrderUI extends JPanel implements ActionListener {
 		pNoth.setLayout(new BorderLayout(0, 0));
 
 		pOd = new OrderInsertPanel();
+		int no = service.showOdTables().size()+1;		
+		pOd.tfNo.setText(no + "");
 		pOd.setService(lservice);
 		pNoth.add(pOd);
 
@@ -271,7 +273,7 @@ public class OrderUI extends JPanel implements ActionListener {
 		tfRecive.setBackground(new Color(240, 255, 240));
 		tfRecive.setForeground(Color.BLACK);
 		tfRecive.setSelectionColor(Color.WHITE);
-		tfRecive.setFont(new Font("굴림", Font.ITALIC, 14));
+		tfRecive.setFont(new Font("굴림", Font.BOLD, 14));
 		tfRecive.setHorizontalAlignment(SwingConstants.CENTER);
 		tfRecive.setEditable(false);
 		pCart.add(tfRecive);
@@ -285,7 +287,7 @@ public class OrderUI extends JPanel implements ActionListener {
 		tfRel.setBackground(new Color(240, 255, 240));
 		tfRel.setForeground(Color.BLACK);
 		tfRel.setSelectionColor(Color.WHITE);
-		tfRel.setFont(new Font("굴림", Font.ITALIC, 14));
+		tfRel.setFont(new Font("굴림", Font.BOLD, 14));
 		tfRel.setHorizontalAlignment(SwingConstants.CENTER);
 		tfRel.setEditable(false);
 		pCart.add(tfRel);
