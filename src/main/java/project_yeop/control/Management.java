@@ -67,19 +67,19 @@ public class Management extends JFrame implements ActionListener {
 		tabbedPane.addTab("주문입력", null, pOrder, null);		
 		
 		pCheck = new CheckUI();
-		tabbedPane.addTab("조회", null, pCheck, null);		
+		tabbedPane.addTab("주문 수정", null, pCheck, null);		
 				
 		JPanel pReleased = new ReleasedUI();
 		tabbedPane.addTab("세탁물 출고", null, pReleased, null);		
 				
 		JPanel pUnReleased = new UnReleasedUI();
-		tabbedPane.addTab("미출고", null, pUnReleased, null);
+		tabbedPane.addTab("미출고 세탁물", null, pUnReleased, null);
 		
 		JPanel pOdState = new OdStateUI();
 		tabbedPane.addTab("전체주문현황", null, pOdState, null);
 		
 		JPanel pCtState = new CtStateUI();
-		tabbedPane.addTab("회원 조회", null, pCtState, null);
+		tabbedPane.addTab("회원 검색", null, pCtState, null);
 		
 		JPanel pPS = new JPanel();
 		tabbedPane.addTab("관리/설정 및 통계", null, pPS, null);

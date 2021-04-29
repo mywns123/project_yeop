@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JOptionPane;
 
 import project_yeop.dto.Grade;
+import project_yeop.exception.NotSelectedException;
 import project_yeop.service.GradeService;
 import project_yeop.ui.panel.insert.AbstractInsertPanel;
 import project_yeop.ui.panel.insert.GradeInsertPanel;
@@ -43,14 +44,24 @@ public class GradeFrameUI extends AbstractFrameUI<Grade> {
 
 	@Override
 	protected void actionPerformdMenuUpdate() {
-		Grade updateGrade = pTable.getItem();
+		Grade updateGrade;
+		try {
+			updateGrade = pTable.getItem();
+		} catch (Exception e1) {
+			throw new NotSelectedException();
+		}				
 		pPanel.setItem(updateGrade);
 		btnAdd.setText("수정");
 	}
 
 	@Override
 	protected void actionPerformdMenuDelete() {
-		Grade delGrade = pTable.getItem();
+		Grade delGrade;
+		try {
+			delGrade = pTable.getItem();
+		} catch (Exception e1) {
+			throw new NotSelectedException();
+		}	
 		service.removeGrade(delGrade);
 		pTable.loadData();
 		JOptionPane.showMessageDialog(null, delGrade + "삭제 되었습니다.");

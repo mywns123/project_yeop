@@ -32,14 +32,14 @@ insert into customer(cName, gender, ponNumber, address) values("이예지",1,"01
 insert into customer(cName, gender, ponNumber, address) values("이인욱",0,"01012345678","달서구");
 insert into customer(cName, gender, ponNumber, address) values("이정호",0,"01012345678","달서구");
 
-insert into  `order`(complete,ctNo, LaundryCode, color, laundryCount,receiveDate,etc)
-	values(true,5,"BBB","BLACK",7,"2021-01-01",null);
+insert into  `order`(complete,ctNo, LaundryCode, color, laundryCount,receiveDate)
+	values(true,5,"BBB","BLACK",7,"2021-01-01");
 
-insert into  `order`(complete,ctNo, LaundryCode, color, laundryCount,receiveDate,etc)
-	values(true,4,"DDD","BLACK",7,"2021-02-01",null);
+insert into  `order`(complete,ctNo, LaundryCode, color, laundryCount,receiveDate)
+	values(true,4,"DDD","BLACK",7,"2021-02-01");
 
-insert into  `order`(complete, ctNo, LaundryCode, color, laundryCount,receiveDate,etc)
-	values(true,3,"BBB","BLACK",7,"2021-03-01",null);
+insert into  `order`(complete, ctNo, LaundryCode, color, laundryCount,receiveDate)
+	values(true,3,"BBB","BLACK",7,"2021-03-01");
 
 insert into  `order`(ctNo, LaundryCode, color, laundryCount,receiveDate,etc)
 	values(8,"EEE","BLACK",7,"2021-03-04",null);

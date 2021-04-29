@@ -14,6 +14,8 @@ import javax.swing.border.EmptyBorder;
 
 import project_yeop.dto.Order;
 import project_yeop.exception.InvalidationException;
+import project_yeop.exception.NotSelectedException;
+import project_yeop.exception.RelException;
 import project_yeop.exception.SqlConstraintException;
 import project_yeop.service.LaundryService;
 import project_yeop.service.OrderService;
@@ -24,9 +26,9 @@ import project_yeop.ui.panel.table.OrderTablePanel;
 public class OrderFrameUI extends JFrame implements ActionListener {
 
 	private JPanel contentPane;
-	protected JButton btnAdd;
+	public JButton btnAdd;
 	private JButton btnClear;
-	protected OrderInsertPanel pPanel;
+	public OrderInsertPanel pPanel;
 	protected OrderTablePanel pTable;
 	private OrderService service;
 	private LaundryService lservice;
@@ -70,6 +72,10 @@ public class OrderFrameUI extends JFrame implements ActionListener {
 
 	private JPopupMenu createPopupMenu() {
 		JPopupMenu popMenu = new JPopupMenu();
+		
+		JMenuItem relItem = new JMenuItem("출고");
+		relItem.addActionListener(this);
+		popMenu.add(relItem);
 
 		JMenuItem updateItem = new JMenuItem("수정");
 		updateItem.addActionListener(this);
@@ -91,7 +97,9 @@ public class OrderFrameUI extends JFrame implements ActionListener {
 				if (e.getActionCommand().equals("수정")) {
 					actionPerformdMenuUpdate();
 				}
-
+				if (e.getActionCommand().equals("출고")) {
+					actionPerformdMenuREl();
+				}
 			} else {
 				if (e.getSource() == btnClear) {
 					actionPerformedBtnClear(e);
@@ -99,17 +107,20 @@ public class OrderFrameUI extends JFrame implements ActionListener {
 				if (e.getSource() == btnAdd) {
 					if (e.getActionCommand().contentEquals("추가")) {
 						actionPerformedBtnAdd(e);
-					} else {
+					} else if(e.getActionCommand().contentEquals("수정")){
 						actionPerformedBtnUpdate(e);
+					}else if(e.getActionCommand().contentEquals("출고")) {
+						actionPerformedBtnRel(e);
 					}
 				}
 			}
-		} catch (InvalidationException | SqlConstraintException e1) {
+		} catch (InvalidationException | SqlConstraintException | NotSelectedException | RelException e1) {
 			JOptionPane.showMessageDialog(null, e1.getMessage());
 		} catch (Exception e1) {
 			e1.printStackTrace();
 		}
 	}
+	
 
 	protected void setService() {
 		service = new OrderService();
@@ -132,13 +143,34 @@ public class OrderFrameUI extends JFrame implements ActionListener {
 	}
 
 	protected void actionPerformdMenuUpdate() {
-		Order order = pTable.getItem().getOrder();
+		Order order;
+		try {
+			order = pTable.getItem().getOrder();
+		} catch (Exception e1) {
+			throw new NotSelectedException();
+		}		
 		pPanel.setItem(order);
 		btnAdd.setText("수정");
 	}
 
+	private void actionPerformdMenuREl() {
+		Order order;
+		try {
+			order = pTable.getItem().getOrder();
+		} catch (Exception e1) {
+			throw new NotSelectedException();
+		}		
+		pPanel.setItem(order);
+		btnAdd.setText("출고");		
+	}
+	
 	protected void actionPerformdMenuDelete() {
-		Order order = pTable.getItem().getOrder();
+		Order order;
+		try {
+			order = pTable.getItem().getOrder();
+		} catch (Exception e1) {
+			throw new NotSelectedException();
+		}
 		service.removeOrder(order);
 		pTable.loadData();
 		JOptionPane.showMessageDialog(null, order + "삭제 되었습니다.");
@@ -152,8 +184,18 @@ public class OrderFrameUI extends JFrame implements ActionListener {
 		pPanel.clearTf();
 		btnAdd.setText("추가");
 		JOptionPane.showMessageDialog(null, order + "정보가 수정되었습니다.");
-
 	}
+	
+	protected void actionPerformedBtnRel(ActionEvent e) {
+		Order order = pPanel.getItem();		
+		service.RelOrder(order);
+		pTable.loadData();
+		pPanel.clearTf();
+		btnAdd.setText("추가");
+		JOptionPane.showMessageDialog(null, order.getNo() + "출고처리되었습니다.");
+	}
+	
+	
 
 	protected void actionPerformedBtnAdd(ActionEvent e) {
 		Order order = pPanel.getItem();

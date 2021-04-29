@@ -49,8 +49,7 @@ public class CtTable {
 	}
 	@Override
 	public String toString() {
-		return String.format("%s,%s, %s, %s", customer, unReleased, count,
-				cGrade);
+		return String.format("%s(%s)", customer.getcName(), customer.getcNo());
 	}
 	
 	

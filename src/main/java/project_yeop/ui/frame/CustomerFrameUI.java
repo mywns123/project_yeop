@@ -14,6 +14,7 @@ import javax.swing.border.EmptyBorder;
 
 import project_yeop.dto.Customer;
 import project_yeop.exception.InvalidationException;
+import project_yeop.exception.NotSelectedException;
 import project_yeop.exception.SqlConstraintException;
 import project_yeop.service.CustomerService;
 import project_yeop.ui.panel.insert.CustomerInsertPanel;
@@ -22,7 +23,7 @@ import project_yeop.ui.panel.table.CustomerTablePanel;
 @SuppressWarnings("serial")
 public class CustomerFrameUI extends JFrame implements ActionListener {
 	private JPanel contentPane;
-	protected JButton btnAdd;
+	public JButton btnAdd;
 	private JButton btnClear;
 	public CustomerInsertPanel pPanel;
 	protected CustomerTablePanel pTable;
@@ -100,7 +101,7 @@ public class CustomerFrameUI extends JFrame implements ActionListener {
 					}
 				}
 			}
-		} catch (InvalidationException | SqlConstraintException e1) {
+		} catch (InvalidationException | SqlConstraintException | NotSelectedException e1) {
 			JOptionPane.showMessageDialog(null, e1.getMessage());
 		} catch (Exception e1) {
 			e1.printStackTrace();
@@ -130,13 +131,23 @@ public class CustomerFrameUI extends JFrame implements ActionListener {
 	}
 
 	protected void actionPerformdMenuUpdate() {
-		Customer customer = pTable.getItem().getCustomer();
+		Customer customer;
+		try {
+			customer = pTable.getItem().getCustomer();
+		} catch (Exception e1) {
+			throw new NotSelectedException();
+		}		
 		pPanel.setItem(customer);
 		btnAdd.setText("수정");
 	}
 
 	protected void actionPerformdMenuDelete() {
-		Customer customer = pTable.getItem().getCustomer();
+		Customer customer;
+		try {
+			customer = pTable.getItem().getCustomer();
+		} catch (Exception e1) {
+			throw new NotSelectedException();
+		}
 		service.removeCustomer(customer);
 		pTable.loadData();
 		JOptionPane.showMessageDialog(null, customer + "삭제 되었습니다.");

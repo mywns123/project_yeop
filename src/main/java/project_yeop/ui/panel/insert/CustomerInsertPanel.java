@@ -104,13 +104,13 @@ public class CustomerInsertPanel extends AbstractInsertPanel<Customer> {
 	@Override
 	public Customer getItem() {
 		validCheck();
-		int cNO = Integer.parseInt(tfNo.getText().trim());
+		/* int cNO = Integer.parseInt(tfNo.getText().trim()); */
 		String cName = tfName.getText().trim();
 		boolean gender = rdbtnFemale.isSelected() ? true : false;	
 		String ponNumber = tfPhon.getText().trim();
 		String address = tfAddress.getText().trim();		
 
-		return new Customer(cNO,cName,gender, ponNumber,address);
+		return new Customer(/* cNO, */cName,gender, ponNumber,address);
 	}
 	
 	@Override

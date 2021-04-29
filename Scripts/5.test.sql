@@ -44,3 +44,7 @@ where cGrade = 'A';
 
 
 where unReleased > 0;
+
+
+select complete, `no`, cNo, cName, gGrade, discountRate, color, lLaundryCode, product, unitPrice, laundryCount, price, receiveDate, releaseDate, etc from odTable
+where complete = false and releaseDate < now() and cNo = 8; 

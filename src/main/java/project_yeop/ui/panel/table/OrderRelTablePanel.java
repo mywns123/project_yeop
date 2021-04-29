@@ -2,6 +2,7 @@ package project_yeop.ui.panel.table;
 
 import java.text.DecimalFormat;
 import java.util.Date;
+import java.util.List;
 
 import javax.swing.SwingConstants;
 
@@ -25,6 +26,10 @@ public class OrderRelTablePanel extends AbstractTablePanel<OdTable>{
 	public void initList() {
 		list = service.showOdTablereleaseDate();
 		
+	}
+	
+	public void setSearchList(List<OdTable> odList) {
+		list = odList;
 	}
 
 	@Override
@@ -69,7 +74,7 @@ public class OrderRelTablePanel extends AbstractTablePanel<OdTable>{
 	@Override
 	public OdTable getItem() {
 		int row = table.getSelectedRow();
-		boolean complete = (boolean) table.getValueAt(row, 0);
+		boolean complete = (boolean) table.getValueAt(row, 0).equals("출고") ? true : false;
 		int no = (int) table.getValueAt(row, 1);
 		Customer ctNo = new Customer ((int) table.getValueAt(row, 2));		
 		Laundry LaundryCode = new Laundry((String) table.getValueAt(row, 7));		

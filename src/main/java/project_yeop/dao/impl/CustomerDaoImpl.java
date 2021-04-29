@@ -9,7 +9,6 @@ import java.util.List;
 
 import project_yeop.dao.CustomerDao;
 import project_yeop.db.JdbcConn;
-import project_yeop.dto.Column;
 import project_yeop.dto.CtTable;
 import project_yeop.dto.Customer;
 

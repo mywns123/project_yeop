@@ -87,8 +87,7 @@ public class OdTable {
 
 	@Override
 	public String toString() {
-		return String.format("OdTable [order=%s, ctTable=%s, grade=%s, laundry=%s, price=%s, releaseDate=%s]", order,
-				ctTable, grade, laundry, price, releaseDate);
+		return String.format("%s의 %s(%s)", order.getCtNo(),order.getLaundryCode(),order.getLaundryCount());
 	}
 
 	

@@ -110,7 +110,7 @@ public class Customer {
 
 	@Override
 	public String toString() {
-		return String.format("%s, %s", cNo, cName);
+		return String.format("%s(%s)",  cName, cNo);
 	}
 
 	

@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JOptionPane;
 
 import project_yeop.dto.Laundry;
+import project_yeop.exception.NotSelectedException;
 import project_yeop.service.LaundryService;
 import project_yeop.ui.panel.insert.AbstractInsertPanel;
 import project_yeop.ui.panel.insert.LaundryInsertPanel;
@@ -44,14 +45,24 @@ public class LaundryFrameUI extends AbstractFrameUI<Laundry> {
 
 	@Override
 	protected void actionPerformdMenuUpdate() {
-		Laundry upLaundry = pTable.getItem();
+		Laundry upLaundry;
+		try {
+			upLaundry = pTable.getItem();
+		} catch (Exception e1) {
+			throw new NotSelectedException();
+		}		
 		pPanel.setItem(upLaundry);
 		btnAdd.setText("수정");
 	}
 
 	@Override
 	protected void actionPerformdMenuDelete() {
-		Laundry delLaundry = pTable.getItem();
+		Laundry delLaundry;
+		try {
+			delLaundry = pTable.getItem();
+		} catch (Exception e1) {
+			throw new NotSelectedException();
+		}	
 		service.removeLaundry(delLaundry);
 		pTable.loadData();
 		JOptionPane.showMessageDialog(null, delLaundry + "삭제 되었습니다.");

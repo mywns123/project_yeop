@@ -13,6 +13,7 @@ import javax.swing.JPopupMenu;
 import javax.swing.border.EmptyBorder;
 
 import project_yeop.exception.InvalidationException;
+import project_yeop.exception.NotSelectedException;
 import project_yeop.exception.SqlConstraintException;
 import project_yeop.ui.panel.insert.AbstractInsertPanel;
 import project_yeop.ui.panel.table.AbstractTablePanel;
@@ -97,7 +98,7 @@ public abstract class AbstractFrameUI<T> extends JFrame implements ActionListene
 					}
 				}
 			}
-		} catch (InvalidationException | SqlConstraintException e1) {
+		} catch (InvalidationException | SqlConstraintException | NotSelectedException e1) {
 			JOptionPane.showMessageDialog(null, e1.getMessage());
 		} catch (Exception e1) {
 			e1.printStackTrace();

@@ -103,8 +103,8 @@ public class OrderRelPanel extends AbstractInsertPanel<Order> {
 	@Override
 	public void setItem(Order item) {
 		tfcNum.setText(String.valueOf(item.getNo()));
-		tfNum.setText(String.valueOf(item.getCtNo()));
-		comCode.setText(String.valueOf(item.getLaundryCode()));
+		tfNum.setText(String.valueOf(item.getCtNo().getcNo()));
+		comCode.setText(String.valueOf(item.getLaundryCode().getlLaundryCode()));
 		tfCount.setText(String.valueOf(item.getLaundryCount()));	
 		tfColor.setText(String.valueOf(item.getColor()));
 		tfEtc.setText(String.valueOf(item.getEtc()));	

@@ -9,6 +9,11 @@ public class Laundry {
 		this.lLaundryCode = lLaundryCode;
 	}
 
+	public Laundry(String lLaundryCode, String product) {
+		this.lLaundryCode = lLaundryCode;
+		this.product = product;
+	}
+
 	public Laundry(String lLaundryCode, String product, int unitPrice) {
 		this.lLaundryCode = lLaundryCode;
 		this.product = product;

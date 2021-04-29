@@ -30,8 +30,7 @@ public class CtStateUI extends JPanel implements ActionListener {
 	private CustomerTablePanel pTable;
 	private CustomerService service;
 	private JButton btnFind;
-	List<CtTable> list;
-	List<CtTable> list1;
+	List<CtTable> list;	
 	private JButton btnMod;
 
 	public CtStateUI() {
@@ -49,8 +48,8 @@ public class CtStateUI extends JPanel implements ActionListener {
 
 		comCul = new JComboBox<>();
 		String[] sArr = { "전체보기", "회원번호", "회원명", "성별", "회원등급", "미출고회원" };
-		DefaultComboBoxModel<String> Model = new DefaultComboBoxModel<String>(sArr);
-		comCul.setModel(Model);
+		DefaultComboBoxModel<String> model = new DefaultComboBoxModel<String>(sArr);
+		comCul.setModel(model);
 		comCul.setSelectedIndex(0);
 		panel.add(comCul);
 
@@ -113,7 +112,7 @@ public class CtStateUI extends JPanel implements ActionListener {
 			list = service.showCtTableUnRel();
 			pTable.setSearchList(list);
 			pTable.setList();
-		} else if (com == "회원등급" && tfSearch != null) {
+		} else if (com == "회원등급") {
 			validCheck();
 			intCheck();
 			String grade = tf;
@@ -123,7 +122,7 @@ public class CtStateUI extends JPanel implements ActionListener {
 			}
 			pTable.setSearchList(list);
 			pTable.setList();
-		} else if (com == "회원명" && tfSearch != null) {
+		} else if (com == "회원명") {
 			validCheck();
 			intCheck();
 			String name = tf;
@@ -197,6 +196,7 @@ public class CtStateUI extends JPanel implements ActionListener {
 		}
 		CustomerFrameUI frame = new CustomerFrameUI();
 		frame.pPanel.setItem(customer);
+		frame.btnAdd.setText("수정");
 		frame.setVisible(true);
 	}
 }

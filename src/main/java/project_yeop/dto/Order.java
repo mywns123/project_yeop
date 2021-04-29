@@ -144,9 +144,7 @@ public class Order {
 
 	@Override
 	public String toString() {
-		return String.format(
-				"Order [complete=%s, no=%s, ctNo=%s, LaundryCode=%s, color=%s, laundryCount=%s, receiveDate=%s, etc=%s]",
-				complete, no, ctNo, LaundryCode, color, laundryCount, receiveDate, etc);
+		return String.format("%s의 %s(%s)",	ctNo, LaundryCode,laundryCount, receiveDate);
 	}
 	
 	

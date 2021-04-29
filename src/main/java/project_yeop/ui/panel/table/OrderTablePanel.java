@@ -2,6 +2,7 @@ package project_yeop.ui.panel.table;
 
 import java.text.DecimalFormat;
 import java.util.Date;
+import java.util.List;
 
 import javax.swing.SwingConstants;
 
@@ -27,6 +28,10 @@ public class OrderTablePanel extends AbstractTablePanel<OdTable>{
 		
 	}
 
+	public void setSearchList(List<OdTable> odList) {
+		list = odList;
+	}
+	
 	@Override
 	protected void setAlignAndWidth() {
 		setTableCellAlign(SwingConstants.CENTER, 0, 1, 2, 3, 4, 5,6,7,8,10,12,13,14);
@@ -69,10 +74,10 @@ public class OrderTablePanel extends AbstractTablePanel<OdTable>{
 	@Override
 	public OdTable getItem() {
 		int row = table.getSelectedRow();
-//		boolean complete = (boolean) table.getValueAt(row, 0);
+		boolean complete = (boolean) table.getValueAt(row, 0).equals("출고") ? true : false;
 		int no = (int) table.getValueAt(row, 1);
 		Customer ctNo = new Customer ((int) table.getValueAt(row, 2));		
-		Laundry LaundryCode = new Laundry((String) table.getValueAt(row, 7));
+		Laundry LaundryCode = new Laundry((String) table.getValueAt(row, 7),(String) table.getValueAt(row, 8));
 		String color = (String) table.getValueAt(row, 6);
 		int laundryCount = (int) table.getValueAt(row, 10);
 		Date releaseDate = (Date) table.getValueAt(row, 13);
@@ -82,7 +87,7 @@ public class OrderTablePanel extends AbstractTablePanel<OdTable>{
 			throw new NotSelectedException();
 		}
 
-		return new OdTable(new Order(/* complete, */ no, ctNo, LaundryCode, color, laundryCount, etc),releaseDate);
+		return new OdTable(new Order(complete, no, ctNo, LaundryCode, color, laundryCount, etc),releaseDate);
 	}
 
 }

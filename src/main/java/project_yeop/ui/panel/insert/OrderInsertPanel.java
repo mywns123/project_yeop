@@ -98,11 +98,13 @@ public class OrderInsertPanel extends AbstractInsertPanel<Order> {
 		comCode.setModel(model);
 		
 		comCode.setSelectedIndex(-1);
+		
 	}
 	
 	@Override
 	public void setItem(Order item) {
-		tfNum.setText(String.valueOf(item.getCtNo()));
+		String.valueOf(item.getNo());
+		tfNum.setText(String.valueOf(item.getCtNo().getcNo()));
 		comCode.setSelectedItem(item.getLaundryCode());
 		tfCount.setText(String.valueOf(item.getLaundryCount()));	
 		tfColor.setText(String.valueOf(item.getColor()));
@@ -113,7 +115,7 @@ public class OrderInsertPanel extends AbstractInsertPanel<Order> {
 	public Order getItem() {
 		validCheck();
 		Customer ctNo = new Customer(Integer.parseInt(tfNum.getText().trim()));
-		Laundry LaundryCode = (Laundry)comCode.getSelectedItem();		
+		Laundry LaundryCode = (Laundry)comCode.getSelectedItem();
 		int laundryCount = Integer.parseInt(tfCount.getText().trim());
 		String color = tfColor.getText().trim();
 		String ect = tfEtc.getText().trim();		
