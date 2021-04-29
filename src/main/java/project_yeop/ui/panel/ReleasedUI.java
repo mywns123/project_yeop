@@ -13,6 +13,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import project_yeop.dto.Customer;
 import project_yeop.dto.OdTable;
 import project_yeop.dto.Order;
 import project_yeop.exception.InvalidationException;
@@ -121,7 +122,12 @@ public class ReleasedUI extends JPanel implements ActionListener {
 	}
 
 	private void actionPerformedBtnMod(ActionEvent e) {
-		Order order = pTable.getItem().getOrder();	
+		Order order;
+		try {
+			order = pTable.getItem().getOrder();
+		} catch (Exception e1) {
+			throw new NotSelectedException();
+		}		
 		pRel.setItem(order);
 	}
 
@@ -228,7 +234,12 @@ public class ReleasedUI extends JPanel implements ActionListener {
 	}
 	
 	protected void actionPerformedBtnNewButton(ActionEvent e) {
-		Order order = new Order(pRel.getItem().getNo());
+		Order order;
+		try {
+			order = new Order(pRel.getItem().getNo());
+		} catch (Exception e1) {
+			throw new NotSelectedException();
+		}		
 		service.RelOrder(order);
 		pTable.loadData();
 		pRel.clearTf();

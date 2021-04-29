@@ -120,7 +120,12 @@ public class UnReleasedUI extends JPanel implements ActionListener {
 	}
 
 	private void actionPerformedBtnMod(ActionEvent e) {
-		Order order = pTable.getItem().getOrder();	
+		Order order;
+		try {
+			order = pTable.getItem().getOrder();
+		} catch (Exception e1) {
+			throw new NotSelectedException();
+		}		
 		pRel.setItem(order);
 	}
 	
