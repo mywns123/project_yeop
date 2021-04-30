@@ -68,7 +68,7 @@ public class Grade {
 
 	@Override
 	public String toString() {
-		return String.format("%s(%s)", gGrade, discountRate);
+		return String.format("%s", gGrade);
 	}
 
 }

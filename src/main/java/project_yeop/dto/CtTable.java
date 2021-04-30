@@ -4,7 +4,7 @@ public class CtTable {
 	private Customer customer;	
 	private int unReleased;
 	private int count;
-	private String cGrade;
+	private Grade cGrade;
 	
 	public CtTable() {
 	}
@@ -13,11 +13,11 @@ public class CtTable {
 		this.customer = customer;
 	}
 	
-	public CtTable(String cGrade) {
+	public CtTable(Grade cGrade) {
 		this.cGrade = cGrade;
 	}
 
-	public CtTable(Customer customer, int unReleased, int count, String cGrade) {
+	public CtTable(Customer customer, int unReleased, int count, Grade cGrade) {
 		this.customer = customer;
 		this.unReleased = unReleased;
 		this.count = count;
@@ -41,10 +41,10 @@ public class CtTable {
 	public void setCount(int count) {
 		this.count = count;
 	}
-	public String getcGrade() {
+	public Grade getcGrade() {
 		return cGrade;
 	}
-	public void setcGrade(String cGrade) {
+	public void setcGrade(Grade cGrade) {
 		this.cGrade = cGrade;
 	}
 	@Override

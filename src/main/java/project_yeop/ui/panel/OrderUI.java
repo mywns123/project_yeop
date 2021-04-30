@@ -341,7 +341,7 @@ public class OrderUI extends JPanel implements ActionListener {
 		int no = order.getCtNo().getcNo();
 		CtTable ctTable = new CtTable(new Customer(no));
 		String name = cService.showCtTableNO(ctTable).getCustomer().getcName();
-		String grade = cService.showCtTableNO(ctTable).getcGrade();
+		String grade = cService.showCtTableNO(ctTable).getcGrade().getgGrade();
 		Grade g = new Grade(grade);
 		int dis = gService.showGrade(g).getDiscountRate();
 		Date recive = new Date();

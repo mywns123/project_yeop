@@ -11,6 +11,7 @@ import project_yeop.dao.CustomerDao;
 import project_yeop.db.JdbcConn;
 import project_yeop.dto.CtTable;
 import project_yeop.dto.Customer;
+import project_yeop.dto.Grade;
 
 public class CustomerDaoImpl implements CustomerDao {
 
@@ -171,7 +172,7 @@ public class CustomerDaoImpl implements CustomerDao {
 		Customer customer = null;
 		int unReleased = rs.getInt("unReleased");
 		int count = rs.getInt("count");
-		String cGrade = rs.getString("cGrade");
+		Grade cGrade = new Grade(rs.getString("cGrade"));
 
 		try {
 			customer = new Customer(rs.getInt("cNo"));
