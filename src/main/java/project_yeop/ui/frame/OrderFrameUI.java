@@ -12,6 +12,7 @@ import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 import javax.swing.border.EmptyBorder;
 
+import project_yeop.control.Management;
 import project_yeop.dto.Order;
 import project_yeop.exception.InvalidationException;
 import project_yeop.exception.NotSelectedException;
@@ -32,8 +33,10 @@ public class OrderFrameUI extends JFrame implements ActionListener {
 	protected OrderTablePanel pTable;
 	private OrderService service;
 	private LaundryService lservice;
+	private Management mgn;
 
-	public OrderFrameUI() {		
+	public OrderFrameUI(Management mgn) {
+		this.mgn = mgn;
 		setService();
 		initialize();
 		tableLoadData();
@@ -51,7 +54,9 @@ public class OrderFrameUI extends JFrame implements ActionListener {
 		pPanel = creatPanel();
 		pPanel.setService(lservice);
 		contentPane.add(pPanel);
-
+		int no = service.showOdTables().size()+1;		
+		pPanel.tfNo.setText(no + "");
+		
 		JPanel pBtn = new JPanel();
 		contentPane.add(pBtn);
 
@@ -174,6 +179,7 @@ public class OrderFrameUI extends JFrame implements ActionListener {
 		service.removeOrder(order);
 		pTable.loadData();
 		JOptionPane.showMessageDialog(null, order + "삭제 되었습니다.");
+		mgn.reloadTableData();
 
 	}
 
@@ -184,6 +190,7 @@ public class OrderFrameUI extends JFrame implements ActionListener {
 		pPanel.clearTf();
 		btnAdd.setText("추가");
 		JOptionPane.showMessageDialog(null, order + "정보가 수정되었습니다.");
+		mgn.reloadTableData();
 	}
 	
 	protected void actionPerformedBtnRel(ActionEvent e) {
@@ -193,6 +200,7 @@ public class OrderFrameUI extends JFrame implements ActionListener {
 		pPanel.clearTf();
 		btnAdd.setText("추가");
 		JOptionPane.showMessageDialog(null, order.getNo() + "출고처리되었습니다.");
+		mgn.reloadTableData();
 	}
 	
 	
@@ -202,7 +210,9 @@ public class OrderFrameUI extends JFrame implements ActionListener {
 		service.addOrder(order);
 		pTable.loadData();
 		pPanel.clearTf();
-		JOptionPane.showMessageDialog(null, order + " 추가했습니다.");
+		JOptionPane.showMessageDialog(null, order.getNo() + " 추가했습니다.");
+		int no = service.showOdTables().size()+1;		
+		pPanel.tfNo.setText(no + "");
 
 	}
 

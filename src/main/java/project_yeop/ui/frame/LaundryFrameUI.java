@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 
 import javax.swing.JOptionPane;
 
+import project_yeop.control.Management;
 import project_yeop.dto.Laundry;
 import project_yeop.exception.NotSelectedException;
 import project_yeop.service.LaundryService;
@@ -16,10 +17,12 @@ import project_yeop.ui.panel.table.LaundryTablePanel;
 public class LaundryFrameUI extends AbstractFrameUI<Laundry> {
 
 	private LaundryService service;
+	private Management mgn;
 
 	
-	public LaundryFrameUI() {
+	public LaundryFrameUI(Management mgn) {
 		setTitle("세탁물 코드표");
+		this.mgn = mgn;
 	}
 
 	@Override
@@ -66,6 +69,7 @@ public class LaundryFrameUI extends AbstractFrameUI<Laundry> {
 		service.removeLaundry(delLaundry);
 		pTable.loadData();
 		JOptionPane.showMessageDialog(null, delLaundry + "삭제 되었습니다.");
+		mgn.reloadTableData();	
 	}
 
 	@Override
@@ -76,6 +80,7 @@ public class LaundryFrameUI extends AbstractFrameUI<Laundry> {
 		pPanel.clearTf();
 		btnAdd.setText("추가");
 		JOptionPane.showMessageDialog(null, upLaundry.getlLaundryCode() + "정보가 수정되었습니다.");
+		mgn.reloadTableData();	
 	}
 
 	@Override
@@ -85,6 +90,7 @@ public class LaundryFrameUI extends AbstractFrameUI<Laundry> {
 		pTable.loadData();
 		pPanel.clearTf();
 		JOptionPane.showMessageDialog(null, laundry + " 추가했습니다.");
+		mgn.reloadTableData();	
 	}
 
 }

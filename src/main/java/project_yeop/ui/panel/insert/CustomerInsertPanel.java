@@ -16,7 +16,7 @@ import project_yeop.exception.InvalidationException;
 
 @SuppressWarnings("serial")
 public class CustomerInsertPanel extends AbstractInsertPanel<Customer> {
-	private JTextField tfNo;
+	public JTextField tfNo;
 	private JTextField tfName;
 	private JTextField tfPhon;
 	private JTextField tfAddress;
@@ -43,6 +43,7 @@ public class CustomerInsertPanel extends AbstractInsertPanel<Customer> {
 		panel.add(lblNo);
 		
 		tfNo = new JTextField();
+		tfNo.setHorizontalAlignment(SwingConstants.CENTER);
 		tfNo.setEditable(false);
 		panel.add(tfNo);
 		tfNo.setColumns(10);

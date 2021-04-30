@@ -44,6 +44,32 @@ public class Laundry {
 		this.unitPrice = unitPrice;
 	}
 
+	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((lLaundryCode == null) ? 0 : lLaundryCode.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Laundry other = (Laundry) obj;
+		if (lLaundryCode == null) {
+			if (other.lLaundryCode != null)
+				return false;
+		} else if (!lLaundryCode.equals(other.lLaundryCode))
+			return false;
+		return true;
+	}
+
 	@Override
 	public String toString() {
 		return String.format("%s(%s)", lLaundryCode, product);

@@ -39,7 +39,12 @@ public class Management extends JFrame implements ActionListener {
 	private JButton btuSalesbyYear;
 	private JButton btuSalesbyCt;
 	public JPanel pCheck;
-
+	private JPanel pOrder;
+	private JPanel pReleased;
+	private JPanel pUnReleased;
+	private JPanel pOdState;
+	private JPanel pCtState;
+	
 	public Management() {
 		initialize();
 		setService();
@@ -63,22 +68,22 @@ public class Management extends JFrame implements ActionListener {
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		contentPane.add(tabbedPane);
 		
-		JPanel pOrder = new OrderUI();
+		pOrder = new OrderUI(this);
 		tabbedPane.addTab("주문입력", null, pOrder, null);		
 		
-		pCheck = new CheckUI();
+		pCheck = new CheckUI(this);
 		tabbedPane.addTab("주문 수정", null, pCheck, null);		
 				
-		JPanel pReleased = new ReleasedUI();
+		pReleased = new ReleasedUI(this);
 		tabbedPane.addTab("세탁물 출고", null, pReleased, null);		
 				
-		JPanel pUnReleased = new UnReleasedUI();
+		pUnReleased = new UnReleasedUI(this);
 		tabbedPane.addTab("미출고 세탁물", null, pUnReleased, null);
 		
-		JPanel pOdState = new OdStateUI();
-		tabbedPane.addTab("전체주문현황", null, pOdState, null);
+		pOdState = new OdStateUI(this);
+		tabbedPane.addTab("전체주문검색", null, pOdState, null);
 		
-		JPanel pCtState = new CtStateUI();
+		pCtState = new CtStateUI(this);
 		tabbedPane.addTab("회원 검색", null, pCtState, null);
 		
 		JPanel pPS = new JPanel();
@@ -160,15 +165,15 @@ public class Management extends JFrame implements ActionListener {
 		}
 	}
 	protected void actionPerformedBtuGrade(ActionEvent e) {
-		GradeFrameUI frame = new GradeFrameUI();
+		GradeFrameUI frame = new GradeFrameUI(this);
 		frame.setVisible(true);
 	}
 	protected void actionPerformedBtuLaundry(ActionEvent e) {
-		LaundryFrameUI frame = new LaundryFrameUI();
+		LaundryFrameUI frame = new LaundryFrameUI(this);
 		frame.setVisible(true);
 	}
 	protected void actionPerformedBtuCus(ActionEvent e) {
-		CustomerFrameUI frame = new CustomerFrameUI();
+		CustomerFrameUI frame = new CustomerFrameUI(this);
 		frame.setVisible(true);
 	}
 	protected void actionPerformedBtuSales(ActionEvent e) {
@@ -176,7 +181,7 @@ public class Management extends JFrame implements ActionListener {
 		frame.setVisible(true);
 	}	
 	protected void actionPerformedBtnOrder(ActionEvent e) {
-		OrderFrameUI frame = new OrderFrameUI();
+		OrderFrameUI frame = new OrderFrameUI(this);
 		frame.setVisible(true);
 	}
 	protected void actionPerformedBtuSalesbyMonth(ActionEvent e) {
@@ -190,5 +195,13 @@ public class Management extends JFrame implements ActionListener {
 	protected void actionPerformedBtuSalesbyCt(ActionEvent e) {
 		salebyCtFrameUI frame = new salebyCtFrameUI();
 		frame.setVisible(true);
+	}
+	
+	public void reloadTableData() {		
+		((CheckUI)pCheck).reLoadData();
+		((ReleasedUI)pReleased).reLoadData();
+		((UnReleasedUI)pUnReleased).reLoadData();
+		((OdStateUI)pOdState).reLoadData();
+		((CtStateUI)pCtState).reLoadData();			
 	}
 }

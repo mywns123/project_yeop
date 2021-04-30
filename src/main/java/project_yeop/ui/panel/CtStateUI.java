@@ -13,6 +13,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import project_yeop.control.Management;
 import project_yeop.dto.CtTable;
 import project_yeop.dto.Customer;
 import project_yeop.exception.InvalidationException;
@@ -32,8 +33,10 @@ public class CtStateUI extends JPanel implements ActionListener {
 	private JButton btnFind;
 	List<CtTable> list;	
 	private JButton btnMod;
+	private Management mgn;
 
-	public CtStateUI() {
+	public CtStateUI(Management mgn) {
+		this.mgn = mgn;
 		setService();
 		initialize();
 		tableLoadData();
@@ -194,9 +197,14 @@ public class CtStateUI extends JPanel implements ActionListener {
 		} catch (Exception e1) {
 			throw new NotSelectedException();
 		}
-		CustomerFrameUI frame = new CustomerFrameUI();
+		CustomerFrameUI frame = new CustomerFrameUI(mgn);
 		frame.pPanel.setItem(customer);
 		frame.btnAdd.setText("수정");
 		frame.setVisible(true);
+	}
+	
+	///////////////////////갱신
+	public void reLoadData() {
+		pTable.loadData();
 	}
 }

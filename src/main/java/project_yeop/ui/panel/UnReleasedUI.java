@@ -13,6 +13,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import project_yeop.control.Management;
 import project_yeop.dto.OdTable;
 import project_yeop.dto.Order;
 import project_yeop.exception.InvalidationException;
@@ -38,8 +39,10 @@ public class UnReleasedUI extends JPanel implements ActionListener {
 	private JButton btnNewButton;
 	private JButton btnNewButton_1;
 	private OrderRelPanel pRel;
+	private Management mgn;
 	
-	public UnReleasedUI() {
+	public UnReleasedUI(Management mgn) {
+		this.mgn = mgn;
 		setService();
 		initialize();
 		tableLoadData();
@@ -236,9 +239,15 @@ public class UnReleasedUI extends JPanel implements ActionListener {
 		pTable.loadData();
 		pRel.clearTf();
 		JOptionPane.showMessageDialog(null, order.getNo() + "출고처리되었습니다.");
+		mgn.reloadTableData();
 	}
 
 	protected void actionPerformedBtnNewButton_1(ActionEvent e) {
 		pRel.clearTf();
+	}
+	
+	///////////////////////갱신
+	public void reLoadData() {
+		pTable.loadData();
 	}
 }

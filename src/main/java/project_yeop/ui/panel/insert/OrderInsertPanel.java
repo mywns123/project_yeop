@@ -18,6 +18,7 @@ import project_yeop.dto.Laundry;
 import project_yeop.dto.Order;
 import project_yeop.exception.InvalidationException;
 import project_yeop.service.LaundryService;
+import java.awt.Dimension;
 
 @SuppressWarnings("serial")
 public class OrderInsertPanel extends AbstractInsertPanel<Order> {
@@ -116,8 +117,8 @@ public class OrderInsertPanel extends AbstractInsertPanel<Order> {
 	@Override
 	public void setItem(Order item) {
 		tfNo.setText(String.valueOf(item.getNo()));
-		tfNum.setText(String.valueOf(item.getCtNo().getcNo()));
-		comCode.setSelectedItem(item.getLaundryCode());
+		tfNum.setText(String.valueOf(item.getCtNo().getcNo()));			
+		comCode.setSelectedItem(item.getLaundryCode());		
 		tfCount.setText(String.valueOf(item.getLaundryCount()));	
 		tfColor.setText(String.valueOf(item.getColor()));
 		tfEtc.setText(String.valueOf(item.getEtc()));	

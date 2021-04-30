@@ -13,6 +13,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import project_yeop.control.Management;
 import project_yeop.dto.OdTable;
 import project_yeop.dto.Order;
 import project_yeop.exception.InvalidationException;
@@ -38,8 +39,11 @@ public class CheckUI extends JPanel implements ActionListener {
 	private OrderRelPanel pRel;
 	List<OdTable> list;
 	private JButton btnMod;
+	private Management mgn;
 	
-	public CheckUI() {
+	
+	public CheckUI(Management mgn) {
+		this.mgn = mgn;
 		setService();
 		initialize();
 		tableLoadData();
@@ -236,9 +240,15 @@ public class CheckUI extends JPanel implements ActionListener {
 		pTable.loadData();
 		pRel.clearTf();
 		JOptionPane.showMessageDialog(null, order.getNo() + "정보가 수정되었습니다.");
+		mgn.reloadTableData();
 	}
 
 	protected void actionPerformedBtnNewButton_1(ActionEvent e) {
 		pRel.clearTf();
+	}
+	
+	///////////////////////갱신
+	public void reLoadData() {
+		pTable.loadData();
 	}
 }

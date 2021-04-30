@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 
 import javax.swing.JOptionPane;
 
+import project_yeop.control.Management;
 import project_yeop.dto.Grade;
 import project_yeop.exception.NotSelectedException;
 import project_yeop.service.GradeService;
@@ -16,13 +17,16 @@ import project_yeop.ui.panel.table.GradeTablePanel;
 public class GradeFrameUI extends AbstractFrameUI<Grade> {
 
 	private GradeService service;
+	private Management mgn;
 	
-	public GradeFrameUI() {
+	public GradeFrameUI(Management mgn) {
 		setTitle("회원 등급표");
+		this.mgn = mgn;
 	}
 
 	@Override
 	protected void setService() {
+		
 		service = new GradeService();
 	}
 
@@ -65,6 +69,7 @@ public class GradeFrameUI extends AbstractFrameUI<Grade> {
 		service.removeGrade(delGrade);
 		pTable.loadData();
 		JOptionPane.showMessageDialog(null, delGrade + "삭제 되었습니다.");
+		mgn.reloadTableData();	
 	}
 
 	@Override
@@ -75,6 +80,7 @@ public class GradeFrameUI extends AbstractFrameUI<Grade> {
 		pPanel.clearTf();
 		btnAdd.setText("추가");
 		JOptionPane.showMessageDialog(null, updateGrade.getgGrade() + "정보가 수정되었습니다.");
+		mgn.reloadTableData();	
 	}
 
 	@Override
@@ -84,6 +90,7 @@ public class GradeFrameUI extends AbstractFrameUI<Grade> {
 		pTable.loadData();
 		pPanel.clearTf();
 		JOptionPane.showMessageDialog(null, grade + " 추가했습니다.");
+		mgn.reloadTableData();	
 	}
 
 }

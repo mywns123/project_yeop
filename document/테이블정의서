@@ -155,7 +155,7 @@ th{
 						<td class="right-line">입고일</td>
 						<td class="right-line">일시</td>
 						<td class="right-line">DATETIME</td>
-						<td class="right-line">Not Null</td>
+						<td class="right-line"></td>
 						<td class="right-line"></td>
 						<td></td>
 					</tr>
@@ -164,7 +164,7 @@ th{
 						<td class="right-line">etc</td>
 						<td class="right-line">기타사항</td>
 						<td class="right-line">N/A</td>
-						<td class="right-line">CHAR</td>
+						<td class="right-line"> VARCHAR(50)</td>
 						<td class="right-line"></td>
 						<td class="right-line"></td>
 						<td></td>
@@ -221,6 +221,26 @@ th{
 					</tr>
 					<tr>
 						<td class="right-line" style="text-align:right;">2</td>
+						<td class="right-line">losal</td>
+						<td class="right-line">최저값</td>
+						<td class="right-line">N/A</td>
+						<td class="right-line">INTEGER</td>
+						<td class="right-line"></td>
+						<td class="right-line"></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td class="right-line" style="text-align:right;">3</td>
+						<td class="right-line">hiosal</td>
+						<td class="right-line">최고값</td>
+						<td class="right-line">N/A</td>
+						<td class="right-line">N/A</td>
+						<td class="right-line"></td>
+						<td class="right-line"></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td class="right-line" style="text-align:right;">4</td>
 						<td class="right-line">discountRate</td>
 						<td class="right-line">할인율</td>
 						<td class="right-line">할인율</td>
@@ -364,7 +384,7 @@ th{
 						<td class="right-line">gender</td>
 						<td class="right-line">성별</td>
 						<td class="right-line">N/A</td>
-						<td class="right-line">BOOLEAN</td>
+						<td class="right-line">TINYBLOB</td>
 						<td class="right-line"></td>
 						<td class="right-line"></td>
 						<td></td>

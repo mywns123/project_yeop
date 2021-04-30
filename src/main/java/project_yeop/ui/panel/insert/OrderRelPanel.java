@@ -43,7 +43,7 @@ public class OrderRelPanel extends AbstractInsertPanel<Order> {
 		panel.add(lblcNum);
 		
 		tfcNum = new JTextField();
-		tfcNum.setHorizontalAlignment(SwingConstants.LEFT);
+		tfcNum.setHorizontalAlignment(SwingConstants.CENTER);
 		panel.add(tfcNum);
 		tfcNum.setColumns(10);
 		
@@ -52,7 +52,7 @@ public class OrderRelPanel extends AbstractInsertPanel<Order> {
 		panel.add(lblNum);
 		
 		tfNum = new JTextField();
-		tfNum.setHorizontalAlignment(SwingConstants.LEFT);
+		tfNum.setHorizontalAlignment(SwingConstants.CENTER);
 		panel.add(tfNum);
 		tfNum.setColumns(10);
 		
@@ -61,6 +61,7 @@ public class OrderRelPanel extends AbstractInsertPanel<Order> {
 		panel.add(lblCode);
 		
 		comCode = new JTextField();
+		comCode.setHorizontalAlignment(SwingConstants.CENTER);
 		panel.add(comCode);
 		
 		JLabel lblCount = new JLabel("수    량");
@@ -68,7 +69,7 @@ public class OrderRelPanel extends AbstractInsertPanel<Order> {
 		panel.add(lblCount);
 		
 		tfCount = new JTextField();
-		tfCount.setHorizontalAlignment(SwingConstants.LEFT);
+		tfCount.setHorizontalAlignment(SwingConstants.CENTER);
 		tfCount.setColumns(10);
 		panel.add(tfCount);
 		
@@ -77,7 +78,7 @@ public class OrderRelPanel extends AbstractInsertPanel<Order> {
 		panel.add(lblColor);
 		
 		tfColor = new JTextField();
-		tfColor.setHorizontalAlignment(SwingConstants.LEFT);
+		tfColor.setHorizontalAlignment(SwingConstants.CENTER);
 		tfColor.setColumns(10);
 		panel.add(tfColor);
 		
@@ -86,7 +87,7 @@ public class OrderRelPanel extends AbstractInsertPanel<Order> {
 		panel.add(lblEtc);
 		
 		tfEtc = new JTextField();
-		tfEtc.setHorizontalAlignment(SwingConstants.LEFT);
+		tfEtc.setHorizontalAlignment(SwingConstants.CENTER);
 		tfEtc.setColumns(10);
 		panel.add(tfEtc);
 	}

@@ -25,8 +25,8 @@ public abstract class AbstractFrameUI<T> extends JFrame implements ActionListene
 	protected JButton btnAdd;
 	private JButton btnClear;
 	protected AbstractInsertPanel<T> pPanel;
-	protected AbstractTablePanel<T> pTable;
-
+	protected AbstractTablePanel<T> pTable;	
+	
 	public AbstractFrameUI() {
 		setService();
 		initialize();

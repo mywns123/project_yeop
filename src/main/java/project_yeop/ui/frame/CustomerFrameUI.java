@@ -12,6 +12,7 @@ import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 import javax.swing.border.EmptyBorder;
 
+import project_yeop.control.Management;
 import project_yeop.dto.Customer;
 import project_yeop.exception.InvalidationException;
 import project_yeop.exception.NotSelectedException;
@@ -28,8 +29,10 @@ public class CustomerFrameUI extends JFrame implements ActionListener {
 	public CustomerInsertPanel pPanel;
 	protected CustomerTablePanel pTable;
 	private CustomerService service;
+	private Management mgn;
 	
-	public CustomerFrameUI() {
+	public CustomerFrameUI(Management mgn) {
+		this.mgn = mgn;
 		setService();
 		initialize();
 		tableLoadData();
@@ -46,6 +49,8 @@ public class CustomerFrameUI extends JFrame implements ActionListener {
 
 		pPanel = creatPanel();
 		contentPane.add(pPanel);
+		int no = service.showCtTable().size()+1;		
+		pPanel.tfNo.setText(no + "");
 
 		JPanel pBtn = new JPanel();
 		contentPane.add(pBtn);
@@ -151,7 +156,7 @@ public class CustomerFrameUI extends JFrame implements ActionListener {
 		service.removeCustomer(customer);
 		pTable.loadData();
 		JOptionPane.showMessageDialog(null, customer + "삭제 되었습니다.");
-		
+		mgn.reloadTableData();		
 	}
 
 	protected void actionPerformedBtnUpdate(ActionEvent e) {
@@ -161,7 +166,7 @@ public class CustomerFrameUI extends JFrame implements ActionListener {
 		pPanel.clearTf();
 		btnAdd.setText("추가");
 		JOptionPane.showMessageDialog(null, customer + "정보가 수정되었습니다.");
-		
+		mgn.reloadTableData();		
 	}
 
 	protected void actionPerformedBtnAdd(ActionEvent e) {
@@ -170,7 +175,7 @@ public class CustomerFrameUI extends JFrame implements ActionListener {
 		pTable.loadData();
 		pPanel.clearTf();
 		JOptionPane.showMessageDialog(null, customer + " 추가했습니다.");
-		
+		mgn.reloadTableData();		
 	}
 
 	protected void actionPerformedBtnClear(ActionEvent e) {

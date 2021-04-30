@@ -17,6 +17,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+import project_yeop.control.Management;
 import project_yeop.dto.CtTable;
 import project_yeop.dto.Customer;
 import project_yeop.dto.Grade;
@@ -39,7 +40,7 @@ public class OrderUI extends JPanel implements ActionListener {
 	private JButton btnAdd;
 	private JButton btnClear;
 	private OrderService service;
-	private OrderInsertPanel pOd;
+	public OrderInsertPanel pOd;
 	private LaundryService lservice;
 	private JLabel lblcNo;
 	private JTextField tfNo;
@@ -73,7 +74,10 @@ public class OrderUI extends JPanel implements ActionListener {
 	private JLabel lblNewLabel_3;
 	private JTextField tfRel;
 
-	public OrderUI() {
+	private Management mgn;
+	
+	public OrderUI(Management mgn) {
+		this.mgn = mgn;
 		service = new OrderService();
 		lservice = new LaundryService();
 		cService = new CustomerService();
@@ -382,8 +386,13 @@ public class OrderUI extends JPanel implements ActionListener {
 		tfPrice.setText("");
 		tfRecive.setText("");
 		tfRel.setText("");
-		JOptionPane.showMessageDialog(null, order + " 추가했습니다.");
-	}
+		JOptionPane.showMessageDialog(null, order.getNo() + " 추가했습니다.");
+		
+		mgn.reloadTableData();
+		
+		int no = service.showOdTables().size()+1;		
+		pOd.tfNo.setText(no + "");
+		}
 
 	protected void actionPerformedBtnClear(ActionEvent e) {
 		pOd.clearTf();
@@ -401,7 +410,7 @@ public class OrderUI extends JPanel implements ActionListener {
 	}
 
 	protected void actionPerformedBtnCt(ActionEvent e) {
-		CustomerFrameUI frame = new CustomerFrameUI();
+		CustomerFrameUI frame = new CustomerFrameUI(mgn);
 		frame.setVisible(true);
 	}
 }

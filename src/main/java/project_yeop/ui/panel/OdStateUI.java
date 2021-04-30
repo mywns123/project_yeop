@@ -13,6 +13,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import project_yeop.control.Management;
 import project_yeop.dto.OdTable;
 import project_yeop.dto.Order;
 import project_yeop.exception.InvalidationException;
@@ -33,8 +34,10 @@ public class OdStateUI extends JPanel implements ActionListener {
 	private JButton btnFind;
 	private JButton btnMod;
 	List<OdTable> list;
+	private Management mgn;
 
-	public OdStateUI() {
+	public OdStateUI(Management mgn) {
+		this.mgn = mgn;
 		setService();
 		initialize();
 		tableLoadData();
@@ -100,7 +103,7 @@ public class OdStateUI extends JPanel implements ActionListener {
 		} catch (Exception e1) {
 			throw new NotSelectedException();
 		}
-		OrderFrameUI frame = new OrderFrameUI();
+		OrderFrameUI frame = new OrderFrameUI(mgn);
 		frame.pPanel.setItem(order);
 		frame.btnAdd.setText("수정");
 		frame.setVisible(true);
@@ -205,6 +208,11 @@ public class OdStateUI extends JPanel implements ActionListener {
 		} catch (NumberFormatException e) {
 			return false;
 		}
+	}	
+	
+	///////////////////////갱신
+	public void reLoadData() {
+		pTable.loadData();
 	}
 
 }
