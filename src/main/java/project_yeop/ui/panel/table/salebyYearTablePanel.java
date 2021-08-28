@@ -40,7 +40,7 @@ public class salebyYearTablePanel extends AbstractTablePanel<salebyDate> {
 
 	@Override
 	public String[] getColumnNames() {
-		return new String[] { "월", "누정수량", "누적 매출" };
+		return new String[] { "월", "누적수량", "누적 매출" };
 	}
 
 	@Override
